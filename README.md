@@ -46,9 +46,9 @@ APP_URL=http://127.0.0.1:8000/
 ```
 
 #### Install Composer
-- Setelah itu, jalankan perintah `migrate` pada projek ini sehingga dapat membuat tabel-tabel yang diperlukan di database.
+- Install composer terlebih dahulu
 ```sh
-php artisan migrate
+composer install
 ```
 
 - Jalankan perintah `generate key`
