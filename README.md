@@ -72,6 +72,16 @@ php artisan migrate
 php artisan migrate:fresh --seed
 ```
 
+#### Install and run NPM
+- Instal and run NPM
+```sh
+npm install
+```
+
+```sh
+npm run dev
+```
+
 #### Run Application
 - Jalankan perintah untuk menjalankan aplikasi di local system
 ```sh
