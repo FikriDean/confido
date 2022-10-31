@@ -2,6 +2,10 @@
 
 ### Pre-Requirement
 
+-   Testing
+
+### Pre-Requirement
+
 -   Sebelum menggunakan platform, terlebih dahulu perlu menginstall bahasa pemrograman `PHP` dan `Composer`
 
 ### Clone Via GIT
