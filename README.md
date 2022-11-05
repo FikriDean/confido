@@ -85,7 +85,7 @@ php artisan migrate
 
 #### Database Seeder
 
--   Gunakan database seeder yang terdapat di project `Inventory System` ini. Jalankan perintah berikut
+-   Gunakan database seeder yang terdapat di project `confido` ini. Jalankan perintah berikut
 
 ```sh
 php artisan migrate:fresh --seed
