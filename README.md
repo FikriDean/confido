@@ -112,3 +112,14 @@ npm run dev
 ```sh
 php artisan serve
 ```
+
+#### Push to github
+- Pastikan sudah masuk ke branch yang ingin di push!
+
+```sh
+git add .
+git commit -m "<information>"
+git push
+```
+
+
