@@ -4,6 +4,8 @@
 
 -   Testing
 
+-   5/11/2022
+
 ### Pre-Requirement
 
 -   Sebelum menggunakan platform, terlebih dahulu perlu menginstall bahasa pemrograman `PHP` dan `Composer`
