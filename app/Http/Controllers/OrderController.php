@@ -45,27 +45,6 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        // bikin ngecek tiket ada atau tidak
-        // add order
-        // add transaction
-        // add payments
-        // add totals
-
-        // dd(gettype($request->payment_method));
-        // $validatedDataOrder = $request->validate([
-        //     'from_route' => ['required'],
-        //     'to_route' => ['required'],
-        //     'airline_id' => ['required'],
-        //     'type_id' => ['required'],
-        //     'round_trip' => ['required'],
-        //     'amount' => ['required', 'max:5'],
-        //     'go_date' => ['required'],
-        //     'return_date' => [],
-        //     'method' => ['required'],
-        //     'name_account' => ['required'],
-        //     'from_account' => ['required'],
-        // ]);
-
         $validatedDataOrder = $request->validate([
             'from_route' => ['required'],
             'to_route' => ['required'],
@@ -86,6 +65,8 @@ class OrderController extends Controller
             $validatedDataOrder['round_trip'] = false;
         }
 
+        $validatedDataOrder['user_id'] = auth()->user()->id;
+        $validatedDataOrder['order_code'] = strval(number_format(microtime(true) * 1000, 0, '.', ''));
 
         $from_route = $request['from_route'];
         $to_route = $request['to_route'];
@@ -93,15 +74,10 @@ class OrderController extends Controller
         $type_id = $request['type_id'];
 
         $track_id = Track::where('from_route', $from_route)->where('to_route', $to_route)->first()->id;
-        $price = Ticket::where('airline_id', $airline_id)->where('type_id', $type_id)->where('track_id', $track_id)->first()->price->price;
 
-        $validatedDataOrder['user_id'] = auth()->user()->id;
-        $validatedDataOrder['order_code'] = strval(number_format(microtime(true) * 1000, 0, '.', ''));
+        $validatedDataOrder['ticket_id'] = Ticket::where('airline_id', $airline_id)->where('type_id', $type_id)->where('track_id', $track_id)->first()->id;
 
-
-
-
-        // Order::create($validatedDataOrder);
+        Order::create($validatedDataOrder);
 
         return redirect('/orders');
     }
