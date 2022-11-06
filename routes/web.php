@@ -7,7 +7,10 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OtherController;
 use App\Http\Controllers\PriceController;
 use App\Http\Controllers\TestingController;
+use App\Http\Controllers\AdminTypeController;
+use App\Http\Controllers\AdminAirlineController;
 use App\Http\Controllers\AdminCategoryController;
+use App\Http\Controllers\AdminTrackController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +24,19 @@ use App\Http\Controllers\AdminCategoryController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('landing');
+});
+
+Route::get('/about', function () {
+    return view('about');
+});
+
+Route::get('/destination', function () {
+    return view('destination');
+});
+
+Route::get('/contact', function () {
+    return view('contact');
 });
 
 Route::get('/dashboard', function () {
@@ -30,6 +45,15 @@ Route::get('/dashboard', function () {
 
 // Order Route
 Route::resource('/orders', OrderController::class);
+
+// Admin Airline Route
+Route::resource('/admin/airline', AdminAirlineController::class);
+
+// Admin Type Route
+Route::resource('/admin/type', AdminTypeController::class);
+
+// Admin Track Route
+Route::resource('/admin/track', AdminTrackController::class);
 
 // Route::resource('/testings', TestingController::class)->middleware('auth');
 
