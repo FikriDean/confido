@@ -27,18 +27,18 @@
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 		<div class="container">
-			<a class="navbar-brand" href="index.html"><img class="d-inline-block" src="images/Logo Confido.png" width="200" alt="logo" /><span class="fw-bold text-primary ms-2"></span></a>
+			<a class="navbar-brand" href="./"><img class="d-inline-block" src="images/Logo Confido.png" width="200" alt="logo" /><span class="fw-bold text-primary ms-2"></span></a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="oi oi-menu"></span> Menu
 			</button>
 
 			<div class="collapse navbar-collapse" id="ftco-nav">
 				<ul class="navbar-nav ml-auto">
-					<li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
+					<li class="nav-item active"><a href="./" class="nav-link">Home</a></li>
 					<li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
 					<li class="nav-item"><a href="destination.html" class="nav-link">Destination</a></li>
 					<li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-					<li class="nav-item"><a href="login.html" class="nav-link">Login/Register</a></li>
+					<li class="nav-item"><a href="sign/" class="nav-link">Login/Register</a></li>
 				</ul>
 			</div>
 		</div>
@@ -50,8 +50,8 @@
 		<div class="container">
 			<div class="row no-gutters slider-text js-fullheight align-items-center" data-scrollax-parent="true">
 				<div class="col-md-7 ftco-animate">
-					<h1 class="mb-4">Welcome To Confido</h1>
-					<p class="caps">Aplikasi berbasis web untuk jasa pemesanan tiket pesawat</p>
+					<h1 class="mb-4">Selamat Datang di Confido Tour And Travel</h1>
+					<p class="caps">Aplikasi berbasis website untuk jasa pemesanan tiket pesawat</p>
 				</div>
 			</div>
 		</div>
@@ -83,9 +83,11 @@
 																<div class="icon"><span class="fa fa-chevron-down"></span></div>
 																<select name="" id="" class="form-control">
 																	<option value="">Jakarta</option>
+																	<option value="">Cirebon</option>
 																	<option value="">Bandung</option>
 																	<option value="">Semarang</option>
 																	<option value="">Yogyakarta</option>
+																	<option value="">Solo</option>
 																	<option value="">Surabaya</option>
 																	<option value="">Malang</option>
 																	<option value="">Bali</option>
@@ -105,9 +107,11 @@
 																<div class="icon"><span class="fa fa-chevron-down"></span></div>
 																<select name="" id="" class="form-control">
 																	<option value="">Jakarta</option>
+																	<option value="">Cirebon</option>
 																	<option value="">Bandung</option>
 																	<option value="">Semarang</option>
 																	<option value="">Yogyakarta</option>
+																	<option value="">Solo</option>
 																	<option value="">Surabaya</option>
 																	<option value="">Malang</option>
 																	<option value="">Bali</option>
@@ -121,10 +125,25 @@
 												</div>
 												<div class="col-md d-flex">
 													<div class="form-group p-4">
+														<label for="#">Kelas Penerbangan</label>
+														<div class="form-field">
+															<div class="select-wrap">
+																<div class="icon"><span class="fa fa-chevron-down"></span></div>
+																<select name="" id="" class="form-control">
+																	<option value="">Ekonomi</option>
+																	<option value="">Bisnis</option>
+																	<option value="">Firs Class</option>
+																</select>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="col-md d-flex">
+													<div class="form-group p-4">
 														<label for="#">Tanggal Pergi</label>
 														<div class="form-field">
 															<div class="icon"><span class="fa fa-calendar"></span></div>
-															<input type="text" class="form-control checkin_date" placeholder="hh/bb/tttt">
+															<input type="date"  class="form-control" min="<?php echo date('Y-m-d');?>" placeholder="hh/bb/tttt" />
 														</div>
 													</div>
 												</div>
@@ -133,13 +152,13 @@
 														<label for="#">Tanggal Pulang</label>
 														<div class="form-field">
 															<div class="icon"><span class="fa fa-calendar"></span></div>
-															<input type="text" class="form-control checkout_date" placeholder="hh/bb/tttt">
+															<input type="date" class="form-control" min="<?php echo date('Y-m-d');?>" placeholder="hh/bb/tttt">
 														</div>
 													</div>
 												</div>
 												<div class="col-md d-flex">
 													<div class="form-group p-4">
-														<label for="#">Penumpang Dewasa</label>
+														<label for="#">Penumpang</label>
 														<div class="form-field">
 															<div class="select-wrap">
 																<div class="icon"><span class="fa fa-chevron-down"></span></div>
@@ -148,22 +167,7 @@
 																	<option value="">2 Orang</option>
 																	<option value="">3 Orang</option>
 																	<option value="">4 Orang</option>
-																</select>
-															</div>
-														</div>
-													</div>
-												</div>
-												<div class="col-md d-flex">
-													<div class="form-group p-4">
-														<label for="#">Penumpang Anak</label>
-														<div class="form-field">
-															<div class="select-wrap">
-																<div class="icon"><span class="fa fa-chevron-down"></span></div>
-																<select name="" id="" class="form-control">
-																	<option value="">1 Orang</option>
-																	<option value="">2 Orang</option>
-																	<option value="">3 Orang</option>
-																	<option value="">4 Orang</option>
+																	<option value="">5 Orang</option>
 																</select>
 															</div>
 														</div>
@@ -172,74 +176,7 @@
 												<div class="col-md d-flex">
 													<div class="form-group d-flex w-100 border-0">
 														<div class="form-field w-100 align-items-center d-flex">
-															<input type="submit" value="Cari" class="align-self-stretch form-control btn btn-primary">
-														</div>
-													</div>
-												</div>
-											</div>
-										</form>
-									</div>
-
-									<div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-performance-tab">
-										<form action="#" class="search-property-1">
-											<div class="row no-gutters">
-												<div class="col-lg d-flex">
-													<div class="form-group p-4 border-0">
-														<label for="#">Destination</label>
-														<div class="form-field">
-															<div class="icon"><span class="fa fa-search"></span></div>
-															<input type="text" class="form-control" placeholder="Search place">
-														</div>
-													</div>
-												</div>
-												<div class="col-lg d-flex">
-													<div class="form-group p-4">
-														<label for="#">Check-in date</label>
-														<div class="form-field">
-															<div class="icon"><span class="fa fa-calendar"></span></div>
-															<input type="text" class="form-control checkin_date" placeholder="Check In Date">
-														</div>
-													</div>
-												</div>
-												<div class="col-lg d-flex">
-													<div class="form-group p-4">
-														<label for="#">Check-out date</label>
-														<div class="form-field">
-															<div class="icon"><span class="fa fa-calendar"></span></div>
-															<input type="text" class="form-control checkout_date" placeholder="Check Out Date">
-														</div>
-													</div>
-												</div>
-												<div class="col-lg d-flex">
-													<div class="form-group p-4">
-														<label for="#">Price Limit</label>
-														<div class="form-field">
-															<div class="select-wrap">
-																<div class="icon"><span class="fa fa-chevron-down"></span></div>
-																<select name="" id="" class="form-control">
-																	<option value="">$100</option>
-																	<option value="">$10,000</option>
-																	<option value="">$50,000</option>
-																	<option value="">$100,000</option>
-																	<option value="">$200,000</option>
-																	<option value="">$300,000</option>
-																	<option value="">$400,000</option>
-																	<option value="">$500,000</option>
-																	<option value="">$600,000</option>
-																	<option value="">$700,000</option>
-																	<option value="">$800,000</option>
-																	<option value="">$900,000</option>
-																	<option value="">$1,000,000</option>
-																	<option value="">$2,000,000</option>
-																</select>
-															</div>
-														</div>
-													</div>
-												</div>
-												<div class="col-lg d-flex">
-													<div class="form-group d-flex w-100 border-0">
-														<div class="form-field w-100 align-items-center d-flex">
-															<input type="submit" value="Search" class="align-self-stretch form-control btn btn-primary p-0">
+															<li class="align-self-stretch form-control btn btn-primary"><BR><a href="tiket.html" class="nav-link">Cari tiket</a></li>
 														</div>
 													</div>
 												</div>
@@ -253,94 +190,32 @@
 				</div>
 			</div>
 		</section>
-
-		<section class="ftco-section services-section">
-			<div class="container">
-				<div class="row d-flex">
-					<div class="col-md-6 order-md-last heading-section pl-md-5 ftco-animate d-flex align-items-center">
-						<div class="w-100">
-							<span class="subheading">Welcome to Pacific</span>
-							<h2 class="mb-4">It's time to start your adventure</h2>
-							<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-							<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.
-							A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-							<p><a href="#" class="btn btn-primary py-3 px-4">Search Destination</a></p>
-						</div>
-					</div>
-					<div class="col-md-6">
-						<div class="row">
-							<div class="col-md-12 col-lg-6 d-flex align-self-stretch ftco-animate">
-								<div class="services services-1 color-1 d-block img" style="background-image: url(images/services-1.jpg);">
-									<div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-paragliding"></span></div>
-									<div class="media-body">
-										<h3 class="heading mb-3">Activities</h3>
-										<p>A small river named Duden flows by their place and supplies it with the necessary</p>
-									</div>
-								</div>      
-							</div>
-							<div class="col-md-12 col-lg-6 d-flex align-self-stretch ftco-animate">
-								<div class="services services-1 color-2 d-block img" style="background-image: url(images/services-2.jpg);">
-									<div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-route"></span></div>
-									<div class="media-body">
-										<h3 class="heading mb-3">Travel Arrangements</h3>
-										<p>A small river named Duden flows by their place and supplies it with the necessary</p>
-									</div>
-								</div>    
-							</div>
-							<div class="col-md-12 col-lg-6 d-flex align-self-stretch ftco-animate">
-								<div class="services services-1 color-3 d-block img" style="background-image: url(images/services-3.jpg);">
-									<div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-tour-guide"></span></div>
-									<div class="media-body">
-										<h3 class="heading mb-3">Private Guide</h3>
-										<p>A small river named Duden flows by their place and supplies it with the necessary</p>
-									</div>
-								</div>      
-							</div>
-							<div class="col-md-12 col-lg-6 d-flex align-self-stretch ftco-animate">
-								<div class="services services-1 color-4 d-block img" style="background-image: url(images/services-4.jpg);">
-									<div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-map"></span></div>
-									<div class="media-body">
-										<h3 class="heading mb-3">Location Manager</h3>
-										<p>A small river named Duden flows by their place and supplies it with the necessary</p>
-									</div>
-								</div>      
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-
 		<section class="ftco-section">
 			<div class="container">
 				<div class="row justify-content-center pb-4">
 					<div class="col-md-12 heading-section text-center ftco-animate">
 						<span class="subheading">Destination</span>
-						<h2 class="mb-4">Tour Destination</h2>
+						<h2 class="mb-4">Top Destination</h2>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-md-4 ftco-animate">
 						<div class="project-wrap">
-							<a href="#" class="img" style="background-image: url(images/destination-1.jpg);">
-								<span class="price">$550/person</span>
+							<a 	 class="img" style="background-image: url(images/destination-1.jpg);">
 							</a>
 							<div class="text p-4">
-								<span class="days">8 Days Tour</span>
-								<h3><a href="#">Banaue Rice Terraces</a></h3>
-								<p class="location"><span class="fa fa-map-marker"></span> Banaue, Ifugao, Philippines</p>
+								<h3><a>Keraton Yogyakarta</a></h3>
+								<p class="location"><span class="fa fa-map-marker"></span> Jl. Rotowijayan Blok No. 1, Panembahan, Kecamatan Kraton, Kota Yogyakarta, Daerah Istimewa Yogyakarta</p>
 							</div>
 						</div>
 					</div>
 					<div class="col-md-4 ftco-animate">
 						<div class="project-wrap">
 							<a href="#" class="img" style="background-image: url(images/destination-2.jpg);">
-								<span class="price">$550/person</span>
 							</a>
 							<div class="text p-4">
-								<span class="days">10 Days Tour</span>
-								<h3><a href="#">Banaue Rice Terraces</a></h3>
-								<p class="location"><span class="fa fa-map-marker"></span> Banaue, Ifugao, Philippines</p>
+								<h3><a>Tangkuban Perahu</a></h3>
+								<p class="location"><span class="fa fa-map-marker"></span> Cikahuripan, Kec. Lembang, Kabupaten Bandung Barat, Jawa Barat</p>
 								
 							</div>
 						</div>
@@ -348,12 +223,10 @@
 					<div class="col-md-4 ftco-animate">
 						<div class="project-wrap">
 							<a href="#" class="img" style="background-image: url(images/destination-3.jpg);">
-								<span class="price">$550/person</span>
 							</a>
 							<div class="text p-4">
-								<span class="days">7 Days Tour</span>
-								<h3><a href="#">Banaue Rice Terraces</a></h3>
-								<p class="location"><span class="fa fa-map-marker"></span> Banaue, Ifugao, Philippines</p>
+								<h3><a>Monumen Nasional</a></h3>
+								<p class="location"><span class="fa fa-map-marker"></span> Gambir, Kecamatan Gambir, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta</p>
 								
 							</div>
 						</div>
@@ -362,12 +235,10 @@
 					<div class="col-md-4 ftco-animate">
 						<div class="project-wrap">
 							<a href="#" class="img" style="background-image: url(images/destination-4.jpg);">
-								<span class="price">$550/person</span>
 							</a>
 							<div class="text p-4">
-								<span class="days">8 Days Tour</span>
-								<h3><a href="#">Banaue Rice Terraces</a></h3>
-								<p class="location"><span class="fa fa-map-marker"></span> Banaue, Ifugao, Philippines</p>
+								<h3><a>Lawang Sewu</a></h3>
+								<p class="location"><span class="fa fa-map-marker"></span> Jl. Pemuda, Sekayu, Kec. Semarang Tengah, Kota Semarang, Jawa Tengah</p>
 								
 							</div>
 						</div>
@@ -375,12 +246,10 @@
 					<div class="col-md-4 ftco-animate">
 						<div class="project-wrap">
 							<a href="#" class="img" style="background-image: url(images/destination-5.jpg);">
-								<span class="price">$550/person</span>
 							</a>
 							<div class="text p-4">
-								<span class="days">10 Days Tour</span>
-								<h3><a href="#">Banaue Rice Terraces</a></h3>
-								<p class="location"><span class="fa fa-map-marker"></span> Banaue, Ifugao, Philippines</p>
+								<h3><a>Tanah Lot</a></h3>
+								<p class="location"><span class="fa fa-map-marker"></span> Beraban, Kec. Kediri, Kabupaten Tabanan, Bali</p>
 								
 							</div>
 						</div>
@@ -388,12 +257,10 @@
 					<div class="col-md-4 ftco-animate">
 						<div class="project-wrap">
 							<a href="#" class="img" style="background-image: url(images/destination-6.jpg);">
-								<span class="price">$550/person</span>
 							</a>
 							<div class="text p-4">
-								<span class="days">7 Days Tour</span>
-								<h3><a href="#">Banaue Rice Terraces</a></h3>
-								<p class="location"><span class="fa fa-map-marker"></span> Banaue, Ifugao, Philippines</p>
+								<h3><a>Museum Angkut</a></h3>
+								<p class="location"><span class="fa fa-map-marker"></span> Jl. Terusan Sultan Agung No.2, Ngaglik, Kec. Batu, Kota Batu, Jawa Timur</p>
 								
 							</div>
 						</div>
@@ -424,12 +291,12 @@
 											<span class="fa fa-star"></span>
 											<span class="fa fa-star"></span>
 										</p>
-										<p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+										<p class="mb-4">Aplikasi bagus. Pesan tiket untuk traveling saya dan keluarga jadi gampang. Terima kasih Confido 🥰
+</p>
 										<div class="d-flex align-items-center">
-											<div class="user-img" style="background-image: url(images/person_1.jpg)"></div>
+											<div class="user-img" style="background-image: url(images/testimoni_1.jpg)"></div>
 											<div class="pl-3">
-												<p class="name">Roger Scott</p>
-												<span class="position">Marketing Manager</span>
+												<p class="name">Muhammad Zaidan</p>
 											</div>
 										</div>
 									</div>
@@ -445,12 +312,11 @@
 											<span class="fa fa-star"></span>
 											<span class="fa fa-star"></span>
 										</p>
-										<p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+										<p class="mb-4">Keren nih aplikasinya untuk orang2 yang to the point kayak saya. Gk perlu ribet ngeliatin hal2 gk penting.</p>
 										<div class="d-flex align-items-center">
-											<div class="user-img" style="background-image: url(images/person_2.jpg)"></div>
+											<div class="user-img" style="background-image: url(images/testimoni_2.jpg)"></div>
 											<div class="pl-3">
-												<p class="name">Roger Scott</p>
-												<span class="position">Marketing Manager</span>
+												<p class="name">Rizki Nugraha</p>
 											</div>
 										</div>
 									</div>
@@ -466,12 +332,11 @@
 											<span class="fa fa-star"></span>
 											<span class="fa fa-star"></span>
 										</p>
-										<p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+										<p class="mb-4">Aplikasinya cepat dan mudah digunakan. Tidak sulit untuk dimengerti. Saya rekomendasikan para pencari tiket pesawat untuk menggunakan aplikasi Confido ini.</p>
 										<div class="d-flex align-items-center">
-											<div class="user-img" style="background-image: url(images/person_3.jpg)"></div>
+											<div class="user-img" style="background-image: url(images/testimoni_3.jpg)"></div>
 											<div class="pl-3">
-												<p class="name">Roger Scott</p>
-												<span class="position">Marketing Manager</span>
+												<p class="name">Burhan Sudrajat</p>
 											</div>
 										</div>
 									</div>
@@ -487,12 +352,12 @@
 											<span class="fa fa-star"></span>
 											<span class="fa fa-star"></span>
 										</p>
-										<p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+										<p class="mb-4">My friend recommended me this app because I was traveling in Indonesia. It's a good app indeed. But one thing I have to say about it is the lack of language accomodation. I am a foreigner and needing to sometimes look at google translate or ask my friend out for help in order to understand what was written is quite tedious. But fortunately, the app being linear and easy to use makes learning and remembering how to use it very easy. Still, I hope it add the option to choose English language in the future. Thank you Confido 👍
+</p>
 										<div class="d-flex align-items-center">
-											<div class="user-img" style="background-image: url(images/person_1.jpg)"></div>
+											<div class="user-img" style="background-image: url(images/testimoni_5.jpg)"></div>
 											<div class="pl-3">
-												<p class="name">Roger Scott</p>
-												<span class="position">Marketing Manager</span>
+												<p class="name">Dusan Bogdanovic</p>
 											</div>
 										</div>
 									</div>
@@ -508,12 +373,11 @@
 											<span class="fa fa-star"></span>
 											<span class="fa fa-star"></span>
 										</p>
-										<p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+										<p class="mb-4">Aplikasinya bagus banget. Gampang digunakan dan tampilannya simpel. Customer servicenya juga bagus.</p>
 										<div class="d-flex align-items-center">
-											<div class="user-img" style="background-image: url(images/person_2.jpg)"></div>
+											<div class="user-img" style="background-image: url(images/testimoni_4.jpg)"></div>
 											<div class="pl-3">
-												<p class="name">Roger Scott</p>
-												<span class="position">Marketing Manager</span>
+												<p class="name">Fitri Masruroh</p>
 											</div>
 										</div>
 									</div>
@@ -531,7 +395,7 @@
 					<div class="col-md pt-5">
 						<div class="ftco-footer-widget pt-md-5 mb-4">
 							<h2 class="ftco-heading-2">About</h2>
-							<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+							<p>Confido berasal dari bahasa Latin, Confido yang berarti kepercayaan. Ini menandakan website kami terpercaya dan bisa diandalkan. Sesuai dengan kebutuhan pengguna kami.</p>
 							<ul class="ftco-footer-social list-unstyled float-md-left float-lft">
 								<li class="ftco-animate"><a href="#"><span class="fa fa-twitter"></span></a></li>
 								<li class="ftco-animate"><a href="#"><span class="fa fa-facebook"></span></a></li>
@@ -540,43 +404,31 @@
 						</div>
 					</div>
 					<div class="col-md pt-5 border-left">
-						<div class="ftco-footer-widget pt-md-5 mb-4 ml-md-5">
-							<h2 class="ftco-heading-2">Infromation</h2>
-							<ul class="list-unstyled">
-								<li><a href="#" class="py-2 d-block">Online Enquiry</a></li>
-								<li><a href="#" class="py-2 d-block">General Enquiries</a></li>
-								<li><a href="#" class="py-2 d-block">Booking Conditions</a></li>
-								<li><a href="#" class="py-2 d-block">Privacy and Policy</a></li>
-								<li><a href="#" class="py-2 d-block">Refund Policy</a></li>
-								<li><a href="#" class="py-2 d-block">Call Us</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-md pt-5 border-left">
 						<div class="ftco-footer-widget pt-md-5 mb-4">
 							<h2 class="ftco-heading-2">Maskapai</h2>
 							<ul class="list-unstyled">
-								<li><a href="#" class="py-2 d-block">Garuda Indonesia</a></li>
-								<li><a href="#" class="py-2 d-block">Citilink</a></li>
-								<li><a href="#" class="py-2 d-block">Batik Air</a></li>
-								<li><a href="#" class="py-2 d-block">Lion Air</a></li>
-								<li><a href="#" class="py-2 d-block">Sriwijaya Air</a></li>
-								<li><a href="#" class="py-2 d-block">Air Asia</a></li>
+								<li><a class="py-2 d-block">Garuda Indonesia</a></li>
+								<li><a class="py-2 d-block">Citilink</a></li>
+								<li><a class="py-2 d-block">Batik Air</a></li>
+								<li><a class="py-2 d-block">Lion Air</a></li>
+								<li><a class="py-2 d-block">Sriwijaya Air</a></li>
+								<li><a class="py-2 d-block">Air Asia</a></li>
 							</ul>
 						</div>
 					</div>
 					<div class="col-md pt-5 border-left">
 						<div class="ftco-footer-widget pt-md-5 mb-4">
-							<h2 class="ftco-heading-2">Have a Questions?</h2>
-							<div class="block-23 mb-3">
-								<ul>
-									<li><i class="fas fa-map-marker-alt" style="font-size:24px"></i></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
-									<li><i class="fa fa-whatsapp" style="font-size:24px; color: green;"></i></span><span class="text">+2 392 3929 210</span></a></li>
-									<li><a href="#"><span class="icon fa fa-paper-plane"></span><span class="text">info@yourdomain.com</span></a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
+						 <h2 class="ftco-heading-2">Have a Questions?</h2>
+						 <div class="block-23 mb-3">
+						   <ul>
+							 <li><span class="icon fa fa-map-marker"></span><span class="text">Jl. Cabe V 91, Pd. Cabe Ilir, Kec. Pamulang, Kota Tangerang Selatan, Banten 15418</span></li>
+							 <li><a href="https://wa.me/6281384002161?text=Ingin%20Melaporkan%20Masalah"><span class="icon fa fa-whatsapp"></span><span class="text">081384002161 Admin 1</span></a></li>
+							 <li><a href="https://wa.me/6288219983235?text=Ingin%20Melaporkan%20Masalah"><span class="icon fa fa-whatsapp"></span><span class="text">088219983235 Admin 2</span></a></li>
+							 <li><a href="#"><span class="icon fa fa-paper-plane"></span><span class="text">info@yourdomain.com</span></a></li>
+						   </ul>
+						 </div>
+					   </div>
+					 </div>
 				</div>
 				<div class="row">
 					<div class="col-md-12 text-center">

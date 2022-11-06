@@ -3547,7 +3547,9 @@ input[type="button"].btn-block {
 
 .nav-link {
   display: block;
-  padding: 0.5rem 1rem; }
+  /* padding: 0.5rem 1rem; */
+  padding: 1.3rem 1rem 0rem 0rem;
+  }
   .nav-link:hover, .nav-link:focus {
     text-decoration: none; }
   .nav-link.disabled {
@@ -3633,7 +3635,7 @@ input[type="button"].btn-block {
     align-items: center;
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
-    justify-content: space-between; }
+    justify-content: space-evenly; }
 
 .navbar-brand {
   display: inline-block;
@@ -6958,7 +6960,7 @@ button.bg-dark:focus {
 
 .pt-5,
 .py-5 {
-  padding-top: 3rem !important; }
+  padding: 3rem !important; }
 
 .pr-5,
 .px-5 {
@@ -8360,7 +8362,9 @@ a {
   -webkit-transition: .3s all ease;
   -o-transition: .3s all ease;
   transition: .3s all ease;
-  color: #0056b3; }
+  /* color: #0056b3;  */
+  color: #ffffff; 
+  }
   a:hover, a:focus {
     text-decoration: none;
     color: #0056b3;
@@ -8715,7 +8719,8 @@ h1, h2, h3, h4, h5,
       @media (max-width: 767.98px) {
         .ftco-search .nav-pills .nav-link {
           margin-bottom: 5px;
-          padding: 7px 10px !important;
+          /* padding: 7px 10px !important; */
+		  padding: 25px !important;
           font-size: 14px; } }
   .ftco-search .tab-content {
     background: #fff;
@@ -9189,7 +9194,7 @@ textarea.form-control {
   font-weight: 600; }
 
 .ftco-section {
-  padding: 7em 0;
+  padding: 3em 0;
   position: relative;
   width: 100%; }
   @media (max-width: 767.98px) {
@@ -9514,7 +9519,7 @@ textarea.form-control {
   border-radius: 5px; }
   .testimony-wrap .user-img {
     width: 80px;
-    height: 80px;
+    height: 120px;
     position: relative;
     border-radius: 0 50% 50% 50%; }
   .testimony-wrap .name {
@@ -9727,7 +9732,7 @@ textarea.form-control {
     width: 40px;
     font-size: 18px;
     padding-top: 2px;
-    color: #f15d30 !important; }
+    color: #0056b3 !important; }
 
 .block-27 ul {
   padding: 0;
@@ -9760,7 +9765,7 @@ textarea.form-control {
   .contact-section .box .icon {
     width: 100px;
     height: 100px;
-    background: #f15d30;
+    background: #0056b3;
     margin: 0 auto;
     margin-bottom: 15px;
     -webkit-border-radius: 50%;
