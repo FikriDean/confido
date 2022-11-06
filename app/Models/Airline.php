@@ -9,6 +9,8 @@ class Airline extends Model
 {
     use HasFactory;
 
+    protected $guarded = ['id'];
+
     public function tickets()
     {
         return $this->hasMany(Ticket::class);
