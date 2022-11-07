@@ -8,9 +8,10 @@ use App\Http\Controllers\OtherController;
 use App\Http\Controllers\PriceController;
 use App\Http\Controllers\TestingController;
 use App\Http\Controllers\AdminTypeController;
+use App\Http\Controllers\AdminTrackController;
+use App\Http\Controllers\AdminTicketController;
 use App\Http\Controllers\AdminAirlineController;
 use App\Http\Controllers\AdminCategoryController;
-use App\Http\Controllers\AdminTrackController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,6 +55,9 @@ Route::resource('/admin/type', AdminTypeController::class);
 
 // Admin Track Route
 Route::resource('/admin/track', AdminTrackController::class);
+
+// Admin Track Route
+Route::resource('/admin/ticket', AdminTicketController::class);
 
 // Route::resource('/testings', TestingController::class)->middleware('auth');
 

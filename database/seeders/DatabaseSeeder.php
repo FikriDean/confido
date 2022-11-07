@@ -54,15 +54,18 @@ class DatabaseSeeder extends Seeder
 
         // Type::factory(1)->create();
         Type::factory()->create([
-            'name' => 'Business Class'
+            'name' => 'Business Class',
+            'flight_at' => '07:00:00'
         ]);
 
         Type::factory()->create([
-            'name' => 'First Class'
+            'name' => 'First Class',
+            'flight_at' => '13:00:00'
         ]);
 
         Type::factory()->create([
-            'name' => 'Economy Class'
+            'name' => 'Economy Class',
+            'flight_at' => '20:00:00'
         ]);
 
         // Route::factory(1)->create();
