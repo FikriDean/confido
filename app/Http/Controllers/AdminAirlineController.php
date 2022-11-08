@@ -41,7 +41,7 @@ class AdminAirlineController extends Controller
 
         Airline::create($validatedData);
 
-        return redirect('/admin/airline');
+        return redirect('/admin/airlines');
     }
 
     /**

@@ -41,7 +41,7 @@ class AdminTypeController extends Controller
 
         Type::create($validatedData);
 
-        return redirect('/admin/type');
+        return redirect('/admin/types');
     }
 
     /**

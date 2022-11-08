@@ -9,6 +9,7 @@ use App\Http\Controllers\PriceController;
 use App\Http\Controllers\TestingController;
 use App\Http\Controllers\AdminTypeController;
 use App\Http\Controllers\AdminTrackController;
+use App\Http\Controllers\AdminMethodController;
 use App\Http\Controllers\AdminTicketController;
 use App\Http\Controllers\AdminAirlineController;
 use App\Http\Controllers\AdminCategoryController;
@@ -48,16 +49,19 @@ Route::get('/dashboard', function () {
 Route::resource('/orders', OrderController::class);
 
 // Admin Airline Route
-Route::resource('/admin/airline', AdminAirlineController::class);
+Route::resource('/admin/airlines', AdminAirlineController::class);
 
 // Admin Type Route
-Route::resource('/admin/type', AdminTypeController::class);
+Route::resource('/admin/types', AdminTypeController::class);
 
 // Admin Track Route
-Route::resource('/admin/track', AdminTrackController::class);
+Route::resource('/admin/tracks', AdminTrackController::class);
 
-// Admin Track Route
-Route::resource('/admin/ticket', AdminTicketController::class);
+// Admin Ticket Route
+Route::resource('/admin/tickets', AdminTicketController::class);
+
+// Admin Method Route
+Route::resource('/admin/methods', AdminMethodController::class);
 
 // Route::resource('/testings', TestingController::class)->middleware('auth');
 

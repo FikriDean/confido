@@ -42,7 +42,7 @@ class AdminTrackController extends Controller
 
         Track::create($validatedData);
 
-        return redirect('/admin/track');
+        return redirect('/admin/tracks');
     }
 
     /**
