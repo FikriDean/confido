@@ -211,7 +211,11 @@
 					</div>
 					<div class="col-md-4 ftco-animate">
 						<div class="project-wrap">
+<<<<<<< HEAD:index.php
 							<a class="img" style="background-image: url(images/destination-2.jpg);">
+=======
+							<a href="#" class="img" style="background-image: url(images/destination-2.jpg);">
+>>>>>>> f0c894fbe20b169a8fb5624645759f7339d93e11:index.html
 							</a>
 							<div class="text p-4">
 								<h3><a>Tangkuban Perahu</a></h3>
@@ -222,7 +226,11 @@
 					</div>
 					<div class="col-md-4 ftco-animate">
 						<div class="project-wrap">
+<<<<<<< HEAD:index.php
 							<a class="img" style="background-image: url(images/destination-3.jpg);">
+=======
+							<a href="#" class="img" style="background-image: url(images/destination-3.jpg);">
+>>>>>>> f0c894fbe20b169a8fb5624645759f7339d93e11:index.html
 							</a>
 							<div class="text p-4">
 								<h3><a>Monumen Nasional</a></h3>
@@ -234,7 +242,11 @@
 
 					<div class="col-md-4 ftco-animate">
 						<div class="project-wrap">
+<<<<<<< HEAD:index.php
 							<a class="img" style="background-image: url(images/destination-4.jpg);">
+=======
+							<a href="#" class="img" style="background-image: url(images/destination-4.jpg);">
+>>>>>>> f0c894fbe20b169a8fb5624645759f7339d93e11:index.html
 							</a>
 							<div class="text p-4">
 								<h3><a>Lawang Sewu</a></h3>
@@ -245,7 +257,11 @@
 					</div>
 					<div class="col-md-4 ftco-animate">
 						<div class="project-wrap">
+<<<<<<< HEAD:index.php
 							<a class="img" style="background-image: url(images/destination-5.jpg);">
+=======
+							<a href="#" class="img" style="background-image: url(images/destination-5.jpg);">
+>>>>>>> f0c894fbe20b169a8fb5624645759f7339d93e11:index.html
 							</a>
 							<div class="text p-4">
 								<h3><a>Tanah Lot</a></h3>
@@ -256,7 +272,11 @@
 					</div>
 					<div class="col-md-4 ftco-animate">
 						<div class="project-wrap">
+<<<<<<< HEAD:index.php
 							<a class="img" style="background-image: url(images/destination-6.jpg);">
+=======
+							<a href="#" class="img" style="background-image: url(images/destination-6.jpg);">
+>>>>>>> f0c894fbe20b169a8fb5624645759f7339d93e11:index.html
 							</a>
 							<div class="text p-4">
 								<h3><a>Museum Angkut</a></h3>
