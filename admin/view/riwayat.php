@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | DataTables</title>
+  <title>Confido | Riwayat</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -237,23 +237,27 @@
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>Rendering engine</th>
-                    <th>Browser</th>
-                    <th>Platform(s)</th>
-                    <th>Engine version</th>
-                    <th>CSS grade</th>
+                    <th>ID Booking</th>
+                    <th>Nama</th>
+                    <th>Maskapai</th>
+                    <th>Rute</th>
+                    <th>Jenis</th>
+                    <th>Tanggal</th>
+                    <th>Jumlah</th>
+                    <th>Status</th>
                     <th>Action</th>
                   </tr>
                   </thead>
                   <tbody>
                   <tr>
-                    <td>Trident</td>
-                    <td>Internet
-                      Explorer 4.0
-                    </td>
-                    <td>Win 95+</td>
-                    <td> 4</td>
-                    <td>X</td>
+                    <td>PSN7f6a8e6e</td>
+                    <td>USER</td>
+                    <td>Batik</td>
+                    <td>Makasar - Jakarta</td>
+                    <td>First Class</td>
+                    <td>06-Nov-2021</td>
+                    <td>2</td>
+                    <td>Tiket Terbit Rp 0,00</td>
                     <td>   
 					 <button class="btn btn-primary btn-xs" type="button" >Bayar
                   
@@ -289,13 +293,14 @@
         <!-- /.modal-dialog -->
       </div>
                   </tr>
-                    <td>Trident</td>
-                    <td>Internet
-                      Explorer 4.0
-                    </td>
-                    <td>Win 95+</td>
-                    <td> 4</td>
-                    <td>X</td>
+                    <td>PSN7f6a8e6e</td>
+                    <td>USER</td>
+                    <td>Batik</td>
+                    <td>Makasar - Jakarta</td>
+                    <td>First Class</td>
+                    <td>06-Nov-2021</td>
+                    <td>2</td>
+                    <td>Tiket Terbit Rp 0,00</td>
                     <td>   
 					 <button class="btn btn-warning btn-xs" type="button" data-toggle="modal" data-target="#modal-lg2" >Lapor
                   
