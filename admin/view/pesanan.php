@@ -312,21 +312,30 @@
 												<option>Lion</option>
                         <option>Sriwijaya</option>
 											</select>
-                    </div>
-                     <div class="col-sm-1">
+                      </div>
+                     <div class="col-sm-2">
                        <div class="form-group">
                         <div class="form-check">
-                          <input class="form-check-input" type="radio" name="radio1">
-                          <label class="form-check-label">Ejo</label>
+                          <input class="form-check-input" type="radio" name="radio2">
+                          <label class="form-check-label">Ekonomi</label>
                         </div>
                         
                       </div>
                     </div>
-                    <div class="col-sm-1">
+                    <div class="col-sm-2">
                        <div class="form-group">
                         <div class="form-check">
-                          <input class="form-check-input" type="radio" name="radio1" checked>
-                          <label class="form-check-label">Bisbis</label>
+                          <input class="form-check-input" type="radio" name="radio2" checked>
+                          <label class="form-check-label">Bisnis</label>
+                        </div>
+                      </div>
+                      
+                    </div>
+                    <div class="col-sm-2">
+                       <div class="form-group">
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="radio2" checked>
+                          <label class="form-check-label">First Class</label>
                         </div>
                       </div>
                     </div>
@@ -337,7 +346,7 @@
                      <div class="col-sm-2">
                        <div class="form-group">
                         <div class="form-check">
-                          <input class="form-check-input" type="radio" name="radio1">
+                          <input class="form-check-input" type="radio" name="radio3">
                           <label class="form-check-label">Pulang-Pergi</label>
                         </div>
                         
@@ -346,7 +355,7 @@
                     <div class="col-sm-2">
                        <div class="form-group">
                         <div class="form-check">
-                          <input class="form-check-input" type="radio" name="radio1" checked>
+                          <input class="form-check-input" type="radio" name="radio3" checked>
                           <label class="form-check-label">Sekali Jalan</label>
                         </div>
                       </div>
@@ -368,13 +377,13 @@
                    
                      <div class="col-sm-4">
                        <div class="form-group">
-                        <input type="date" class="form-control" id="inputEmail3" placeholder="Pergi">
+                        <input type="date" class="form-control" min="<?php echo date('Y-m-d');?>" placeholder="hh/bb/tttt">
                       </div>
                     </div>
 					 <label for="inputEmail3" class="col-sm-1 col-form-label">Pulang :</label>
                      <div class="col-sm-4">
                        <div class="form-group">
-                        <input type="date" class="form-control" id="inputEmail3" placeholder="Pulang">
+                        <input type="date" class="form-control" min="<?php echo date('Y-m-d');?>" placeholder="hh/bb/tttt">
                       </div>
                     </div>
 					
@@ -385,7 +394,7 @@
 			   <h4>Data Penumpang :</h4>
 			   
 			     <div class="form-group row">
-                    <label for="inputEmail3" class="col-sm-2 col-form-label">Nama Penumpang 1:</label>
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Penumpang 1:</label>
                    
                      <div class="col-sm-3">
                        <div class="form-group">
@@ -410,7 +419,7 @@
 					
                   </div>
 			     <div class="form-group row">
-                    <label for="inputEmail3" class="col-sm-2 col-form-label">Nama Penumpang 2:</label>
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Penumpang 2:</label>
                    
                      <div class="col-sm-3">
                        <div class="form-group">
@@ -472,10 +481,6 @@
 <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- bs-custom-file-input -->
 <script src="../plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
-<!-- AdminLTE App -->
-<script src="../dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="../dist/js/demo.js"></script>
 <!-- Page specific script -->
 <script>
 $(function () {
