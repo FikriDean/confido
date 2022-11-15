@@ -2,12 +2,6 @@
 
 ### Pre-Requirement
 
--   Testing
-
--   5/11/2022
-
-### Pre-Requirement
-
 -   Sebelum menggunakan platform, terlebih dahulu perlu menginstall bahasa pemrograman `PHP` dan `Composer`
 
 ### Clone Via GIT
@@ -65,6 +59,12 @@ APP_URL=http://127.0.0.1:8000/
 
 ```sh
 composer install
+```
+
+-   Update composer terlebih dahulu
+
+```sh
+composer update
 ```
 
 -   Jalankan perintah `generate key`
