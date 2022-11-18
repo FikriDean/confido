@@ -1,4 +1,4 @@
-<form action="/admin/ticket" method="POST">
+<form action="/admin/tickets" method="POST">
     @csrf
     @method('POST')
 
@@ -55,6 +55,11 @@
             {{ session('sameTicket') }}
         </div>
     @endif
+
+    <label>Masukkan Harga(optional): </label>
+    <input type="text" name="price">
+
+    <br><br>
 
     <input type="submit" value="Submit">
 </form>

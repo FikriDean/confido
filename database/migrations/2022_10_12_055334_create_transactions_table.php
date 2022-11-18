@@ -16,11 +16,11 @@ return new class extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('order_id');
-            $table->foreignId('user_id');
             $table->foreignId('method_id');
             $table->string('name_account');
             $table->string('from_account');
-            $table->string('to_account');
+            $table->bigInteger('total');
+            $table->boolean('status');
             $table->timestamps();
         });
     }

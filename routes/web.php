@@ -46,7 +46,7 @@ Route::get('/dashboard', function () {
 })->middleware('auth')->name('dashboard');
 
 // Order Route
-Route::resource('/orders', OrderController::class);
+Route::resource('/orders', OrderController::class)->middleware('auth');
 
 // Admin Airline Route
 Route::resource('/admin/airlines', AdminAirlineController::class);

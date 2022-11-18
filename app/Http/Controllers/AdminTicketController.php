@@ -6,6 +6,7 @@ use App\Models\Ticket;
 use App\Models\Airline;
 use App\Models\Type;
 use App\Models\Track;
+use App\Models\Price;
 
 use Illuminate\Http\Request;
 
@@ -18,7 +19,9 @@ class AdminTicketController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.ticket.index', [
+            'tickets' => Ticket::all()->load('price')
+        ]);
     }
 
     /**
@@ -46,16 +49,27 @@ class AdminTicketController extends Controller
         $validatedData = $request->validate([
             'airline_id' => ['required'],
             'type_id' => ['required'],
-            'track_id' => ['required']
+            'track_id' => ['required'],
+            'price' => []
         ]);
 
-        $validateSameTicket = Ticket::where('airline_id', $validatedData['airline_id'])->where('type_id', $validatedData['type_id'])->where('type_id',  $validatedData['type_id'])->first();
+        $validateSameTicket = Ticket::where('airline_id', $validatedData['airline_id'])->where('type_id', $validatedData['type_id'])->where('track_id',  $validatedData['track_id'])->first();
 
         if ($validateSameTicket) {
-            return redirect('/admin/ticket/create')->with('sameTicket', 'Ticket dengan data tersebut sudah ada di database!')->withInput();
+            return redirect('/admin/tickets/create')->with('sameTicket', 'Ticket dengan data tersebut sudah ada di database! jika ingin mengubah harga, masuk ke bagian harga!')->withInput();
         }
 
         Ticket::create($validatedData);
+
+        $currentTicket = Ticket::where('airline_id', $validatedData['airline_id'])->where('type_id', $validatedData['type_id'])->where('track_id',  $validatedData['track_id'])->first()->id;
+        $validatedPrice['ticket_id'] = $currentTicket;
+
+        if ($request['price']) {
+            $validatedPrice['price'] = $validatedData['price'];
+            Price::create($validatedPrice);
+        } else {
+            Price::create($validatedPrice);
+        }
 
         return redirect('/admin/tickets');
     }
@@ -68,7 +82,6 @@ class AdminTicketController extends Controller
      */
     public function show(Ticket $ticket)
     {
-        //
     }
 
     /**

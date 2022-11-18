@@ -95,23 +95,28 @@ class DatabaseSeeder extends Seeder
         Price::factory(1)->create();
 
         Method::factory()->create([
-            'method' => 'debit'
+            'method' => 'debit',
+            'target_account' => '1812020007'
         ]);
 
         Method::factory()->create([
-            'method' => 'credit'
+            'method' => 'credit',
+            'target_account' => '1812020010'
         ]);
 
         Method::factory()->create([
-            'method' => 'go_pay'
+            'method' => 'go_pay',
+            'target_account' => '081387000325'
         ]);
 
         Method::factory()->create([
-            'method' => 'ovo'
+            'method' => 'ovo',
+            'target_account' => '081387000325'
         ]);
 
         Method::factory()->create([
-            'method' => 'dana'
+            'method' => 'dana',
+            'target_account' => '081387000325'
         ]);
 
 

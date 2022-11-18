@@ -20,11 +20,11 @@ class TransactionFactory extends Factory
   {
     return [
       'order_id' => 1,
-      'user_id' => 1,
       'method_id' => 1,
       'name_account' => 'Fikri Dean',
       'from_account' => '11210910000039',
-      'to_account' => '1812020007'
+      'total' => 1000000,
+      'status' => false
     ];
   }
 

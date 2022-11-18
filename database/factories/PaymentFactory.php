@@ -20,7 +20,7 @@ class PaymentFactory extends Factory
   {
     return [
       'order_id' => 1,
-      'status' => false
+      'status' => false,
     ];
   }
 

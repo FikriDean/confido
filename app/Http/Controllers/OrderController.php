@@ -7,6 +7,9 @@ use App\Models\Track;
 use App\Models\Airline;
 use App\Models\Type;
 use App\Models\Ticket;
+use App\Models\Payment;
+
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -18,7 +21,9 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        return view('order.index', [
+            'orders' => Order::all()->where('user_id', Auth::user()->id)
+        ]);
     }
 
     /**
@@ -28,7 +33,7 @@ class OrderController extends Controller
      */
     public function create()
     {
-        return view("orders.create", [
+        return view("order.create", [
             "title" => "Ticket Order",
             "routes" => Track::all(),
             'airlines' => Airline::all(),
@@ -66,7 +71,8 @@ class OrderController extends Controller
         }
 
         $validatedDataOrder['user_id'] = auth()->user()->id;
-        $validatedDataOrder['order_code'] = strval(number_format(microtime(true) * 1000, 0, '.', ''));
+        $order_code = strval(number_format(microtime(true) * 1000, 0, '.', ''));
+        $validatedDataOrder['order_code'] = $order_code;
 
         $from_route = $request['from_route'];
         $to_route = $request['to_route'];
@@ -78,6 +84,11 @@ class OrderController extends Controller
         $validatedDataOrder['ticket_id'] = Ticket::where('airline_id', $airline_id)->where('type_id', $type_id)->where('track_id', $track_id)->first()->id;
 
         Order::create($validatedDataOrder);
+
+        $validatedDataPayment['order_id'] = Order::where('order_code', $order_code)->first()->id;
+        $validatedDataPayment['status'] = false;
+
+        Payment::create($validatedDataPayment);
 
         return redirect('/orders');
     }
@@ -165,22 +176,20 @@ class OrderController extends Controller
 
         $track_id = Track::where('from_route', $from_route)->where('to_route', $to_route)->first()->id;
 
+
+
         // Validasi belum jadi
         if ($track_id == null) {
             return response()->json(['price' => 'Ticket Not Found!']);
         }
 
-        $price = Ticket::where('airline_id', $airline_id)->where('type_id', $type_id)->where('track_id', $track_id)->first()->price->price;
-
+        $price = Ticket::all()->where('airline_id', $airline_id)->where('type_id', $type_id)->where('track_id', $track_id)->first()->price->price;
         // Validasi belum jadi
-
         if ($price == null) {
             return response()->json(['price' => 'Ticket Not Found!']);
         }
 
         // Return JSON
         return response()->json(['price' => $price]);
-
-        // $test = $request['test'];
     }
 }

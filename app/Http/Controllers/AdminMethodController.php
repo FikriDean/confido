@@ -37,6 +37,7 @@ class AdminMethodController extends Controller
     {
         $validatedData = $request->validate([
             'method' => ['required', 'min:3', 'max:50'],
+            'target_account' => ['required', 'min:3', 'max:50']
         ]);
 
         Method::create($validatedData);

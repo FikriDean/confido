@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('prices', function (Blueprint $table) {
             $table->id();
             $table->foreignId('ticket_id');
-            $table->bigInteger('price');
+            $table->bigInteger('price')->nullable();
             $table->timestamps();
         });
     }
