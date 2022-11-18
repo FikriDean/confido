@@ -20,6 +20,8 @@ class AirlineFactory extends Factory
   {
     return [
       'name' => "Garuda Indonesia",
+      'slug' => 'garuda_indonesia',
+      'gate' => '11B'
     ];
   }
 

@@ -10,6 +10,8 @@ use App\Models\Price;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Gate;
+
 class AdminTicketController extends Controller
 {
     /**
@@ -19,9 +21,15 @@ class AdminTicketController extends Controller
      */
     public function index()
     {
+        // $this->authorize('isAdmin');
+
+        // if (Gate::allows('isAdmin')) {
         return view('admin.ticket.index', [
             'tickets' => Ticket::all()->load('price')
         ]);
+        // } else {
+        //     // akses logic untuk user selain role admin
+        // }
     }
 
     /**

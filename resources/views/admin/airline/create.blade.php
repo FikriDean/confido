@@ -1,4 +1,4 @@
-<form action="/admin/airline" method="POST">
+<form action="/admin/airlines" method="POST">
     @csrf
     @method('POST')
 
@@ -6,5 +6,7 @@
     <input type="text" id="name" name="name"><br><br>
     <label for="slug">Airline Slug:</label>
     <input type="text" id="slug" name="slug"><br><br>
+    <label for="gate">Airline Gate:</label>
+    <input type="text" id="gate" name="gate"><br><br>
     <input type="submit" value="Submit">
 </form>

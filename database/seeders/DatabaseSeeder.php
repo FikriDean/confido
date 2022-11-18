@@ -34,37 +34,44 @@ class DatabaseSeeder extends Seeder
         // Airline::factory(1)->create();
         Airline::factory()->create([
             'name' => 'Lion Air',
-            'slug' => 'lion_air'
+            'slug' => 'lion_air',
+            'gate' => '11A'
         ]);
 
         Airline::factory()->create([
             'name' => 'Garuda_indonesia',
-            'slug' => 'garuda_indonesia'
+            'slug' => 'garuda_indonesia',
+            'gate' => '11B'
         ]);
 
         Airline::factory()->create([
             'name' => 'Sriwijaya Air',
-            'slug' => 'sriwijaya_air'
+            'slug' => 'sriwijaya_air',
+            'gate' => '11C'
         ]);
 
         Airline::factory()->create([
             'name' => 'Batik Air',
-            'slug' => 'batik_air'
+            'slug' => 'batik_air',
+            'gate' => '11D'
         ]);
 
         // Type::factory(1)->create();
         Type::factory()->create([
             'name' => 'Business Class',
+            'seat' => '45B',
             'flight_at' => '07:00:00'
         ]);
 
         Type::factory()->create([
             'name' => 'First Class',
+            'seat' => '45A',
             'flight_at' => '13:00:00'
         ]);
 
         Type::factory()->create([
             'name' => 'Economy Class',
+            'seat' => '45C',
             'flight_at' => '20:00:00'
         ]);
 

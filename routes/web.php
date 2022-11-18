@@ -8,6 +8,7 @@ use App\Http\Controllers\OtherController;
 use App\Http\Controllers\PriceController;
 use App\Http\Controllers\TestingController;
 use App\Http\Controllers\AdminTypeController;
+use App\Http\Controllers\AdminOrderController;
 use App\Http\Controllers\AdminTrackController;
 use App\Http\Controllers\AdminMethodController;
 use App\Http\Controllers\AdminTicketController;
@@ -46,22 +47,25 @@ Route::get('/dashboard', function () {
 })->middleware('auth')->name('dashboard');
 
 // Order Route
-Route::resource('/orders', OrderController::class)->middleware('auth');
+Route::resource('/orders', OrderController::class)->middleware(['auth']);
+
+// Admin Order Route
+Route::resource('/admin/orders', AdminOrderController::class)->middleware(['auth', 'can:isAdmin']);
 
 // Admin Airline Route
-Route::resource('/admin/airlines', AdminAirlineController::class);
+Route::resource('/admin/airlines', AdminAirlineController::class)->middleware(['auth', 'can:isAdmin']);
 
 // Admin Type Route
-Route::resource('/admin/types', AdminTypeController::class);
+Route::resource('/admin/types', AdminTypeController::class)->middleware(['auth', 'can:isAdmin']);
 
 // Admin Track Route
-Route::resource('/admin/tracks', AdminTrackController::class);
+Route::resource('/admin/tracks', AdminTrackController::class)->middleware(['auth', 'can:isAdmin']);
 
 // Admin Ticket Route
-Route::resource('/admin/tickets', AdminTicketController::class);
+Route::resource('/admin/tickets', AdminTicketController::class)->middleware(['auth', 'can:isAdmin']);
 
 // Admin Method Route
-Route::resource('/admin/methods', AdminMethodController::class);
+Route::resource('/admin/methods', AdminMethodController::class)->middleware(['auth', 'can:isAdmin']);
 
 // Route::resource('/testings', TestingController::class)->middleware('auth');
 

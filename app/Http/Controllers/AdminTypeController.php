@@ -37,6 +37,7 @@ class AdminTypeController extends Controller
     {
         $validatedData = $request->validate([
             'name' => ['required', 'min:3', 'max:50'],
+            'seat' => ['required', 'min:3', 'max:50'],
         ]);
 
         Type::create($validatedData);

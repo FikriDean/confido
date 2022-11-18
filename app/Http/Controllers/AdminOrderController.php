@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Airline;
+use App\Models\Order;
 use Illuminate\Http\Request;
 
-class AdminAirlineController extends Controller
+class AdminOrderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class AdminAirlineController extends Controller
      */
     public function index()
     {
-        return view('admin.airline.index', [
-            'airlines' => Airline::all()
+        return view('admin.order.index', [
+            'orders' => Order::all()
         ]);
     }
 
@@ -26,7 +26,7 @@ class AdminAirlineController extends Controller
      */
     public function create()
     {
-        return view('admin.airline.create');
+        //
     }
 
     /**
@@ -37,24 +37,16 @@ class AdminAirlineController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'name' => ['required', 'min:3', 'max:50'],
-            'slug' => ['required', 'min:3', 'max:255'],
-            'gate' => ['required', 'min:3', 'max:10'],
-        ]);
-
-        Airline::create($validatedData);
-
-        return redirect('/admin/airlines');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Airline  $airline
+     * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function show(Airline $airline)
+    public function show(Order $order)
     {
         //
     }
@@ -62,10 +54,10 @@ class AdminAirlineController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Airline  $airline
+     * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function edit(Airline $airline)
+    public function edit(Order $order)
     {
         //
     }
@@ -74,10 +66,10 @@ class AdminAirlineController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Airline  $airline
+     * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Airline $airline)
+    public function update(Request $request, Order $order)
     {
         //
     }
@@ -85,10 +77,10 @@ class AdminAirlineController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Airline  $airline
+     * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Airline $airline)
+    public function destroy(Order $order)
     {
         //
     }
