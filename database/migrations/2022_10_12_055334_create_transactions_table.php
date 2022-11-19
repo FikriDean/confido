@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('name_account');
             $table->string('from_account');
             $table->bigInteger('total');
+            $table->string('image')->nullable();
             $table->boolean('status');
             $table->timestamps();
         });

@@ -168,20 +168,12 @@
 
                     <h4 class="my-3">Payment</h4>
 
-                    <div class="my-3">
-                        <div class="form-check">
-                            <input id="credit" name="method" type="radio" class="form-check-input" checked required>
-                            <label class="form-check-label" for="credit">Credit card</label>
-                        </div>
-                        <div class="form-check">
-                            <input id="debit" name="method" type="radio" class="form-check-input" required>
-                            <label class="form-check-label" for="debit">Debit card</label>
-                        </div>
-                        <div class="form-check">
-                            <input id="paypal" name="method" type="radio" class="form-check-input" required>
-                            <label class="form-check-label" for="paypal">PayPal</label>
-                        </div>
-                    </div>
+                    <select name="method_id" id="method_id">
+                        <option selected>Choose Payment Method: </option>
+                        @foreach ($methods as $method)
+                            <option value="{{ $method->id }}">{{ $method->method }}</option>
+                        @endforeach
+                    </select>
 
                     <div class="row gy-3">
                         <div class="col-md-6">

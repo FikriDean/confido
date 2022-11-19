@@ -6,8 +6,9 @@ use App\Models\Order;
 use App\Models\Track;
 use App\Models\Airline;
 use App\Models\Type;
+use App\Models\Method;
 use App\Models\Ticket;
-use App\Models\Payment;
+use App\Models\Transaction;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -21,8 +22,8 @@ class OrderController extends Controller
      */
     public function index()
     {
-        return view('order.index', [
-            'orders' => Order::all()->where('user_id', Auth::user()->id)
+        return view('customer.order.index', [
+            'orders' => Order::all()->where('user_id', Auth::id())
         ]);
     }
 
@@ -33,12 +34,12 @@ class OrderController extends Controller
      */
     public function create()
     {
-        return view("order.create", [
-            "title" => "Ticket Order",
+        return view("customer.order.create", [
             "routes" => Track::all(),
             'airlines' => Airline::all(),
             'types' => Type::all(),
             'tickets' => Ticket::all(),
+            'methods' => Method::all()
         ]);
     }
 
@@ -59,9 +60,6 @@ class OrderController extends Controller
             'amount' => ['required', 'max:5'],
             'go_date' => ['required'],
             'return_date' => [],
-            'method' => ['required'],
-            'name_account' => ['required'],
-            'from_account' => ['required'],
         ]);
 
         if ($validatedDataOrder['round_trip'] == "true") {
@@ -85,10 +83,23 @@ class OrderController extends Controller
 
         Order::create($validatedDataOrder);
 
-        $validatedDataPayment['order_id'] = Order::where('order_code', $order_code)->first()->id;
-        $validatedDataPayment['status'] = false;
+        // Transaction
 
-        Payment::create($validatedDataPayment);
+        $validatedDataTransaction = $request->validate([
+            'method_id' => ['required'],
+            'name_account' => ['required'],
+            'from_account' => ['required']
+        ]);
+
+        $order = Order::where('order_code', $order_code)->first();
+
+        $validatedDataTransaction['order_id'] = $order->id;
+
+        $validatedDataTransaction['total'] = $order->ticket->price->price * $validatedDataOrder['amount'];
+
+        $validatedDataTransaction['status'] = false;
+
+        Transaction::create($validatedDataTransaction);
 
         return redirect('/orders');
     }

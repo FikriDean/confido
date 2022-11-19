@@ -7,6 +7,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OtherController;
 use App\Http\Controllers\PriceController;
 use App\Http\Controllers\TestingController;
+use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\AdminTypeController;
 use App\Http\Controllers\AdminOrderController;
 use App\Http\Controllers\AdminTrackController;
@@ -48,6 +49,9 @@ Route::get('/dashboard', function () {
 
 // Order Route
 Route::resource('/orders', OrderController::class)->middleware(['auth']);
+
+// Order Route
+Route::resource('/transactions', TransactionController::class)->middleware(['auth']);
 
 // Admin Order Route
 Route::resource('/admin/orders', AdminOrderController::class)->middleware(['auth', 'can:isAdmin']);
