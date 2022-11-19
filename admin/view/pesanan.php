@@ -275,34 +275,52 @@
                   <div class="form-group row">
                     <label for="inputEmail3" class="col-sm-2 col-form-label">Rute :</label>
                     <div class="col-sm-5">
-                      <select class="form-control">
-                        <option disabled selected>--- Pilih Keberangkatan ---</option>
-                        <option>Jakarta</option>
-                        <option>Bandung</option>
-                        <option>Semarang</option>
-                        <option>Yogyakarta</option>
-                        <option>Malang</option>
-                        <option>Bali</option>
-                        <option>Medan</option>
-                        <option>Palembang</option>
-                        <option>Surabaya</option>
+                      <select class="form-control" id="keberangkatan" onchange="getSelectValue(this.value);">
+                        <option value="" disabled selected>--- Pilih Keberangkatan ---</option>
+                        <option value="Jakarta">Jakarta</option>
+                        <option value="Bandung">Bandung</option>
+                        <option value="Semarang">Semarang</option>
+                        <option value="Yogyakarta">Yogyakarta</option>
+                        <option value="Malang">Malang</option>
+                        <option value="Bali">Bali</option>
+                        <option value="Medan">Medan</option>
+                        <option value="Palembang">Palembang</option>
+                        <option value="Surabaya">Surabaya</option>
                       </select>
                     </div>
                     <div class="col-sm-5">
-                      <select class="form-control">
-                        <option disabled selected>--- Pilih Tujuan ---</option>
-                        <option>Jakarta</option>
-                        <option>Bandung</option>
-                        <option>Semarang</option>
-                        <option>Yogyakarta</option>
-                        <option>Malang</option>
-                        <option>Bali</option>
-                        <option>Medan</option>
-                        <option>Palembang</option>
-                        <option>Surabaya</option>
+                      <select class="form-control" id="tujuan" onchange="getSecondValue(this.value);">
+                        <option value="" disabled selected>--- Pilih Tujuan ---</option>
+                        <option value="Jakarta">Jakarta</option>
+                        <option value="Bandung">Bandung</option>
+                        <option value="Semarang">Semarang</option>
+                        <option value="Yogyakarta">Yogyakarta</option>
+                        <option value="Malang">Malang</option>
+                        <option value="Bali">Bali</option>
+                        <option value="Medan">Medan</option>
+                        <option value="Palembang">Palembang</option>
+                        <option value="Surabaya">Surabaya</option>
                       </select>
                     </div>
                   </div>
+                  <script type="text/javascript">
+                    function getSelectValue(keberangkatan)
+                    {
+                      if(keberangkatan!='')
+                      {
+                        $("#tujuan option[value='"+keberangkatan+"']").hide();
+                        $("#tujuan option[value!='"+keberangkatan+"']").show();
+                      }
+                    }
+                    function getSecondValue(tujuan)
+                    {
+                      if(tujuan!='')
+                      {
+                        $("#keberangkatan option[value='"+tujuan+"']").hide();
+                        $("#keberangkatan option[value!='"+tujuan+"']").show();
+                      }
+                    }
+                  </script>
                   <div class="form-group row">
                     <label for="inputEmail3" class="col-sm-2 col-form-label">Maskapai :</label>
                     <div class="col-sm-4">
