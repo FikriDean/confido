@@ -661,7 +661,7 @@
   <script src="../plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
   <!-- Page specific script -->
   <script src="../dist/js/adminlte.js"></script>
-    
+  <script>
     $(document).ready(function() {
       $(function() {
         bsCustomFileInput.init();
