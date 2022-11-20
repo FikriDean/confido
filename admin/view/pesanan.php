@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Confido | Pesanan</title>
 
+  <!-- <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/cupertino/jquery-ui.css"> -->
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
@@ -443,16 +444,57 @@
 
                     <div class="col-sm-4">
                       <div class="form-group">
-                        <input type="date" class="form-control" min="<?php echo date('Y-m-d'); ?>" placeholder="hh/bb/tttt">
+                        <input type="date" class="form-control" id="tanggalpergi" min="<?php echo date('Y-m-d'); ?>" placeholder="hh/bb/tttt">
                       </div>
                     </div>
 
                     <label for="inputEmail3" class="col-sm-1 col-form-label pulang-toogle">Pulang :</label>
                     <div class="col-sm-4">
                       <div class="form-group">
-                        <input type="date" class="form-control pulang-toogle" min="<?php echo date('Y-m-d'); ?>" placeholder="hh/bb/tttt">
+                        <input type="date" class="form-control pulang-toogle" id="tanggalpulang" min="<?php echo date('Y-m-d'); ?>" placeholder="hh/bb/tttt">
                       </div>
                     </div>
+                    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+                    <script>
+                      $(document).ready(function() {
+                        var startDate;
+                        var endDate;
+                        var minDate = new Date();
+                        $("#tanggalpergi").datepicker({
+                          showAnim: 'drop',
+                          numberOfMonth: 1,
+                          dateFormat:'dd-mm-yy',
+                          mindDate: minDate,
+                          onClose: function (selectedDate){
+                            $('#tanggalpulang').datepicker("option", "minDate", selectedDate);
+                          }
+                        });
+
+                        $("#tanggalpulang").datepicker({
+                          showAnim: 'drop',
+                          numberOfMonth: 1,
+                          dateFormat:'dd-mm-yy',
+                          mindDate: minDate,
+                          onClose: function (selectedDate){
+                            $('#tanggalpergi').datepicker("option", "minDate", selectedDate);
+                          }
+                        });
+
+                        $("#tanggalpulang").datepicker({
+                          dateFormat:'dd-mm-yy'
+                        });
+                        $('#tanggalpergi').change(function() {
+                          startDate=$(this).datepicker('getDate');
+                        $('#tanggalpulang').datepicker('option','minDate',startDate);
+                        });
+
+                        $('#tanggalpulang').change(function() {
+                          startDate=$(this).datepicker('getDate');
+                        $('#tanggalpergi').datepicker('option','maxDate',endDate);
+                        });
+                      });
+                    </script> -->
 
                   </div>
 
