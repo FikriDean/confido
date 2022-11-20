@@ -259,14 +259,51 @@
                     <td>2</td>
                     <td>Tiket Terbit Rp 0,00</td>
                     <td>   
-					 <button class="btn btn-primary btn-xs" type="button" >Bayar
+					 <button class="btn btn-primary btn-xs" type="button" data-toggle="modal" data-target="#modal-bayar" >Bayar
                   
 					</button>
+					<a href="invoice.php" target="_blank"  >
+					 <button class="btn btn-success btn-xs" type="button"  >Cetak
+					</button>
+                  </a>
 					 <button class="btn btn-warning btn-xs" type="button" data-toggle="modal" data-target="#modal-lg" >Lapor
                   
                 </button>
 					</td>
-					
+								
+      <div class="modal fade" id="modal-bayar">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Upload Bukti oembayaran</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+               <div class="form-group row">
+                        <div class="col-sm-12">
+                          <div class="form-group">
+                    <label for="exampleInputFile">File input</label>
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="exampleInputFile">
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      </div>
+                    </div>
+                  </div>
+                        </div>
+                      </div>
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-primary">Save</button>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+	  
       <div class="modal fade" id="modal-lg">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
@@ -381,6 +418,10 @@
 <script src="../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
 <script src="../plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+<script src="../plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+
+
+<script src="../dist/js/adminlte.js"></script>
 <!-- Page specific script -->
 <script>
   $(function () {
@@ -399,5 +440,13 @@
     });
   });
 </script>
+
+
+<script>
+$(function () {
+  bsCustomFileInput.init();
+});
+</script>
+
 </body>
 </html>
