@@ -32,7 +32,7 @@
 
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="../images/Logo Confido.png" alt="Confido" height="100" width="220">
+    <img class="animation__shake" src="../images/Logo Confido.png" alt="Confido" width="220">
   </div>
 
   <!-- Navbar -->

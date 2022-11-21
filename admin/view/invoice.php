@@ -20,7 +20,7 @@
     <div class="row">
       <div class="col-12">
         <h2 class="page-header">
-          <i class="fas fa-globe"></i> AdminLTE, Inc.
+          <img src="../dist/img/LogoConfido.png" alt="Confido Logo" width="220">
           <small class="float-right">Date: 2/10/2014</small>
         </h2>
       </div>
@@ -32,11 +32,11 @@
         <br>
         <br>
         <address>
-          <strong>Admin, Inc.</strong><br>
-          795 Folsom Ave, Suite 600<br>
-          San Francisco, CA 94107<br>
-          Phone: (804) 123-5432<br>
-          Email: info@almasaeedstudio.com
+          <strong>Confido</strong><br>
+          Jl. Cabe V 91, Pd. Cabe Ilir<br>
+          Kec. Pamulang, Kota Tangerang Selatan, Banten 15418<br>
+          Phone: 	081384002161<br>
+          Email: confidotiket@gmail.com
         </address>
       </div>
       <!-- /.col -->
@@ -72,40 +72,50 @@
           <thead>
           <tr>
             <th>No</th>
-            <th>NIK</th>
-            <th>Nama</th>
-            <th>Kelamin</th>
-            <th>Subtotal</th>
+            <th>Maskapai</th>
+            <th>Kelas</th>
+            <th>Rute</th>
+            <th>Tanggal Pergi</th>
+            <th>Seat</th>
+            <th>Gate</th>
           </tr>
           </thead>
           <tbody>
           <tr>
             <td>1</td>
-            <td>455-981-221</td>
-            <td>Call of Duty</td>
-            <td>Laki</td>
-            <td>$64.50</td>
+            <td>Garuda</td>
+            <td>Ekonomi</td>
+            <td>Jakarta - Bali</td>
+            <td>11-11-2022</td>
+            <td>14A</td>
+            <td>1B</td>
           </tr>
           <tr>
             <td>2</td>
-            <td>247-925-726</td>
-            <td>Need for Speed IV</td>
-            <td>Laki</td>
-            <td>$50.00</td>
+            <td>Garuda</td>
+            <td>Ekonomi</td>
+            <td>Jakarta - Bali</td>
+            <td>11-11-2022</td>
+            <td>14A</td>
+            <td>1B</td>
           </tr>
           <tr>
             <td>2</td>
-            <td>735-845-642</td>
-            <td>Monsters DVD</td>
-            <td>Laki</td>
-            <td>$10.70</td>
+            <td>Garuda</td>
+            <td>Ekonomi</td>
+            <td>Jakarta - Bali</td>
+            <td>15-11-2022</td>
+            <td>15A</td>
+            <td>2A</td>
           </tr>
           <tr>
             <td>3</td>
-            <td>422-568-642</td>
-            <td>Grown Ups Blue Ray</td>
-            <td>CWE</td>
-            <td>$25.99</td>
+            <td>Garuda</td>
+            <td>Ekonomi</td>
+            <td>Jakarta - Bali</td>
+            <td>15-11-2022</td>
+            <td>15A</td>
+            <td>2A</td>
           </tr>
           </tbody>
         </table>
@@ -126,15 +136,15 @@
           <table class="table">
             <tr>
               <th style="width:50%">Subtotal:</th>
-              <td>$250.30</td>
+              <td>Rp 1.022.800,00</td>
             </tr>
             <tr>
-              <th>Tax (9.3%)</th>
-              <td>$10.34</td>
+              <th>Pajak (11%)</th>
+              <td>Rp 112.508,00</td>
             </tr>
             <tr>
               <th>Total:</th>
-              <td>$265.24</td>
+              <td>Rp 1.135.308,00</td>
             </tr>
           </table>
         </div>

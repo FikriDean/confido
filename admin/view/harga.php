@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Confido | Harga</title>
+  <link rel="icon" type="image/x-icon" href="../dist/img/ConfidoLogo.png">
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -233,7 +234,107 @@
                   
 					</button>
 					
-				<div class="modal fade" id="modal-lgharga">
+
+          <div class="modal fade" id="modal-lgharga">
+					<div class="modal-dialog modal-lg">
+					<div class="modal-content">
+						<div class="modal-header">
+						<h4 class="modal-title">Form Tambah Harga</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						</div>
+
+		 
+        <div class="modal-body">
+        <div class="form-group row">
+                        <label for="inputName2" class="col-sm-2 col-form-label">Maskapai:</label>
+			<select name="mskpaih" id="mskpaih" class="form-control1" required>
+                        <option value="Batik" selected>Batik</option>
+                        <option value="Citilink">Citilink</option>
+                        <option value="Garuda indonesia">Garuda Indonesia</option>
+                        <option value="Lion">Lion</option>
+                        <option value="Sriwijaya">Sriwijaya</option>
+											</select>			
+
+			</div>
+			<div class="form-group row">
+                        <label for="inputName2" class="col-sm-2 col-form-label">Pergi:</label>
+				<select name="pergi" id="pergi" class="form-control1" onchange="getSelectValue(this.value);" required>
+                        <option value="Jakarta" selected>Jakarta</option>
+                        <option value="Bandung">Bandung</option>
+                        <option value="Semarang">Semarang</option>
+                        <option value="Yogyakarta">Yogyakarta</option>
+                        <option value="Malang">Malang</option>
+                        <option value="Bali">Bali</option>
+                        <option value="Medan">Medan</option>
+                        <option value="Palembang">Palembang</option>
+                        <option value="Surabaya">Surabaya</option>
+											</select>
+			</div>
+			<div class="form-group row">
+                        <label for="inputName2" class="col-sm-2 col-form-label">Pulang:</label>
+				<select name="pulang" id="pulang" class="form-control1" onchange="getSecondValue(this.value);" required>
+										  	<option value="Jakarta">Jakarta</option>
+                        <option value="Bandung">Bandung</option>
+                        <option value="Semarang">Semarang</option>
+                        <option value="Yogyakarta">Yogyakarta</option>
+                        <option value="Malang">Malang</option>
+                        <option value="Bali">Bali</option>
+                        <option value="Medan">Medan</option>
+                        <option value="Palembang">Palembang</option>
+                        <option value="Surabaya" selected>Surabaya</option>
+											</select>
+			</div>
+
+      <script type="text/javascript">
+                    function getSelectValue(pergi)
+                    {
+                      if(pergi!='')
+                      {
+                        $("#pulang option[value='"+pergi+"']").hide();
+                        $("#pulang option[value!='"+pergi+"']").show();
+                      }
+                    }
+                    function getSecondValue(pulang)
+                    {
+                      if(pulang!='')
+                      {
+                        $("#pergi option[value='"+pulang+"']").hide();
+                        $("#pergi option[value!='"+pulang+"']").show();
+                      }
+                    }
+                  </script>
+
+			<div class="form-group row">
+                        <label for="inputName2" class="col-sm-2 col-form-label">Kelas:</label>
+				<select name="classh" id="classh" class="form-control1" required>
+												<option value="Ekonomi" selected >Ekonomi</option>
+												<option value="Bisnis" >Bisnis</option>
+												<option value="First Class" >First Class</option>
+
+											</select>
+			</div>
+			 
+				<div class="form-group row">
+                        <label for="inputName2" class="col-sm-2 col-form-label">Harga:</label>
+				<input type="number" class="form-control1" placeholder="Harga Baru" name='hargaadd' id='hargaadd' value=''  required >
+			</div>
+		
+        </div>
+        <div class="modal-footer">
+		
+		 <input type="submit" class="btn btn-success" name="submit" value="submit" />
+			 
+        </div>
+		</form>
+      </div>
+      
+    </div>
+  </div>
+
+
+				<!-- <div class="modal fade" id="modal-lgharga">
 					<div class="modal-dialog modal-lg">
 					<div class="modal-content">
 						<div class="modal-header">
@@ -259,15 +360,15 @@
                       </div>
 						</div>
 						<div class="modal-footer justify-content-between">
-						<button type="button" class="btn btn-primary">SUbmit</button>
+						<button type="button" class="btn btn-primary">Submit</button>
 						</div>
-					</div>
+					</div> -->
 					<!-- /.modal-content -->
-					</div>
+					<!-- </div> -->
 					<!-- /.modal-dialog -->
-					</div>
+					<!-- </div>
           </div>
-        </div>
+        </div> -->
               
 					
               </div>

@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Confido | Riwayat</title>
+  <link rel="icon" type="image/x-icon" href="../dist/img/ConfidoLogo.png">
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -255,9 +256,9 @@
                     <td>Batik</td>
                     <td>Makasar - Jakarta</td>
                     <td>First Class</td>
-                    <td>06-Nov-2021</td>
+                    <td>06-11-2022</td>
                     <td>2</td>
-                    <td>Tiket Terbit Rp 0,00</td>
+                    <td>Belum Konfirmasi</td>
                     <td>   
 					 <button class="btn btn-primary btn-xs" type="button" data-toggle="modal" data-target="#modal-bayar" >Bayar
                   
@@ -308,7 +309,7 @@
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">LApor 1</h4>
+              <h4 class="modal-title">Lapor 1</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -330,16 +331,45 @@
         <!-- /.modal-dialog -->
       </div>
                   </tr>
-                    <td>PSN7f6a8e6e</td>
-                    <td>USER</td>
-                    <td>Batik</td>
-                    <td>Makasar - Jakarta</td>
-                    <td>First Class</td>
-                    <td>06-Nov-2021</td>
-                    <td>2</td>
-                    <td>Tiket Terbit Rp 0,00</td>
-                    <td>   
+                    <td>PSB4y2b1i2q</td>
+                    <td>Fulan</td>
+                    <td>Garuda Indonesia</td>
+                    <td>Jakarta - Bali</td>
+                    <td>Bisnis</td>
+                    <td>12-11-2021</td>
+                    <td>1</td>
+                    <td>Sudah Konfirmasi</td>
+                    <td>
+                    <button class="btn btn-primary btn-xs" type="button" data-toggle="modal" data-target="#modal-bayar" >Bayar
+                  
+                  </button>
+                  <a href="invoice.php" target="_blank"  >
+                   <button class="btn btn-success btn-xs" type="button"  >Cetak
+                  </button>
+                          </a>   
 					 <button class="btn btn-warning btn-xs" type="button" data-toggle="modal" data-target="#modal-lg2" >Lapor
+                  
+					</button>
+					</td>
+
+          </tr>
+                    <td>PSA8d6c9e1e</td>
+                    <td>Test</td>
+                    <td>Citilink</td>
+                    <td>Yogyakarta - Semarang</td>
+                    <td>Ekonomi</td>
+                    <td>06-10-2022</td>
+                    <td>1</td>
+                    <td>Belum Konfirmasi</td>
+                    <td>
+                    <button class="btn btn-primary btn-xs" type="button" data-toggle="modal" data-target="#modal-bayar" >Bayar
+                  
+                  </button>
+                  <a href="invoice.php" target="_blank"  >
+                   <button class="btn btn-success btn-xs" type="button"  >Cetak
+                  </button>
+                          </a>   
+					 <button class="btn btn-warning btn-xs" type="button" data-toggle="modal" data-target="#modal-lg3" >Lapor
                   
 					</button>
 					</td>
@@ -348,7 +378,7 @@
 					<div class="modal-dialog modal-lg">
 					<div class="modal-content">
 						<div class="modal-header">
-						<h4 class="modal-title">LApor 2</h4>
+						<h4 class="modal-title">Lapor 2</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
@@ -369,6 +399,33 @@
 					</div>
 					<!-- /.modal-dialog -->
 					</div>
+
+          <div class="modal fade" id="modal-lg3">
+					<div class="modal-dialog modal-lg">
+					<div class="modal-content">
+						<div class="modal-header">
+						<h4 class="modal-title">Lapor 3</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						</div>
+						<div class="modal-body">
+						  <div class="form-group row">
+                        <label for="inputExperience" class="col-sm-2 col-form-label">Keluhan</label>
+                        <div class="col-sm-10">
+                          <textarea class="form-control" id="inputExperience" placeholder="Keluhan"></textarea>
+                        </div>
+                      </div>
+						</div>
+						<div class="modal-footer justify-content-between">
+						<button type="button" class="btn btn-primary">SUbmit</button>
+						</div>
+					</div>
+					<!-- /.modal-content -->
+					</div>
+					<!-- /.modal-dialog -->
+					</div>
+
                   </tr>
                   
                 </table>

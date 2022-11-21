@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Confido | Pesanan</title>
+  <link rel="icon" type="image/x-icon" href="../dist/img/ConfidoLogo.png">
 
   <!-- <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/cupertino/jquery-ui.css"> -->
   <!-- Google Font: Source Sans Pro -->

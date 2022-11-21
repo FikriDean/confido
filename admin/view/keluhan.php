@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Confido | Keluhan</title>
+  <link rel="icon" type="image/x-icon" href="../dist/img/ConfidoLogo.png">
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -231,51 +232,73 @@
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>Rendering engine</th>
-                    <th>Browser</th>
-                    <th>Platform(s)</th>
-                    <th>Engine version</th>
-                    <th>CSS grade</th>
+                    <th>Nama</th>
+                    <th>Email</th>
+                    <th>Subject</th>
+                    <th>Keluhan</th>
+                    <th>Tanggal Kirim</th>
+                    <th>Status</th>
                   </tr>
                   </thead>
                   <tbody>
                   <tr>
-                    <td>Trident</td>
-                    <td>Internet
-                      Explorer 4.0
-                    </td>
-                    <td>Win 95+</td>
-                    <td> 4</td>
-                    <td>X</td>
+                    <td>Hamba Tuhan</td>
+                    <td>hambatuhan@gmail.com</td>
+                    <td>Rasa Kesepian</td>
+                    <td>Saya ingin curhat nih Min. Saya itu sebenarnya lebih suka menghabiskan waktu bersama orang lain dibandingkan sendiri. Tapi rasanya sangat sulit untuk bersosialiasi kepada orang lain. Mereka memiliki urusan sendiri yang mereka ingin lakukan. Mereka pun juga memiliki preferensi lain yang mereka inginkan. Tentunya ini membuat saya sulit mendapatkan kebersamaan.</td>
+                    <td>10-11-2022</td>
+                    <td><span class="badge badge-pill badge-success">Sudah</span></td>
+                  </tr>
+                  <tr>
+                    <td>ガンダム・エアリアル</td>
+                    <td>aerial21@gmail.com</td>
+                    <td>祝福</td>
+                    <td>遥か遠くに浮かぶ星を 想い眠りにつく君の 選ぶ未来が望む道が 何処へ続いていても 共に生きるから</td>
+                    <td>12-11-2022</td>
+                    <td><a class="badge badge-danger" data-toggle="modal" data-target="#modal-tanggapi">Belum</a></td>
+                  </tr>
+                  <tr>
+                    <td>Testing Doang</td>
+                    <td>testingdoang@gmail.com</td>
+                    <td>Testing Dong Kawan</td>
+                    <td>Ini tuh ane cuman ngetes ente doang. Jangan sedih dong brader.</td>
+                    <td>14-11-2022</td>
+                    <td><span class="badge badge-pill badge-success">Sudah</span></td>
                   </tr>
                   <tr>
                     <td>Trident</td>
-                    <td>Internet
-                      Explorer 5.0
-                    </td>
-                    <td>Win 95+</td>
-                    <td>5</td>
-                    <td>C</td>
-                  </tr>
-                  <tr>
-                    <td>Trident</td>
-                    <td>Internet
-                      Explorer 5.5
-                    </td>
-                    <td>Win 95+</td>
-                    <td>5.5</td>
-                    <td>A</td>
-                  </tr>
-                  <tr>
-                    <td>Trident</td>
-                    <td>Internet
-                      Explorer 6
-                    </td>
+                    <td>InternetExplorer6@gmail.com</td>
                     <td>Win 98+</td>
                     <td>6</td>
-                    <td>A</td>
+                    <td>16-11-2022</td>
+                    <td><a class="badge badge-danger" data-toggle="modal" data-target="#modal-tanggapi">Belum</a></td>
                   </tr>
-                  <tr>
+                  <div class="modal fade" id="modal-tanggapi">
+					<div class="modal-dialog modal-lg">
+					<div class="modal-content">
+						<div class="modal-header">
+						<h4 class="modal-title">Menanggapi Keluhan:</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						</div>
+						<div class="modal-body">
+						  <div class="form-group row">
+                        <label for="inputExperience" class="col-sm-2 col-form-label">Tanggapan</label>
+                        <div class="col-sm-10">
+                          <textarea class="form-control" id="inputExperience" placeholder="Tanggapan"></textarea>
+                        </div>
+                      </div>
+						</div>
+						<div class="modal-footer justify-content-between">
+						<button type="button" class="btn btn-primary">SUbmit</button>
+						</div>
+					</div>
+					<!-- /.modal-content -->
+					</div>
+					<!-- /.modal-dialog -->
+					</div>
+                  <!-- <tr>
                     <td>Trident</td>
                     <td>Internet Explorer 7</td>
                     <td>Win XP SP2+</td>
@@ -645,9 +668,9 @@
                     <td>-</td>
                     <td>-</td>
                     <td>U</td>
-                  </tr>
+                  </tr> -->
                   </tbody>
-                  <tfoot>
+                  <!-- <tfoot>
                   <tr>
                     <th>Rendering engine</th>
                     <th>Browser</th>
@@ -655,7 +678,7 @@
                     <th>Engine version</th>
                     <th>CSS grade</th>
                   </tr>
-                  </tfoot>
+                  </tfoot> -->
                 </table>
               </div>
               <!-- /.card-body -->
