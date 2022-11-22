@@ -1,26 +1,28 @@
 @extends('layouts.main')
 
-@section('container')
-    <label>Transaction Info:</label>
 
-    <br><br>
+<label>All Transaction Info:</label>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">id</th>
-                <th scope="col">Order_id</th>
-                <th scope="col">Method</th>
-                <th scope="col">target_account</th>
-                <th scope="col">Account's name</th>
-                <th scope="col">From_account</th>
-                <th scope="col">Total</th>
-                <th scope="col">Status</th>
-                <th scope="col">Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($transactions as $transaction)
+<br><br>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">Order_id</th>
+            <th scope="col">Method</th>
+            <th scope="col">target_account</th>
+            <th scope="col">Account's name</th>
+            <th scope="col">From_account</th>
+            <th scope="col">Total</th>
+            <th scope="col">bukti pembayaran</th>
+            <th scope="col">Status</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach ($transactions as $transaction)
+            @if ($transaction->order->user_id == Auth::id())
                 <tr>
                     <th scope="row">{{ $transaction->id }}</th>
                     <td>{{ $transaction->order->id }}</td>
@@ -29,11 +31,29 @@
                     <td>{{ $transaction->name_account }}</td>
                     <td>{{ $transaction->from_account }}</td>
                     <td>{{ $transaction->total }}</td>
-                    <td>{{ $transaction->status }}</td>
-                    <td><a class="text-dark" href="/admin/transactions/{{ $transaction->id }}/edit">Edit Status</a></td>
-                </tr>
-            @endforeach
+                    <td>
+                        @if ($transaction->image)
+                            <img width="100px" src="{{ asset($transaction->image) }}" alt="">
+                        @endif
+                    </td>
+                    <td>
+                        @if ($transaction->status == true)
+                            Confirmed
+                        @else
+                            Not Confirmed Yet
+                        @endif
 
-        </tbody>
-    </table>
-@endsection
+                    </td>
+
+                    <td>
+                        <a href="/admin/transactions/{{ $transaction->id }}/edit" class="text-dark">
+                            Update Status
+                        </a>
+                    </td>
+
+                </tr>
+            @endif
+        @endforeach
+
+    </tbody>
+</table>

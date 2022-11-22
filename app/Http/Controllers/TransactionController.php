@@ -87,6 +87,8 @@ class TransactionController extends Controller
         }
 
         $transaction->update($validatedData);
+
+        return redirect('/transactions');
     }
 
     /**

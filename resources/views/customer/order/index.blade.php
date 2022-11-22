@@ -18,7 +18,7 @@
         <tbody>
             @foreach ($orders as $order)
                 <tr>
-                    <th scope="row">1</th>
+                    <th scope="row">{{ $order->id }}</th>
                     <td>{{ $order->user->name }}</td>
                     <td>{{ $order->order_code }}</td>
                     <td>{{ $order->ticket_id }}</td>

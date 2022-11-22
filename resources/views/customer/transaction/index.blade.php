@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 
-<label>Transaction Info:</label>
+<label>{{ Auth::user()->name }} Transaction Info:</label>
 
 <br><br>
 
@@ -44,10 +44,17 @@
                         @endif
 
                     </td>
+
                     <td>
-                        <a href="/transactions/{{ $transaction->id }}/edit" class="text-dark">upload bukti
-                            pembayaran</a>
+                        <a href="/transactions/{{ $transaction->id }}/edit" class="text-dark">
+                            @if ($transaction->image)
+                                upload ulang bukti pembayaran
+                            @else
+                                upload bukti pembayaran
+                            @endif
+                        </a>
                     </td>
+
                 </tr>
             @endif
         @endforeach

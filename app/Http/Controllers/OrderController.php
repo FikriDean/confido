@@ -69,8 +69,8 @@ class OrderController extends Controller
         }
 
         $validatedDataOrder['user_id'] = auth()->user()->id;
-        $order_code = strval(number_format(microtime(true) * 1000, 0, '.', ''));
-        $validatedDataOrder['order_code'] = $order_code;
+        $order_code1 = strval(number_format(microtime(true) * 1000, 0, '.', ''));
+        $validatedDataOrder['order_code'] = $order_code1;
 
         $from_route = $request['from_route'];
         $to_route = $request['to_route'];
@@ -83,7 +83,7 @@ class OrderController extends Controller
 
         Order::create($validatedDataOrder);
 
-        // Transaction
+        // Transaction 1
 
         $validatedDataTransaction = $request->validate([
             'method_id' => ['required'],
@@ -91,15 +91,67 @@ class OrderController extends Controller
             'from_account' => ['required']
         ]);
 
-        $order = Order::where('order_code', $order_code)->first();
+        $order1 = Order::where('order_code', $order_code1)->first();
 
-        $validatedDataTransaction['order_id'] = $order->id;
+        $validatedDataTransaction['order_id'] = $order1->id;
 
-        $validatedDataTransaction['total'] = $order->ticket->price->price * $validatedDataOrder['amount'];
+        $validatedDataTransaction['total'] = $order1->ticket->price->price * $validatedDataOrder['amount'];
 
         $validatedDataTransaction['status'] = false;
 
         Transaction::create($validatedDataTransaction);
+
+        sleep(1);
+
+        if ($validatedDataOrder['round_trip'] == true) {
+            $validatedDataOrder2 = $request->validate([
+                'from_route' => ['required'],
+                'to_route' => ['required'],
+                'airline_id' => ['required'],
+                'type_id' => ['required'],
+                'round_trip' => ['required'],
+                'amount' => ['required', 'max:5'],
+                'go_date' => ['required'],
+                'return_date' => [],
+            ]);
+
+            if ($validatedDataOrder2['round_trip'] == "true") {
+                $validatedDataOrder2['round_trip'] = true;
+            } else {
+                $validatedDataOrder2['round_trip'] = false;
+            }
+
+            $validatedDataOrder2['user_id'] = auth()->user()->id;
+            $order_code2 = strval(number_format(microtime(true) * 1000, 0, '.', ''));
+            $validatedDataOrder2['order_code'] = $order_code2;
+
+            $from_route = $request['to_route'];
+            $to_route = $request['from_route'];
+            $airline_id = $request['airline_id'];
+            $type_id = $request['type_id'];
+
+            $track_id = Track::where('from_route', $from_route)->where('to_route', $to_route)->first()->id;
+
+            $validatedDataOrder2['ticket_id'] = Ticket::where('airline_id', $airline_id)->where('type_id', $type_id)->where('track_id', $track_id)->first()->id;
+
+            Order::create($validatedDataOrder2);
+
+            $validatedDataTransaction2 = $request->validate([
+                'method_id' => ['required'],
+                'name_account' => ['required'],
+                'from_account' => ['required']
+            ]);
+
+            $order2 = Order::where('order_code', $order_code2)->first();
+
+            $validatedDataTransaction2['order_id'] = $order2->id;
+
+            $validatedDataTransaction2['total'] = $order2->ticket->price->price * $validatedDataOrder['amount'];
+
+            $validatedDataTransaction2['status'] = false;
+
+            Transaction::create($validatedDataTransaction2);
+        }
 
         return redirect('/orders');
     }
