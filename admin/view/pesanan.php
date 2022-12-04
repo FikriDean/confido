@@ -240,7 +240,7 @@
                       </select>
                     </div>
                     <div class="col-sm-8">
-                      <input type="email" class="form-control" id="inputEmail3" placeholder="Nama">
+                      <input type="email" class="form-control" id="inputEmail3" placeholder="Nama" required="">
                     </div>
                   </div>
 
@@ -248,10 +248,10 @@
                     <label for="inputEmail3" class="col-sm-2 col-form-label">Phone & Email :</label>
 
                     <div class="col-sm-3">
-                      <input type="text" class="form-control" id="inputEmail3" placeholder="Phone">
+                      <input type="text" class="form-control" id="inputEmail3" placeholder="Phone" required="">
                     </div>
                     <div class="col-sm-3">
-                      <input type="text" class="form-control" id="inputEmail3" placeholder="Email">
+                      <input type="text" class="form-control" id="inputEmail3" placeholder="Email" required="">
                     </div>
                     <div class="col-sm-2">
                       <div class="form-group">
@@ -505,13 +505,13 @@
                     <label for="inputEmail3" class="col-sm-2 col-form-label">Penumpang 1:</label>
                     <div class="col-sm-3">
                       <div class="form-group">
-                        <input type="tet" class="form-control" id="inputEmail3" placeholder="Nama">
+                        <input type="tet" class="form-control" id="inputEmail3" placeholder="Nama" required="">
                       </div>
                     </div>
                     <label for="inputEmail3" class="col-sm-1 col-form-label">KTP :</label>
                     <div class="col-sm-3">
                       <div class="form-group">
-                        <input type="text" class="form-control" id="inputEmail3" placeholder="KTP">
+                        <input type="text" class="form-control" id="inputEmail3" placeholder="KTP" required="">
                       </div>
                     </div>
                     <div class="col-sm-2">
@@ -529,13 +529,13 @@
                     <label for="inputEmail3" class="col-sm-2 col-form-label">Penumpang 2:</label>
                     <div class="col-sm-3">
                       <div class="form-group">
-                        <input type="tet" class="form-control" id="inputEmail3" placeholder="Nama">
+                        <input type="tet" class="form-control" id="inputEmail3" placeholder="Nama" required="">
                       </div>
                     </div>
                     <label for="inputEmail3" class="col-sm-1 col-form-label">KTP :</label>
                     <div class="col-sm-3">
                       <div class="form-group">
-                        <input type="text" class="form-control" id="inputEmail3" placeholder="KTP">
+                        <input type="text" class="form-control" id="inputEmail3" placeholder="KTP" required="">
                       </div>
                     </div>
                     <div class="col-sm-2">
@@ -553,13 +553,13 @@
                     <label for="inputEmail3" class="col-sm-2 col-form-label">Penumpang 3:</label>
                     <div class="col-sm-3">
                       <div class="form-group">
-                        <input type="tet" class="form-control" id="inputEmail3" placeholder="Nama">
+                        <input type="tet" class="form-control" id="inputEmail3" placeholder="Nama" required="">
                       </div>
                     </div>
                     <label for="inputEmail3" class="col-sm-1 col-form-label">KTP :</label>
                     <div class="col-sm-3">
                       <div class="form-group">
-                        <input type="text" class="form-control" id="inputEmail3" placeholder="KTP">
+                        <input type="text" class="form-control" id="inputEmail3" placeholder="KTP" required="">
                       </div>
                     </div>
                     <div class="col-sm-2">
@@ -577,13 +577,13 @@
                     <label for="inputEmail3" class="col-sm-2 col-form-label">Penumpang 4:</label>
                     <div class="col-sm-3">
                       <div class="form-group">
-                        <input type="tet" class="form-control" id="inputEmail3" placeholder="Nama">
+                        <input type="tet" class="form-control" id="inputEmail3" placeholder="Nama" required="">
                       </div>
                     </div>
                     <label for="inputEmail3" class="col-sm-1 col-form-label">KTP :</label>
                     <div class="col-sm-3">
                       <div class="form-group">
-                        <input type="text" class="form-control" id="inputEmail3" placeholder="KTP">
+                        <input type="text" class="form-control" id="inputEmail3" placeholder="KTP" required="">
                       </div>
                     </div>
                     <div class="col-sm-2">
@@ -601,13 +601,13 @@
                     <label for="inputEmail3" class="col-sm-2 col-form-label">Penumpang 5:</label>
                     <div class="col-sm-3">
                       <div class="form-group">
-                        <input type="tet" class="form-control" id="inputEmail3" placeholder="Nama">
+                        <input type="tet" class="form-control" id="inputEmail3" placeholder="Nama" required="">
                       </div>
                     </div>
                     <label for="inputEmail3" class="col-sm-1 col-form-label">KTP :</label>
                     <div class="col-sm-3">
                       <div class="form-group">
-                        <input type="text" class="form-control" id="inputEmail3" placeholder="KTP">
+                        <input type="text" class="form-control" id="inputEmail3" placeholder="KTP" required="">
                       </div>
                     </div>
                     <div class="col-sm-2">

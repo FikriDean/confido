@@ -291,7 +291,7 @@
                       </div>
 						</div>
 						<div class="modal-footer justify-content-between">
-						<button type="button" class="btn btn-primary">SUbmit</button>
+						<button type="button" class="btn btn-primary">Submit</button>
 						</div>
 					</div>
 					<!-- /.modal-content -->

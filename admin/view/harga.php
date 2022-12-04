@@ -249,7 +249,7 @@
         <div class="modal-body">
         <div class="form-group row">
                         <label for="inputName2" class="col-sm-2 col-form-label">Maskapai:</label>
-			<select name="mskpaih" id="mskpaih" class="form-control1" required>
+			<select name="mskpaih" id="mskpaih" class="col-sm-3 form-control1" required>
                         <option value="Batik" selected>Batik</option>
                         <option value="Citilink">Citilink</option>
                         <option value="Garuda indonesia">Garuda Indonesia</option>
@@ -260,7 +260,7 @@
 			</div>
 			<div class="form-group row">
                         <label for="inputName2" class="col-sm-2 col-form-label">Pergi:</label>
-				<select name="pergi" id="pergi" class="form-control1" onchange="getSelectValue(this.value);" required>
+				<select name="pergi" id="pergi" class="col-sm-3 form-control1" onchange="getSelectValue(this.value);" required>
                         <option value="Jakarta" selected>Jakarta</option>
                         <option value="Bandung">Bandung</option>
                         <option value="Semarang">Semarang</option>
@@ -274,7 +274,7 @@
 			</div>
 			<div class="form-group row">
                         <label for="inputName2" class="col-sm-2 col-form-label">Pulang:</label>
-				<select name="pulang" id="pulang" class="form-control1" onchange="getSecondValue(this.value);" required>
+				<select name="pulang" id="pulang" class="col-sm-3 form-control1" onchange="getSecondValue(this.value);" required>
 										  	<option value="Jakarta">Jakarta</option>
                         <option value="Bandung">Bandung</option>
                         <option value="Semarang">Semarang</option>
@@ -308,7 +308,7 @@
 
 			<div class="form-group row">
                         <label for="inputName2" class="col-sm-2 col-form-label">Kelas:</label>
-				<select name="classh" id="classh" class="form-control1" required>
+				<select name="classh" id="classh" class="col-sm-3 form-control1" required>
 												<option value="Ekonomi" selected >Ekonomi</option>
 												<option value="Bisnis" >Bisnis</option>
 												<option value="First Class" >First Class</option>
@@ -318,13 +318,13 @@
 			 
 				<div class="form-group row">
                         <label for="inputName2" class="col-sm-2 col-form-label">Harga:</label>
-				<input type="number" class="form-control1" placeholder="Harga Baru" name='hargaadd' id='hargaadd' value=''  required >
+				<input type="number" class="col-sm-3 form-control1" placeholder="Harga Baru" name='hargaadd' id='hargaadd' value=''  required >
 			</div>
 		
         </div>
-        <div class="modal-footer">
+        <div class="modal-footer justify-content-between">
 		
-		 <input type="submit" class="btn btn-success" name="submit" value="submit" />
+		 <input type="submit" class="btn btn-success" name="submit" value="Submit" />
 			 
         </div>
 		</form>
@@ -393,10 +393,42 @@
                     <td>Ekonomi</td>
                     <td>Rp 1.022.800,00</td>
                     <td>
-                      <a button class='btn btn-success btn-xs'  title='Ubah Harga' ><i class='fa fa-reply'></i></button></a>
+                      <a button class='btn btn-success btn-xs'  title='Ubah Harga' data-toggle="modal" data-target="#modal-ubahharga"><i class='fa fa-reply'></i></button></a>
                     </td>
                   </tr>
                   
+                  <div class="modal fade" id="modal-ubahharga">
+					        <div class="modal-dialog modal-lg">
+					        <div class="modal-content">
+					      	<div class="modal-header">
+					      	<h4 class="modal-title">Form Ubah Harga</h4>
+					        	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						      	<span aria-hidden="true">&times;</span>
+					        	</button>
+						      </div>
+                  
+                  <div class="modal-body">
+                  <div class="form-group row">
+                        <label for="inputName2" class="col-sm-2 col-form-label">Harga Lama:</label>
+				<input type="number" class="col-sm-3 form-control1" placeholder="Angka harga lama di DB" name='hargaadd' id='hargaadd' value='' disabled>
+			</div>
+
+      <div class="form-group row">
+                        <label for="inputName2" class="col-sm-2 col-form-label">Harga Baru:</label>
+				<input type="number" class="col-sm-3 form-control1" placeholder="Harga Baru" name='hargaadd' id='hargaadd' value=''  required >
+			</div>
+		
+        </div>
+        <div class="modal-footer justify-content-between">
+		
+		 <input type="submit" class="btn btn-success" name="submit" value="Submit" />
+			 
+        </div>
+		</form>
+      </div>
+      
+
+
                 </table>
               </div>
               <!-- /.card-body -->

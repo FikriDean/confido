@@ -49,6 +49,29 @@
             </a>
           </li>
           <li class="nav-item">
+            <a href="#" class="nav-link">
+             <i class="nav-icon fas fa-list-ul"></i>
+              <p>
+                Riwayat
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo $linkz; ?>view/riwayat.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Transaksi</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo $linkz; ?>view/order.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Order</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <!-- <li class="nav-item">
             <a href="<?php echo $linkz; ?>view/riwayat.php" class="nav-link">
               <i class="nav-icon fas fa-list-ul"></i>
               <p>
@@ -56,7 +79,7 @@
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
-          </li>
+          </li> -->
           <li class="nav-item">
             <a href="<?php echo $linkz; ?>view/keluhan.php" class="nav-link">
               <i class="nav-icon fas fa-comments"></i>
