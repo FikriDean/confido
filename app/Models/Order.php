@@ -35,4 +35,9 @@ class Order extends Model
     {
         return $this->hasOne(Total::class);
     }
+
+    public function passengers()
+    {
+        return $this->hasMany(Passenger::class);
+    }
 }

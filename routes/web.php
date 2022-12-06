@@ -17,7 +17,9 @@ use App\Http\Controllers\AdminTicketController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\AdminAirlineController;
 use App\Http\Controllers\AdminCategoryController;
+use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AdminTransactionController;
+use App\Http\Controllers\TicketController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,6 +52,12 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware('auth')->name('dashboard');
 
+Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->middleware(['auth', 'can:isAdmin']);
+
+// Route::get('/authentication', function () {
+//     return view('auth.authentication');
+// });
+
 // Order Route
 Route::resource('/orders', OrderController::class)->middleware(['auth']);
 
@@ -60,6 +68,9 @@ Route::get('/printpdf', [PrintController::class, 'print'])->middleware(['auth'])
 
 // Order Route
 Route::resource('/transactions', TransactionController::class)->middleware(['auth']);
+
+// Ticket Route
+Route::resource('/tickets', TicketController::class);
 
 // Admin Order Route
 Route::resource('/admin/orders', AdminOrderController::class)->middleware(['auth', 'can:isAdmin']);
@@ -89,7 +100,9 @@ Route::resource('/admin/methods', AdminMethodController::class)->middleware(['au
 
 // Route::resource('/prices', PriceController::class);
 
-Route::get('/checkprice', [OrderController::class, 'checkprice']);
+// Route::get('/checkprice', [OrderController::class, 'checkprice']);
+
+Route::get('/admin/checkprice', [AdminOrderController::class, 'checkprice']);
 
 // Route::get('/posts', function () {
 //     // Tag::create([

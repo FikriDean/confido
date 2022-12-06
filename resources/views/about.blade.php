@@ -1,34 +1,9 @@
 @extends('layouts.main')
 
 @section('front-end')
-    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-        <div class="container">
-            <a class="navbar-brand" href="./"><img class="d-inline-block" src="images/Logo Confido.png" width="200"
-                    alt="logo" /><span class="fw-bold text-primary ms-2"></span></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
-                aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="oi oi-menu"></span> Menu
-            </button>
+    <x-front-navbar></x-front-navbar>
 
-            <div class="collapse navbar-collapse" id="ftco-nav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item {{ Request::is('/') ? 'active ' : '' }}"><a href="/" class="nav-link">Home</a>
-                    </li>
-                    <li class="nav-item {{ Request::is('about') ? 'active ' : '' }}"><a href="/about"
-                            class="nav-link">About</a></li>
-                    <li class="nav-item {{ Request::is('destination') ? 'active ' : '' }}"><a href="/destination"
-                            class="nav-link">Destination</a></li>
-                    <li class="nav-item {{ Request::is('contact') ? 'active ' : '' }}"><a href="/contact"
-                            class="nav-link">Contact</a></li>
-                    <li class="nav-item {{ Request::is('register') ? 'active ' : '' }}"><a href="/register"
-                            class="nav-link">Login/Register</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <!-- END nav -->
-
-    <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('images/bg_4.jpg');">
+    <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('images/bg_4.jpg'); width: 100%">
         <div class="overlay"></div>
         <div class="container">
             <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
@@ -41,7 +16,6 @@
             </div>
         </div>
     </section>
-
 
     <section class="ftco-section ftco-about ftco-no-pt img">
         <div class="container">

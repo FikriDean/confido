@@ -24,8 +24,11 @@ class AdminTicketController extends Controller
         // $this->authorize('isAdmin');
 
         // if (Gate::allows('isAdmin')) {
-        return view('admin.ticket.index', [
-            'tickets' => Ticket::all()->load('price')
+        return view('admin.dashboard.ticket.index', [
+            'tickets' => Ticket::all()->load('price'),
+            'airlines' => Airline::all(),
+            'types' => Type::all(),
+            'tracks' => Track::all()
         ]);
         // } else {
         //     // akses logic untuk user selain role admin
@@ -39,11 +42,11 @@ class AdminTicketController extends Controller
      */
     public function create()
     {
-        return view('admin.ticket.create', [
-            'airlines' => Airline::all(),
-            'types' => Type::all(),
-            'tracks' => Track::all()
-        ]);
+        // return view('admin.dashboard.ticket.index', [
+        //     'airlines' => Airline::all(),
+        //     'types' => Type::all(),
+        //     'tracks' => Track::all()
+        // ]);
     }
 
     /**
@@ -64,7 +67,7 @@ class AdminTicketController extends Controller
         $validateSameTicket = Ticket::where('airline_id', $validatedData['airline_id'])->where('type_id', $validatedData['type_id'])->where('track_id',  $validatedData['track_id'])->first();
 
         if ($validateSameTicket) {
-            return redirect('/admin/tickets/create')->with('sameTicket', 'Ticket dengan data tersebut sudah ada di database! jika ingin mengubah harga, masuk ke bagian harga!')->withInput();
+            return redirect('/admin/tickets')->with('sameTicket', 'Ticket dengan data tersebut sudah ada di database! jika ingin mengubah harga, masuk ke bagian harga!')->withInput();
         }
 
         Ticket::create($validatedData);

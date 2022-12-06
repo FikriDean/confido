@@ -29,7 +29,15 @@ class DatabaseSeeder extends Seeder
 
         Order::factory(1)->create();
 
-        Ticket::factory(1)->create();
+        Order::factory()->create([
+            'user_id' => 1,
+            'order_code' => idate("U"),
+            'ticket_id' => 2,
+            'round_trip' => true,
+            'go_date' => date('Y-m-d'),
+            'return_date' => date('Y-m-d'),
+            'amount' => 2
+        ]);
 
         // Airline::factory(1)->create();
         Airline::factory()->create([
@@ -94,6 +102,18 @@ class DatabaseSeeder extends Seeder
         Track::factory()->create([
             'from_route' => 'bali',
             'to_route' => 'jakarta'
+        ]);
+
+        Ticket::factory()->create([
+            'airline_id' => 1,
+            'type_id' => 1,
+            'track_id' => 1,
+        ]);
+
+        Ticket::factory()->create([
+            'airline_id' => 2,
+            'type_id' => 2,
+            'track_id' => 2,
         ]);
 
         Payment::factory(1)->create();

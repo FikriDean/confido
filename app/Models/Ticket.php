@@ -36,22 +36,10 @@ class Ticket extends Model
         return $this->hasOne(Price::class);
     }
 
-    // public function scopeFilter($query, array $filters)
-    // {
-    //     $query->when($filters['pickup'] ?? false, function ($query, $search) {
-    //         return $query->where('title');
-    //     });
-
-    //     // $query->when($filters['pickup'] ?? false, function ($query, $category) {
-    //     //     return $query->whereHas('category', function ($query) use ($category) {
-    //     //         $query->where('slug', $category);
-    //     //     });
-    //     // });
-
-    //     // $query->when($filters['author'] ?? false, function ($query, $author) {
-    //     //     return $query->whereHas('user', function ($query) use ($author) {
-    //     //         $query->where('username', $author);
-    //     //     });
-    //     // });
-    // }
+    public function scopeFilter($query, array $filters)
+    {
+        $query->when($filters['airline_id'] ?? false, function ($query, $airline_id) {
+            return $query->where('airline_id', '=', $airline_id);
+        });
+    }
 }

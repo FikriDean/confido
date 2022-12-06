@@ -121,11 +121,23 @@
                                 @endforeach
                             </select>
 
-                            <h4 class="mb-3">Price: <span id="price_return"></span></h4>
+                            <br><br>
+
+                            <a class="btn btn-primary" id="checkTicketButton">Check available tickets</a>
+
+                            <br><br>
+
+                            <h2>Available Tickets</h2>
+
+                            <ul id="tickets_shelf">
+    
+                            </ul>
+
+                            {{-- <h4 class="mb-3">Price: <span id="price_return"></span></h4>
 
                             <a id="checkPriceButton">check</a>
 
-                            <a id="test">tset</a>
+                            <a id="test">tset</a> --}}
                         </div>
 
 
@@ -216,20 +228,44 @@
         const airline_class = document.getElementById("airline_class");
         const price_return = document.getElementById("price_return");
         const test = document.getElementById('test');
+        const checkTicketButton = document.getElementById('checkTicketButton');
+        const ticketsShelf = document.getElementById('tickets_shelf');
 
-        checkPriceButton.addEventListener('click', function() {
-            fetch(
-                    `/checkprice?airline_id=${airline.value}&type_id=${airline_class.value}&from_route=${pickup.value}&to_route=${destination.value}`
-                )
-                .then(response => {
-                    return response.json();
-                })
-                .then(res => {
-                    test.innerHTML = res.price;
-                })
-                .catch(res => {
-                    test.innerHTML = "Price cannot be loaded";
-                })
-        })
+        // checkPriceButton.addEventListener('click', function() {
+        //     fetch(
+        //             `/checkprice?airline_id=${airline.value}&type_id=${airline_class.value}&from_route=${pickup.value}&to_route=${destination.value}`
+        //         )
+        //         .then(response => {
+        //             return response.json();
+        //         })
+        //         .then(res => {
+        //             test.innerHTML = res.price;
+        //         })
+        //         .catch(res => {
+        //             test.innerHTML = "Price cannot be loaded";
+        //         })
+        // });
+
+        // checkTicketButton.addEventListener('click', function() {
+        //     fetch(
+        //             `/checktickets?airline_id=${airline.value}&type_id=${airline_class.value}&from_route=${pickup.value}&to_route=${destination.value}`
+        //         )
+        //         .then(response => {
+        //             return response.json();
+        //         })
+        //         .then(res => {
+        //             console.log(res.tickets);
+        //             ticketsShelf.innerHTML = res.tickets.map(ticket => {
+        //                 return `
+        //                     <li>${ticket}</li>
+        //                 `
+        //             });
+        //             // test.innerHTML = res.price;
+        //         })
+        //         .catch(res => {
+        //             // test.innerHTML = "Price cannot be loaded";
+        //         })
+        // })
+
     }
 </script>

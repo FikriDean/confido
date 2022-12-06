@@ -14,7 +14,7 @@ class AdminTransactionController extends Controller
      */
     public function index()
     {
-        return view('admin.transaction.index', [
+        return view('admin.dashboard.transaction.index', [
             'transactions' => Transaction::all()
         ]);
     }

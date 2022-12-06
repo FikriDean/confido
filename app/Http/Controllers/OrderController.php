@@ -255,4 +255,43 @@ class OrderController extends Controller
         // Return JSON
         return response()->json(['price' => $price]);
     }
+
+    public function checktickets(Request $request)
+    {
+        if (!$request['from_route']) {
+            return response()->json(['price' => 'You must to select your pickup location!']);
+        } else {
+            $from_route = $request['from_route'];
+        }
+
+        if (!$request['to_route']) {
+            return response()->json(['price' => 'You must to select your destination location!']);
+        } else {
+            $to_route = $request['to_route'];
+        }
+
+        if (!$request['airline_id']) {
+            return response()->json(['price' => 'You must to select airline!']);
+        } else {
+            $airline_id = $request['airline_id'];
+        }
+
+        if (!$request['type_id']) {
+            return response()->json(['price' => 'You must to select type of airline!']);
+        } else {
+            $type_id = $request['type_id'];
+        }
+
+        // Validasi rute sama
+        if ($from_route == $to_route) {
+            return response()->json(['price' => 'You cannot choose same location for pickup and destination']);
+        }
+
+        $track_id = Track::where('from_route', $from_route)->where('to_route', $to_route)->first()->id;
+
+        $tickets = Ticket::all()->where('airline_id', $airline_id)->where('type_id', $type_id)->where('track_id', $track_id);
+
+        // Return JSON
+        return response()->json(['tickets' => $tickets]);
+    }
 }
