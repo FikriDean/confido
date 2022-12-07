@@ -7,8 +7,9 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OtherController;
 use App\Http\Controllers\PriceController;
 use App\Http\Controllers\PrintController;
-use App\Http\Controllers\TestingController;
+use App\Http\Controllers\TicketController;
 use App\Http\Controllers\AdminTypeController;
+use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\AdminOrderController;
 use App\Http\Controllers\AdminPriceController;
 use App\Http\Controllers\AdminTrackController;
@@ -19,7 +20,7 @@ use App\Http\Controllers\AdminAirlineController;
 use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AdminTransactionController;
-use App\Http\Controllers\TicketController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,6 +62,9 @@ Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->midd
 // Order Route
 Route::resource('/orders', OrderController::class)->middleware(['auth']);
 
+// User Route
+Route::resource('/user', UserController::class)->middleware(['auth']);
+
 // Print Testing Route
 Route::get('/print', [PrintController::class, 'index'])->middleware(['auth']);
 
@@ -95,6 +99,9 @@ Route::resource('/admin/prices', AdminPriceController::class)->middleware(['auth
 
 // Admin Method Route
 Route::resource('/admin/methods', AdminMethodController::class)->middleware(['auth', 'can:isAdmin']);
+
+// Admin User Route
+Route::resource('/admin/users', AdminUserController::class)->middleware(['auth', 'can:isAdmin']);
 
 // Route::resource('/testings', TestingController::class)->middleware('auth');
 

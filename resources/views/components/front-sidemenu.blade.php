@@ -95,7 +95,7 @@
 																</a>
 												</li>
 												<li class="nav-item">
-																<a href="view/users.php" class="nav-link">
+																<a href="/admin/users" class="nav-link {{ Request::is('admin/users') ? 'active' : '' }}">
 																				<i class="nav-icon fas fa-users"></i>
 																				<p>
 																								Users
@@ -104,7 +104,7 @@
 																</a>
 												</li>
 												<li class="nav-item">
-																<a href="view/profile.php" class="nav-link">
+																<a href="/profile" class="nav-link {{ Request::is('profile') ? 'active' : '' }}">
 																				<i class="nav-icon fas fa-id-badge"></i>
 																				<p>
 																								Profile

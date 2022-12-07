@@ -69,7 +69,14 @@
 																																								<tbody>
 																																												@foreach ($transactions as $transaction)
 																																																<tr>
-																																																				<td>{{ $transaction->order->order_code }}</td>
+																																																				<td>
+																																																								@if ($transaction->order->order_code)
+																																																												{{ $transaction->order->order_code }}
+																																																								@else
+																																																												ID Booking tidak dapat ditemukan (kemungkinan dikarenakan
+																																																												dihapusnya order)
+																																																								@endif
+																																																				</td>
 																																																				<td>{{ $transaction->order->user->name }}</td>
 																																																				<td>{{ $transaction->method->method }}</td>
 																																																				<td>{{ $transaction->name_account }}</td>

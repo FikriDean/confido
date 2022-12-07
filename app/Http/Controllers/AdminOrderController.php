@@ -153,81 +153,154 @@ class AdminOrderController extends Controller
             Transaction::create($validatedDataTransaction2);
         }
 
-        // $validatedDataPassengers1 = $request->validate([
-        //     'nama_penumpang_1' => ['required', 'min:3', 'max:100'],
-        //     'nik_penumpang_1' => ['required', 'min:3', 'max:100'],
-        //     'jenis_penumpang_1' => ['required', 'min:3', 'max:100']
-        // ]);
+        $validatedDataPassengers1 = $request->validate([
+            'nama_penumpang_1' => ['required', 'min:3', 'max:100'],
+            'nik_penumpang_1' => ['required', 'min:3', 'max:100'],
+            'jenis_penumpang_1' => ['required', 'min:3', 'max:100']
+        ]);
 
-        // $validatedDataPassengers2 = $request->validate([
-        //     'nama_penumpang_2' => ['min:3', 'max:100'],
-        //     'nik_penumpang_2' => ['min:3', 'max:100'],
-        //     'jenis_penumpang_2' => ['min:3', 'max:100'],
-        // ]);
+        if ($validatedDataPassengers1['jenis_penumpang_1'] == "true") {
+            $validatedDataPassengers1['jenis_penumpang_1'] = true;
+        } else {
+            $validatedDataPassengers1['jenis_penumpang_1'] = false;
+        }
 
-        // $validatedDataPassengers3 = $request->validate([
-        //     'nama_penumpang_3' => ['min:3', 'max:100'],
-        //     'nik_penumpang_3' => ['min:3', 'max:100'],
-        //     'jenis_penumpang_3' => ['min:3', 'max:100'],
-        // ]);
+        if ($request['nama_penumpang_2'] && $request['nik_penumpang_2'] && $request['jenis_penumpang_2']) {
+            $validatedDataPassengers2 = $request->validate([
+                'nama_penumpang_2' => ['min:3', 'max:100'],
+                'nik_penumpang_2' => ['min:3', 'max:100'],
+                'jenis_penumpang_2' => ['min:3', 'max:100'],
+            ]);
 
-        // $validatedDataPassengers4 = $request->validate([
-        //     'nama_penumpang_4' => ['min:3', 'max:100'],
-        //     'nik_penumpang_4' => ['min:3', 'max:100'],
-        //     'jenis_penumpang_4' => ['min:3', 'max:100'],
+            if ($validatedDataPassengers2['jenis_penumpang_2'] == "true") {
+                $validatedDataPassengers2['jenis_penumpang_2'] = true;
+            } else {
+                $validatedDataPassengers2['jenis_penumpang_2'] = false;
+            }
+        }
 
-        // ]);
+        if ($request['nama_penumpang_3'] && $request['nik_penumpang_3'] && $request['jenis_penumpang_3']) {
+            $validatedDataPassengers3 = $request->validate([
+                'nama_penumpang_3' => ['min:3', 'max:100'],
+                'nik_penumpang_3' => ['min:3', 'max:100'],
+                'jenis_penumpang_3' => ['min:3', 'max:100'],
+            ]);
 
-        // $validatedDataPassengers5 = $request->validate([
-        //     'nama_penumpang_5' => ['min:3', 'max:100'],
-        //     'nik_penumpang_5' => ['min:3', 'max:100'],
-        //     'jenis_penumpang_5' => ['min:3', 'max:100'],
-        // ]);
+            if ($validatedDataPassengers3['jenis_penumpang_3'] == "true") {
+                $validatedDataPassengers3['jenis_penumpang_3'] = true;
+            } else {
+                $validatedDataPassengers3['jenis_penumpang_3'] = false;
+            }
+        }
 
-        // if ($validatedDataPassengers1['jenis_penumpang_1'] == "true") {
-        //     $validatedDataPassengers1['jenis_penumpang_1'] = true;
-        // } else {
-        //     $validatedDataPassengers1['jenis_penumpang_1'] = false;
-        // }
 
-        // if ($validatedDataPassengers1['jenis_penumpang_2'] == "true") {
-        //     $validatedDataPassengers2['jenis_penumpang_2'] = true;
-        // } else {
-        //     $validatedDataPassengers2['jenis_penumpang_2'] = false;
-        // }
+        if ($request['nama_penumpang_4'] && $request['nik_penumpang_4'] && $request['jenis_penumpang_4']) {
+            $validatedDataPassengers4 = $request->validate([
+                'nama_penumpang_4' => ['min:3', 'max:100'],
+                'nik_penumpang_4' => ['min:3', 'max:100'],
+                'jenis_penumpang_4' => ['min:3', 'max:100'],
+            ]);
 
-        // if ($validatedDataPassengers3['jenis_penumpang_3'] == "true") {
-        //     $validatedDataPassengers3['jenis_penumpang_3'] = true;
-        // } else {
-        //     $validatedDataPassengers3['jenis_penumpang_3'] = false;
-        // }
+            if ($validatedDataPassengers4['jenis_penumpang_4'] == "true") {
+                $validatedDataPassengers4['jenis_penumpang_4'] = true;
+            } else {
+                $validatedDataPassengers4['jenis_penumpang_4'] = false;
+            }
+        }
 
-        // if ($validatedDataPassengers4['jenis_penumpang_4'] == "true") {
-        //     $validatedDataPassengers4['jenis_penumpang_4'] = true;
-        // } else {
-        //     $validatedDataPassengers4['jenis_penumpang_4'] = false;
-        // }
+        if ($request['nama_penumpang_5'] && $request['nik_penumpang_5'] && $request['jenis_penumpang_5']) {
+            $validatedDataPassengers5 = $request->validate([
+                'nama_penumpang_5' => ['min:3', 'max:100'],
+                'nik_penumpang_5' => ['min:3', 'max:100'],
+                'jenis_penumpang_5' => ['min:3', 'max:100'],
+            ]);
 
-        // if ($validatedDataPassengers5['jenis_penumpang_5'] == "true") {
-        //     $validatedDataPassengers5['jenis_penumpang_5'] = true;
-        // } else {
-        //     $validatedDataPassengers5['jenis_penumpang_5'] = false;
-        // }
+            if ($validatedDataPassengers5['jenis_penumpang_5'] == "true") {
+                $validatedDataPassengers5['jenis_penumpang_5'] = true;
+            } else {
+                $validatedDataPassengers5['jenis_penumpang_5'] = false;
+            }
+        }
 
-        // switch ($request['amount']) {
-        //     case 5:
-        //         Passenger::create($validatedDataPassengers5);
-        //     case 4:
-        //         Passenger::create($validatedDataPassengers4);
-        //     case 3:
-        //         Passenger::create($validatedDataPassengers3);
-        //     case 2:
-        //         Passenger::create($validatedDataPassengers2);
-        //     case 1:
-        //         Passenger::create($validatedDataPassengers1);
-        // };
+        switch ($request['amount']) {
+            case 5:
+                $validatedRealPassenger5 = [];
+                $validatedRealPassenger5['order_id'] = $order1->id;
+                $validatedRealPassenger5['name'] = $validatedDataPassengers5['nama_penumpang_5'];
+                $validatedRealPassenger5['id_number'] = $validatedDataPassengers5['nik_penumpang_5'];
+                $validatedRealPassenger5['gender'] = $validatedDataPassengers5['jenis_penumpang_5'];
+                Passenger::create($validatedRealPassenger5);
+            case 4:
+                $validatedRealPassenger4 = [];
+                $validatedRealPassenger4['order_id'] = $order1->id;
+                $validatedRealPassenger4['name'] = $validatedDataPassengers4['nama_penumpang_4'];
+                $validatedRealPassenger4['id_number'] = $validatedDataPassengers4['nik_penumpang_4'];
+                $validatedRealPassenger4['gender'] = $validatedDataPassengers4['jenis_penumpang_4'];
+                Passenger::create($validatedRealPassenger4);
+            case 3:
+                $validatedRealPassenger3 = [];
+                $validatedRealPassenger3['order_id'] = $order1->id;
+                $validatedRealPassenger3['name'] = $validatedDataPassengers3['nama_penumpang_3'];
+                $validatedRealPassenger3['id_number'] = $validatedDataPassengers3['nik_penumpang_3'];
+                $validatedRealPassenger3['gender'] = $validatedDataPassengers3['jenis_penumpang_3'];
+                Passenger::create($validatedRealPassenger3);
+            case 2:
+                $validatedRealPassenger2 = [];
+                $validatedRealPassenger2['order_id'] = $order1->id;
+                $validatedRealPassenger2['name'] = $validatedDataPassengers2['nama_penumpang_2'];
+                $validatedRealPassenger2['id_number'] = $validatedDataPassengers2['nik_penumpang_2'];
+                $validatedRealPassenger2['gender'] = $validatedDataPassengers2['jenis_penumpang_2'];
+                Passenger::create($validatedRealPassenger2);
+            case 1:
+                $validatedRealPassenger1 = [];
+                $validatedRealPassenger1['order_id'] = $order1->id;
+                $validatedRealPassenger1['name'] = $validatedDataPassengers1['nama_penumpang_1'];
+                $validatedRealPassenger1['id_number'] = $validatedDataPassengers1['nik_penumpang_1'];
+                $validatedRealPassenger1['gender'] = $validatedDataPassengers1['jenis_penumpang_1'];
+                Passenger::create($validatedRealPassenger1);
+        };
 
-        return redirect('/admin/orders/create');
+        if ($validatedDataOrder['round_trip'] == true) {
+            switch ($request['amount']) {
+                case 5:
+                    $validatedRealPassenger5 = [];
+                    $validatedRealPassenger5['order_id'] = $order2->id;
+                    $validatedRealPassenger5['name'] = $validatedDataPassengers5['nama_penumpang_5'];
+                    $validatedRealPassenger5['id_number'] = $validatedDataPassengers5['nik_penumpang_5'];
+                    $validatedRealPassenger5['gender'] = $validatedDataPassengers5['jenis_penumpang_5'];
+                    Passenger::create($validatedRealPassenger5);
+                case 4:
+                    $validatedRealPassenger4 = [];
+                    $validatedRealPassenger4['order_id'] = $order2->id;
+                    $validatedRealPassenger4['name'] = $validatedDataPassengers4['nama_penumpang_4'];
+                    $validatedRealPassenger4['id_number'] = $validatedDataPassengers4['nik_penumpang_4'];
+                    $validatedRealPassenger4['gender'] = $validatedDataPassengers4['jenis_penumpang_4'];
+                    Passenger::create($validatedRealPassenger4);
+                case 3:
+                    $validatedRealPassenger3 = [];
+                    $validatedRealPassenger3['order_id'] = $order2->id;
+                    $validatedRealPassenger3['name'] = $validatedDataPassengers3['nama_penumpang_3'];
+                    $validatedRealPassenger3['id_number'] = $validatedDataPassengers3['nik_penumpang_3'];
+                    $validatedRealPassenger3['gender'] = $validatedDataPassengers3['jenis_penumpang_3'];
+                    Passenger::create($validatedRealPassenger3);
+                case 2:
+                    $validatedRealPassenger2 = [];
+                    $validatedRealPassenger2['order_id'] = $order2->id;
+                    $validatedRealPassenger2['name'] = $validatedDataPassengers2['nama_penumpang_2'];
+                    $validatedRealPassenger2['id_number'] = $validatedDataPassengers2['nik_penumpang_2'];
+                    $validatedRealPassenger2['gender'] = $validatedDataPassengers2['jenis_penumpang_2'];
+                    Passenger::create($validatedRealPassenger2);
+                case 1:
+                    $validatedRealPassenger1 = [];
+                    $validatedRealPassenger1['order_id'] = $order2->id;
+                    $validatedRealPassenger1['name'] = $validatedDataPassengers1['nama_penumpang_1'];
+                    $validatedRealPassenger1['id_number'] = $validatedDataPassengers1['nik_penumpang_1'];
+                    $validatedRealPassenger1['gender'] = $validatedDataPassengers1['jenis_penumpang_1'];
+                    Passenger::create($validatedRealPassenger1);
+            };
+        }
+
+        return redirect('/admin/transactions');
     }
 
     /**

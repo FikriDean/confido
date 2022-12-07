@@ -178,17 +178,8 @@
 
 																																																</div>
 																																												</div>
-
-																																												{{-- @if (session('sameTicket'))
-																																																<script type="text/javascript">
-																																																				document.getElementById('button-tambah-harga').click()
-																																																</script>
-																																												@endif --}}
-
 																																								</div>
 																																				</div>
-
-
 																																</div>
 																																<!-- /.card-header -->
 																																<div class="card-body">
