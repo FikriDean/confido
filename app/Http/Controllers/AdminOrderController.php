@@ -51,6 +51,12 @@ class AdminOrderController extends Controller
      */
     public function store(Request $request)
     {
+        if ($request['round_trip'] == true) {
+            $validatedReturnDate = $request->validate([
+                'return_date' => ['required']
+            ]);
+        };
+
         $validatedDataOrder = $request->validate([
             'from_route' => ['required'],
             'to_route' => ['required'],
@@ -59,7 +65,6 @@ class AdminOrderController extends Controller
             'round_trip' => ['required'],
             'amount' => ['required', 'max:5'],
             'go_date' => ['required'],
-            'return_date' => [],
         ]);
 
         if ($validatedDataOrder['round_trip'] == "true") {
@@ -111,8 +116,6 @@ class AdminOrderController extends Controller
                 'type_id' => ['required'],
                 'round_trip' => ['required'],
                 'amount' => ['required', 'max:5'],
-                'go_date' => ['required'],
-                'return_date' => [],
             ]);
 
             if ($validatedDataOrder2['round_trip'] == "true") {
@@ -124,6 +127,7 @@ class AdminOrderController extends Controller
             $validatedDataOrder2['user_id'] = auth()->user()->id;
             $order_code2 = strval(number_format(microtime(true) * 1000, 0, '.', ''));
             $validatedDataOrder2['order_code'] = $order_code2;
+            $validatedDataOrder2['go_date'] = $validatedReturnDate['return_date'];
 
             $from_route = $request['to_route'];
             $to_route = $request['from_route'];

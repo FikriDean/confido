@@ -24,7 +24,6 @@ class OrderFactory extends Factory
       'ticket_id' => 1,
       'round_trip' => true,
       'go_date' => date('Y-m-d'),
-      'return_date' => date('Y-m-d'),
       'amount' => 2
     ];
   }

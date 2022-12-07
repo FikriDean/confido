@@ -53,8 +53,8 @@
 																								<div class="col-md-3">
 
 																												<!-- Profile Image -->
-																												<div class="card card-primary card-outline">
-																																<div class="card-body box-profile">
+																												<div class="card card-danger card-outline">
+																																<div class="card-body box-profile d-flex flex-column align-items-center">
 																																				<div class="text-center">
 																																								<img class="profile-user-img img-fluid img-circle" src="{{ asset($user->image) }}"
 																																												alt="{{ $user->name }}">
@@ -62,6 +62,12 @@
 
 																																				<h3 class="mt-3 profile-username text-center">{{ $user->name }}</h3>
 
+																																				<h6 class="mt-3 text-center bg-danger rounded w-50 h-100"> {{ $user->role }} </h6>
+
+																																</div>
+																																<!-- /.card-body -->
+
+																																<div class="card-footer">
 																																				<p class="text-muted text-center">{{ $user->email }} &#65312;</p>
 
 																																				<p class="text-muted text-center">
@@ -92,7 +98,6 @@
 																																								@endif
 																																				</p>
 																																</div>
-																																<!-- /.card-body -->
 																												</div>
 																												<!-- /.card -->
 

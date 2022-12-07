@@ -74,7 +74,7 @@
 																																<div class="icon">
 																																				<i class="ion ion-stats-bars"></i>
 																																</div>
-																																<a href="#" class="small-box-footer">More info <i
+																																<a href="#" class="small-box-footer">Klik untuk melihat daftar pesanan <i
 																																								class="fas fa-arrow-circle-right"></i></a>
 																												</div>
 																								</div>
@@ -83,9 +83,9 @@
 																												<!-- small box -->
 																												<div class="small-box bg-warning">
 																																<div class="inner">
-																																				<h3>44</h3>
+																																				<h3>Transaksi</h3>
 
-																																				<p>User Registrations</p>
+																																				<p>Terdapat {{ $transactions->count() }} yang belum di konfirmasi/setujui</p>
 																																</div>
 																																<div class="icon">
 																																				<i class="ion ion-person-add"></i>
@@ -106,7 +106,7 @@
 																																<div class="icon">
 																																				<i class="ion ion-pie-graph"></i>
 																																</div>
-																																<a href="#" class="small-box-footer">More info <i
+																																<a href="#" class="small-box-footer">Klik untuk melihat daftar transaksi <i
 																																								class="fas fa-arrow-circle-right"></i></a>
 																												</div>
 																								</div>

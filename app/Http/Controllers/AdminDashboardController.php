@@ -14,7 +14,8 @@ class AdminDashboardController extends Controller
     {
         return view('admin.dashboard.index', [
             'tickets' => Ticket::all(),
-            'orders' => Order::all()
+            'orders' => Order::all(),
+            'transactions' => Transaction::where('status', false)
         ]);
     }
 }

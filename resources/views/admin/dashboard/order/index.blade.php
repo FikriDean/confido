@@ -100,43 +100,11 @@
 																																																												<button class="btn btn-danger btn-xs"
 																																																																type="submit">Hapus</button>
 																																																								</form>
-																																																								<a href="invoice.php" target="_blank">
+																																																								<a href="/print?order={{ $order->order_code }}" target="_blank">
 																																																												<button class="btn btn-success btn-xs"
 																																																																type="button">Cetak</button>
 																																																								</a>
-																																																								<button class="btn btn-warning btn-xs" type="button"
-																																																												data-toggle="modal" data-target="#modal-lg">Lapor
-																																																								</button>
 																																																				</td>
-
-																																																				<div class="modal fade" id="modal-lg">
-																																																								<div class="modal-dialog modal-lg">
-																																																												<div class="modal-content">
-																																																																<div class="modal-header">
-																																																																				<h4 class="modal-title">Lapor</h4>
-																																																																				<button type="button" class="close"
-																																																																								data-dismiss="modal" aria-label="Close">
-																																																																								<span aria-hidden="true">&times;</span>
-																																																																				</button>
-																																																																</div>
-																																																																<div class="modal-body">
-																																																																				<div class="form-group row">
-																																																																								<label for="inputExperience"
-																																																																												class="col-sm-2 col-form-label">Keluhan</label>
-																																																																								<div class="col-sm-10">
-																																																																												<textarea class="form-control" id="inputExperience" placeholder="Keluhan"></textarea>
-																																																																								</div>
-																																																																				</div>
-																																																																</div>
-																																																																<div class="modal-footer justify-content-between">
-																																																																				<button type="button"
-																																																																								class="btn btn-primary">SUbmit</button>
-																																																																</div>
-																																																												</div>
-																																																												<!-- /.modal-content -->
-																																																								</div>
-																																																								<!-- /.modal-dialog -->
-																																																				</div>
 																																																</tr>
 																																												@endforeach
 																																				</table>

@@ -27,7 +27,7 @@
 																?>
 																<i class="nav-icon fas fa-home"></i>
 																<p>
-																				Landing Page
+																				Halaman Utama
 																</p>
 																</a>
 												</li>
@@ -44,7 +44,7 @@
 																<a href="/admin/tickets" class="nav-link {{ Request::is('admin/tickets') ? 'active' : '' }}">
 																				<i class="nav-icon fas fa-money-bill-wave"></i>
 																				<p>
-																								Harga
+																								Daftar Tiket
 																								<i class="fas fa-angle-left right"></i>
 																				</p>
 																</a>
@@ -54,7 +54,7 @@
 																				class="nav-link {{ Request::is('admin/orders/create') ? 'active' : '' }}">
 																				<i class="nav-icon fas fa-edit"></i>
 																				<p>
-																								Pesanan
+																								Buat Pesanan
 																								<i class="fas fa-angle-left right"></i>
 																				</p>
 																</a>
@@ -86,7 +86,7 @@
 																</ul>
 												</li>
 												<li class="nav-item">
-																<a href="view/keluhan.php" class="nav-link">
+																<a href="/print" class="nav-link">
 																				<i class="nav-icon fas fa-comments"></i>
 																				<p>
 																								Keluhan
@@ -104,7 +104,7 @@
 																</a>
 												</li>
 												<li class="nav-item">
-																<a href="/profile" class="nav-link {{ Request::is('profile') ? 'active' : '' }}">
+																<a href="/user" class="nav-link {{ Request::is('user') ? 'active' : '' }}">
 																				<i class="nav-icon fas fa-id-badge"></i>
 																				<p>
 																								Profile

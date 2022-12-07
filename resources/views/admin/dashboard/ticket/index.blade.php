@@ -83,7 +83,7 @@
 																																																																				<label for="airline_id"
 																																																																								class="col-sm-2 col-form-label">Maskapai</label>
 																																																																				<select name="airline_id" id="airline_id"
-																																																																								class="form-control1" required>
+																																																																								class="form-control col-sm-10" required>
 																																																																								<option selected value="" disabled>Pilih
 																																																																												Maskapai
 																																																																								</option>
@@ -105,7 +105,7 @@
 																																																																				<label for="type_id"
 																																																																								class="col-sm-2 col-form-label">Jenis:</label>
 																																																																				<select name="type_id" id="type_id"
-																																																																								class="form-control1" required>
+																																																																								class="form-control col-sm-10" required>
 																																																																								<option selected value="" disabled>Pilih Jenis
 																																																																								</option>
 																																																																								@foreach ($types as $type)
@@ -120,7 +120,7 @@
 																																																																				<label for="track_id"
 																																																																								class="col-sm-2 col-form-label">Rute</label>
 																																																																				<select name="track_id" id="track_id"
-																																																																								class="form-control1"0
+																																																																								class="form-control col-sm-10"0
 																																																																								onchange="getSelectValue(this.value);" required>
 																																																																								<option selected value="" disabled>Pilih Rute
 																																																																								</option>
@@ -152,7 +152,7 @@
 																																																																<div class="form-group row">
 																																																																				<label for="inputName2"
 																																																																								class="col-sm-2 col-form-label">Harga:</label>
-																																																																				<input type="number" class="form-control1"
+																																																																				<input type="number" class="form-control col-sm-10"
 																																																																								placeholder="Harga Baru" name='price'
 																																																																								id='hargaadd' min="0">
 																																																																				<label for="inputName2"
@@ -252,7 +252,7 @@
 																																																																												class="col-sm-2 col-form-label">Harga
 																																																																												Baru:</label>
 																																																																								<input type="number"
-																																																																												class="col-sm-3 form-control1"
+																																																																												class="col-sm-3 form-control col-sm-10"
 																																																																												placeholder="Harga Baru" name='price'
 																																																																												id='hargaadd' required>
 																																																																				</div>

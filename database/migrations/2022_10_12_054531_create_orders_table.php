@@ -20,7 +20,6 @@ return new class extends Migration
             $table->foreignId('ticket_id');
             $table->boolean('round_trip');
             $table->date('go_date');
-            $table->date('return_date')->nullable();
             $table->integer('amount');
             $table->timestamps();
         });
