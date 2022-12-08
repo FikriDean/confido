@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
@@ -15,8 +16,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('mix.profile.index', [
-            'user' => Auth::user()
+        return view('dashboard.user.index', [
+            'users' => User::all()
         ]);
     }
 
@@ -49,7 +50,19 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
+        if (Gate::allows('isAdmin')) {
+            return view('dashboard.profile.index', [
+                'user' => $user
+            ]);
+        } else {
+            if (Auth::id() != $user->id) {
+                return redirect('/users' . '/' . Auth::id());
+            }
+
+            return view('dashboard.profile.index', [
+                'user' => $user
+            ]);
+        }
     }
 
     /**
@@ -94,7 +107,11 @@ class UserController extends Controller
 
         $user->update($validatedData);
 
-        return redirect('profile');
+        if (Gate::allows('isAdmin')) {
+            return redirect('/users');
+        } else {
+            return redirect('/users' . '/' . Auth::id());
+        }
     }
 
     /**

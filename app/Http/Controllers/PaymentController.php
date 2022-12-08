@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Testing;
-use App\Models\Order;
-use App\Models\Post;
-use App\Models\User;
+use App\Models\Payment;
+use App\Models\Totals;
 use Illuminate\Http\Request;
 
-class TestingController extends Controller
+class PaymentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +15,8 @@ class TestingController extends Controller
      */
     public function index()
     {
-        return view('testing.index', [
-            'posts' => Post::all(),
-            'users' => User::all()
+        return view('admin.payment.index', [
+            'payments' => Payment::all()
         ]);
     }
 
@@ -30,9 +27,7 @@ class TestingController extends Controller
      */
     public function create()
     {
-        return view("testing.create", [
-            "title" => "Ticket Order"
-        ]);
+        //
     }
 
     /**
@@ -43,24 +38,16 @@ class TestingController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'body' => ['required']
-        ]);
-
-        $validatedData['user_id'] = auth()->user()->id;
-
-        Post::create($validatedData);
-
-        return redirect('/testings');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Order  $order
+     * @param  \App\Models\Payment  $payment
      * @return \Illuminate\Http\Response
      */
-    public function show(Order $order)
+    public function show(Payment $payment)
     {
         //
     }
@@ -68,33 +55,47 @@ class TestingController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Order  $order
+     * @param  \App\Models\Payment  $payment
      * @return \Illuminate\Http\Response
      */
-    public function edit(Order $order)
+    public function edit(Payment $payment)
     {
-        //
+        return view('admin.payment.edit', [
+            'payment' => $payment
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Order  $order
+     * @param  \App\Models\Payment  $payment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Order $order)
+    public function update(Request $request, Payment $payment)
     {
-        //
+        $validatedData = $request->validate([
+            'status' => []
+        ]);
+
+        if ($request['status']) {
+            $validatedData['status'] = true;
+        } else {
+            $validatedData['status'] = false;
+        }
+
+        $payment->update($validatedData);
+
+        return redirect('/admin/payments');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Order  $order
+     * @param  \App\Models\Payment  $payment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Order $order)
+    public function destroy(Payment $payment)
     {
         //
     }

@@ -45,7 +45,7 @@
 																								</div>
 																								<div class="col-sm-6">
 																												<ol class="breadcrumb float-sm-right">
-																																<li class="breadcrumb-item"><a href="/admin/dashboard">Home</a></li>
+																																<li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
 																																<li class="breadcrumb-item active">Pesanan</li>
 																												</ol>
 																								</div>
@@ -59,15 +59,20 @@
 																				<div class="row">
 																								<!-- left column -->
 																								<div class="col-md-12">
-
+																												@if (session('success'))
+																																<div class="alert alert-success">
+																																				{{ session('success') }}
+																																</div>
+																												@endif
 																												<!-- Pesanan elements disabled -->
 																												<div class="card card-warning">
 																																<div class="card-header">
 																																				<h3 class="card-title">Form Pesanan</h3>
 																																</div>
 																																<!-- /.card-header -->
-																																<form action="/admin/orders" method="POST">
+																																<form action="/orders" method="POST">
 																																				@csrf
+																																				@method('POST')
 																																				<div class="card-body">
 																																								<h4>Data Tiket</h4>
 
@@ -438,7 +443,7 @@
 
 								checkTicketButton.addEventListener('click', function() {
 												fetch(
-																				`/admin/checkprice?airline_id=${airline.value}&type_id=${airline_class.value}&from_route=${pickup.value}&to_route=${destination.value}`
+																				`/checkprice?airline_id=${airline.value}&type_id=${airline_class.value}&from_route=${pickup.value}&to_route=${destination.value}`
 																)
 																.then(response => {
 																				return response.json();

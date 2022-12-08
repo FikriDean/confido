@@ -46,73 +46,147 @@
 												<section class="content">
 																<div class="container-fluid">
 																				<!-- Small boxes (Stat box) -->
-																				<div class="row">
-																								<div class="col-lg-3 col-6">
-																												<!-- small box -->
-																												<div class="small-box bg-info">
-																																<div class="inner">
-																																				<h3>Tiket</h3>
+																				@can('isAdmin')
+																								<div class="row">
+																												<div class="col-lg-3 col-6">
+																																<!-- small box -->
+																																<div class="small-box bg-info">
+																																				<div class="inner">
+																																								<h3>Tiket</h3>
 
-																																				<p>{{ $tickets->count() }} tiket telah terdaftar!</p>
+																																								<p>{{ $tickets->count() }} tiket telah terdaftar!</p>
+																																				</div>
+																																				<div class="icon">
+																																								<i class="ion ion-bag"></i>
+																																				</div>
+																																				<a href="/tickets" class="small-box-footer">Klik untuk melihat daftar harga tiket <i
+																																												class="fas fa-arrow-circle-right"></i></a>
 																																</div>
-																																<div class="icon">
-																																				<i class="ion ion-bag"></i>
-																																</div>
-																																<a href="/admin/tickets" class="small-box-footer">Klik untuk melihat daftar harga tiket <i
-																																								class="fas fa-arrow-circle-right"></i></a>
 																												</div>
-																								</div>
-																								<!-- ./col -->
-																								<div class="col-lg-3 col-6">
-																												<!-- small box -->
-																												<div class="small-box bg-success">
-																																<div class="inner">
-																																				<h3>Pesanan</h3>
+																												<!-- ./col -->
+																												<div class="col-lg-3 col-6">
+																																<!-- small box -->
+																																<div class="small-box bg-success">
+																																				<div class="inner">
+																																								<h3>Pesanan</h3>
 
-																																				<p>Terdapat pesanan lebih dari {{ $orders->count() - 1 }}</p>
+																																								<p>Terdapat pesanan lebih dari {{ $orders->count() - 1 }}</p>
+																																				</div>
+																																				<div class="icon">
+																																								<i class="ion ion-stats-bars"></i>
+																																				</div>
+																																				<a href="#" class="small-box-footer">Klik untuk melihat daftar pesanan <i
+																																												class="fas fa-arrow-circle-right"></i></a>
 																																</div>
-																																<div class="icon">
-																																				<i class="ion ion-stats-bars"></i>
-																																</div>
-																																<a href="#" class="small-box-footer">Klik untuk melihat daftar pesanan <i
-																																								class="fas fa-arrow-circle-right"></i></a>
 																												</div>
-																								</div>
-																								<!-- ./col -->
-																								<div class="col-lg-3 col-6">
-																												<!-- small box -->
-																												<div class="small-box bg-warning">
-																																<div class="inner">
-																																				<h3>Transaksi</h3>
+																												<!-- ./col -->
+																												<div class="col-lg-3 col-6">
+																																<!-- small box -->
+																																<div class="small-box bg-warning">
+																																				<div class="inner">
+																																								<h3>Transaksi</h3>
 
-																																				<p>Terdapat {{ $transactions->count() }} yang belum di konfirmasi/setujui</p>
+																																								<p>Terdapat {{ $transactions->count() }} yang belum di konfirmasi/setujui</p>
+																																				</div>
+																																				<div class="icon">
+																																								<i class="ion ion-person-add"></i>
+																																				</div>
+																																				<a href="#" class="small-box-footer">More info <i
+																																												class="fas fa-arrow-circle-right"></i></a>
 																																</div>
-																																<div class="icon">
-																																				<i class="ion ion-person-add"></i>
-																																</div>
-																																<a href="#" class="small-box-footer">More info <i
-																																								class="fas fa-arrow-circle-right"></i></a>
 																												</div>
-																								</div>
-																								<!-- ./col -->
-																								<div class="col-lg-3 col-6">
-																												<!-- small box -->
-																												<div class="small-box bg-danger">
-																																<div class="inner">
-																																				<h3>65</h3>
+																												<!-- ./col -->
+																												<div class="col-lg-3 col-6">
+																																<!-- small box -->
+																																<div class="small-box bg-danger">
+																																				<div class="inner">
+																																								<h3>Keluhan</h3>
 
-																																				<p>Unique Visitors</p>
+																																								<p>Terdapat {{ $complaints->count() }} keluhan/obrolan yang belum ditanggapi</p>
+																																				</div>
+																																				<div class="icon">
+																																								<i class="ion ion-pie-graph"></i>
+																																				</div>
+																																				<a href="/orders" class="small-box-footer">Klik untuk melihat daftar keluhan <i
+																																												class="fas fa-arrow-circle-right"></i></a>
 																																</div>
-																																<div class="icon">
-																																				<i class="ion ion-pie-graph"></i>
-																																</div>
-																																<a href="#" class="small-box-footer">Klik untuk melihat daftar transaksi <i
-																																								class="fas fa-arrow-circle-right"></i></a>
 																												</div>
-																								</div>
 
-																								<!-- /.card-body -->
-																				</div>
+																												<!-- /.card-body -->
+																								</div>
+																				@endcan
+																				@can('isCustomer')
+																								<div class="row">
+																												<div class="col-lg-3 col-6">
+																																<!-- small box -->
+																																<div class="small-box bg-success">
+																																				<div class="inner">
+																																								<h3>Pesanan</h3>
+
+																																								<p>Ayo, pesan tiket pesawat mu sekarang!</p>
+																																								<br>
+																																				</div>
+																																				<div class="icon">
+																																								<i class="ion ion-stats-bars"></i>
+																																				</div>
+																																				<a href="/orders/create" class="small-box-footer">Klik untuk memesan tiket pesawat <i
+																																												class="fas fa-arrow-circle-right"></i></a>
+																																</div>
+																												</div>
+																												<!-- ./col -->
+
+																												<div class="col-lg-3 col-6">
+																																<!-- small box -->
+																																<div class="small-box bg-info">
+																																				<div class="inner">
+																																								<h3>Tiket</h3>
+
+																																								<p>Terdapat lebih dari {{ $tickets->count() - 1 }} tiket yang dapat kamu pesan sekarang!
+																																								</p>
+																																				</div>
+																																				<div class="icon">
+																																								<i class="ion ion-bag"></i>
+																																				</div>
+																																				<a href="/tickets" class="small-box-footer">Klik untuk melihat daftar harga tiket <i
+																																												class="fas fa-arrow-circle-right"></i></a>
+																																</div>
+																												</div>
+																												<!-- ./col -->
+
+																												<div class="col-lg-3 col-6">
+																																<!-- small box -->
+																																<div class="small-box bg-warning">
+																																				<div class="inner">
+																																								<h3>Transaksi</h3>
+																																								<p>Terdapat {{ $transactions->count() }} transaksi yang belum di konfirmasi/setujui</p>
+																																				</div>
+																																				<div class="icon">
+																																								<i class="ion ion-person-add"></i>
+																																				</div>
+																																				<a href="/transactions" class="small-box-footer">Klik untuk melihat daftar transaksimu
+																																								<i class="fas fa-arrow-circle-right"></i></a>
+																																</div>
+																												</div>
+
+																												<div class="col-lg-3 col-6">
+																																<!-- small box -->
+																																<div class="small-box bg-danger">
+																																				<div class="inner">
+																																								<h3>Keluhan</h3>
+
+																																								<p>Terdapat {{ $complaints->count() }} keluhan/obrolan yang belum ditanggapi</p>
+																																				</div>
+																																				<div class="icon">
+																																								<i class="ion ion-pie-graph"></i>
+																																				</div>
+																																				<a href="/orders" class="small-box-footer">Klik untuk melihat daftar keluhan <i
+																																												class="fas fa-arrow-circle-right"></i></a>
+																																</div>
+																												</div>
+																												<!-- ./col -->
+																												<!-- /.card-body -->
+																								</div>
+																				@endcan
 																				<!-- ./col -->
 																</div>
 																<!-- /.row -->

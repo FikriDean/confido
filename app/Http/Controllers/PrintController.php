@@ -13,14 +13,14 @@ class PrintController extends Controller
     public function index(Request $request)
     {
         $order = Order::where('order_code', $request['order'])->first();
-        return view('customer.order.print', [
+        return view('admin.dashboard.order.print', [
             'order' => $order
         ]);
     }
 
-    public function print()
-    {
-        $pdf = PDF::loadview('customer.order.print')->setPaper('A4', 'potrait');
-        return $pdf->stream('invoice.pdf');
-    }
+    // public function print()
+    // {
+    //     $pdf = PDF::loadview('customer.order.print')->setPaper('A4', 'potrait');
+    //     return $pdf->stream('invoice.pdf');
+    // }
 }

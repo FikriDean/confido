@@ -7,11 +7,14 @@ use App\Models\Track;
 use App\Models\Airline;
 use App\Models\Type;
 use App\Models\Method;
+use App\Models\Passenger;
 use App\Models\Ticket;
 use App\Models\Transaction;
+use App\Models\Complaint;
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -22,9 +25,17 @@ class OrderController extends Controller
      */
     public function index()
     {
-        return view('customer.order.index', [
-            'orders' => Order::all()->where('user_id', Auth::id())
-        ]);
+        if (Gate::allows('isAdmin')) {
+            return view('dashboard.order.index', [
+                'orders' => Order::all(),
+                'complaints' => Complaint::all()
+            ]);
+        } else {
+            return view('dashboard.order.index', [
+                'orders' => Order::where('user_id', Auth::id())->get(),
+                'complaints' => Complaint::all()
+            ]);
+        }
     }
 
     /**
@@ -34,7 +45,7 @@ class OrderController extends Controller
      */
     public function create()
     {
-        return view("customer.order.create", [
+        return view("dashboard.order.create", [
             "routes" => Track::all(),
             'airlines' => Airline::all(),
             'types' => Type::all(),
@@ -51,6 +62,13 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
+
+        if ($request['round_trip'] == "true") {
+            $validatedReturnDate = $request->validate([
+                'return_date' => ['required']
+            ]);
+        };
+
         $validatedDataOrder = $request->validate([
             'from_route' => ['required'],
             'to_route' => ['required'],
@@ -59,7 +77,6 @@ class OrderController extends Controller
             'round_trip' => ['required'],
             'amount' => ['required', 'max:5'],
             'go_date' => ['required'],
-            'return_date' => [],
         ]);
 
         if ($validatedDataOrder['round_trip'] == "true") {
@@ -111,8 +128,6 @@ class OrderController extends Controller
                 'type_id' => ['required'],
                 'round_trip' => ['required'],
                 'amount' => ['required', 'max:5'],
-                'go_date' => ['required'],
-                'return_date' => [],
             ]);
 
             if ($validatedDataOrder2['round_trip'] == "true") {
@@ -124,6 +139,7 @@ class OrderController extends Controller
             $validatedDataOrder2['user_id'] = auth()->user()->id;
             $order_code2 = strval(number_format(microtime(true) * 1000, 0, '.', ''));
             $validatedDataOrder2['order_code'] = $order_code2;
+            $validatedDataOrder2['go_date'] = $validatedReturnDate['return_date'];
 
             $from_route = $request['to_route'];
             $to_route = $request['from_route'];
@@ -153,7 +169,154 @@ class OrderController extends Controller
             Transaction::create($validatedDataTransaction2);
         }
 
-        return redirect('/orders');
+        $validatedDataPassengers1 = $request->validate([
+            'nama_penumpang_1' => ['required', 'min:3', 'max:100'],
+            'nik_penumpang_1' => ['required', 'min:3', 'max:100'],
+            'jenis_penumpang_1' => ['required', 'min:3', 'max:100']
+        ]);
+
+        if ($validatedDataPassengers1['jenis_penumpang_1'] == "true") {
+            $validatedDataPassengers1['jenis_penumpang_1'] = true;
+        } else {
+            $validatedDataPassengers1['jenis_penumpang_1'] = false;
+        }
+
+        if ($request['nama_penumpang_2'] && $request['nik_penumpang_2'] && $request['jenis_penumpang_2']) {
+            $validatedDataPassengers2 = $request->validate([
+                'nama_penumpang_2' => ['min:3', 'max:100'],
+                'nik_penumpang_2' => ['min:3', 'max:100'],
+                'jenis_penumpang_2' => ['min:3', 'max:100'],
+            ]);
+
+            if ($validatedDataPassengers2['jenis_penumpang_2'] == "true") {
+                $validatedDataPassengers2['jenis_penumpang_2'] = true;
+            } else {
+                $validatedDataPassengers2['jenis_penumpang_2'] = false;
+            }
+        }
+
+        if ($request['nama_penumpang_3'] && $request['nik_penumpang_3'] && $request['jenis_penumpang_3']) {
+            $validatedDataPassengers3 = $request->validate([
+                'nama_penumpang_3' => ['min:3', 'max:100'],
+                'nik_penumpang_3' => ['min:3', 'max:100'],
+                'jenis_penumpang_3' => ['min:3', 'max:100'],
+            ]);
+
+            if ($validatedDataPassengers3['jenis_penumpang_3'] == "true") {
+                $validatedDataPassengers3['jenis_penumpang_3'] = true;
+            } else {
+                $validatedDataPassengers3['jenis_penumpang_3'] = false;
+            }
+        }
+
+
+        if ($request['nama_penumpang_4'] && $request['nik_penumpang_4'] && $request['jenis_penumpang_4']) {
+            $validatedDataPassengers4 = $request->validate([
+                'nama_penumpang_4' => ['min:3', 'max:100'],
+                'nik_penumpang_4' => ['min:3', 'max:100'],
+                'jenis_penumpang_4' => ['min:3', 'max:100'],
+            ]);
+
+            if ($validatedDataPassengers4['jenis_penumpang_4'] == "true") {
+                $validatedDataPassengers4['jenis_penumpang_4'] = true;
+            } else {
+                $validatedDataPassengers4['jenis_penumpang_4'] = false;
+            }
+        }
+
+        if ($request['nama_penumpang_5'] && $request['nik_penumpang_5'] && $request['jenis_penumpang_5']) {
+            $validatedDataPassengers5 = $request->validate([
+                'nama_penumpang_5' => ['min:3', 'max:100'],
+                'nik_penumpang_5' => ['min:3', 'max:100'],
+                'jenis_penumpang_5' => ['min:3', 'max:100'],
+            ]);
+
+            if ($validatedDataPassengers5['jenis_penumpang_5'] == "true") {
+                $validatedDataPassengers5['jenis_penumpang_5'] = true;
+            } else {
+                $validatedDataPassengers5['jenis_penumpang_5'] = false;
+            }
+        }
+
+        switch ($request['amount']) {
+            case 5:
+                $validatedRealPassenger5 = [];
+                $validatedRealPassenger5['order_id'] = $order1->id;
+                $validatedRealPassenger5['name'] = $validatedDataPassengers5['nama_penumpang_5'];
+                $validatedRealPassenger5['id_number'] = $validatedDataPassengers5['nik_penumpang_5'];
+                $validatedRealPassenger5['gender'] = $validatedDataPassengers5['jenis_penumpang_5'];
+                Passenger::create($validatedRealPassenger5);
+            case 4:
+                $validatedRealPassenger4 = [];
+                $validatedRealPassenger4['order_id'] = $order1->id;
+                $validatedRealPassenger4['name'] = $validatedDataPassengers4['nama_penumpang_4'];
+                $validatedRealPassenger4['id_number'] = $validatedDataPassengers4['nik_penumpang_4'];
+                $validatedRealPassenger4['gender'] = $validatedDataPassengers4['jenis_penumpang_4'];
+                Passenger::create($validatedRealPassenger4);
+            case 3:
+                $validatedRealPassenger3 = [];
+                $validatedRealPassenger3['order_id'] = $order1->id;
+                $validatedRealPassenger3['name'] = $validatedDataPassengers3['nama_penumpang_3'];
+                $validatedRealPassenger3['id_number'] = $validatedDataPassengers3['nik_penumpang_3'];
+                $validatedRealPassenger3['gender'] = $validatedDataPassengers3['jenis_penumpang_3'];
+                Passenger::create($validatedRealPassenger3);
+            case 2:
+                $validatedRealPassenger2 = [];
+                $validatedRealPassenger2['order_id'] = $order1->id;
+                $validatedRealPassenger2['name'] = $validatedDataPassengers2['nama_penumpang_2'];
+                $validatedRealPassenger2['id_number'] = $validatedDataPassengers2['nik_penumpang_2'];
+                $validatedRealPassenger2['gender'] = $validatedDataPassengers2['jenis_penumpang_2'];
+                Passenger::create($validatedRealPassenger2);
+            case 1:
+                $validatedRealPassenger1 = [];
+                $validatedRealPassenger1['order_id'] = $order1->id;
+                $validatedRealPassenger1['name'] = $validatedDataPassengers1['nama_penumpang_1'];
+                $validatedRealPassenger1['id_number'] = $validatedDataPassengers1['nik_penumpang_1'];
+                $validatedRealPassenger1['gender'] = $validatedDataPassengers1['jenis_penumpang_1'];
+                Passenger::create($validatedRealPassenger1);
+        };
+
+        if ($validatedDataOrder['round_trip'] == true) {
+            switch ($request['amount']) {
+                case 5:
+                    $validatedRealPassenger5 = [];
+                    $validatedRealPassenger5['order_id'] = $order2->id;
+                    $validatedRealPassenger5['name'] = $validatedDataPassengers5['nama_penumpang_5'];
+                    $validatedRealPassenger5['id_number'] = $validatedDataPassengers5['nik_penumpang_5'];
+                    $validatedRealPassenger5['gender'] = $validatedDataPassengers5['jenis_penumpang_5'];
+                    Passenger::create($validatedRealPassenger5);
+                case 4:
+                    $validatedRealPassenger4 = [];
+                    $validatedRealPassenger4['order_id'] = $order2->id;
+                    $validatedRealPassenger4['name'] = $validatedDataPassengers4['nama_penumpang_4'];
+                    $validatedRealPassenger4['id_number'] = $validatedDataPassengers4['nik_penumpang_4'];
+                    $validatedRealPassenger4['gender'] = $validatedDataPassengers4['jenis_penumpang_4'];
+                    Passenger::create($validatedRealPassenger4);
+                case 3:
+                    $validatedRealPassenger3 = [];
+                    $validatedRealPassenger3['order_id'] = $order2->id;
+                    $validatedRealPassenger3['name'] = $validatedDataPassengers3['nama_penumpang_3'];
+                    $validatedRealPassenger3['id_number'] = $validatedDataPassengers3['nik_penumpang_3'];
+                    $validatedRealPassenger3['gender'] = $validatedDataPassengers3['jenis_penumpang_3'];
+                    Passenger::create($validatedRealPassenger3);
+                case 2:
+                    $validatedRealPassenger2 = [];
+                    $validatedRealPassenger2['order_id'] = $order2->id;
+                    $validatedRealPassenger2['name'] = $validatedDataPassengers2['nama_penumpang_2'];
+                    $validatedRealPassenger2['id_number'] = $validatedDataPassengers2['nik_penumpang_2'];
+                    $validatedRealPassenger2['gender'] = $validatedDataPassengers2['jenis_penumpang_2'];
+                    Passenger::create($validatedRealPassenger2);
+                case 1:
+                    $validatedRealPassenger1 = [];
+                    $validatedRealPassenger1['order_id'] = $order2->id;
+                    $validatedRealPassenger1['name'] = $validatedDataPassengers1['nama_penumpang_1'];
+                    $validatedRealPassenger1['id_number'] = $validatedDataPassengers1['nik_penumpang_1'];
+                    $validatedRealPassenger1['gender'] = $validatedDataPassengers1['jenis_penumpang_1'];
+                    Passenger::create($validatedRealPassenger1);
+            };
+        }
+
+        return redirect('/transactions')->with('success', 'Pesanan berhasil ditambahkan!');
     }
 
     /**
@@ -198,7 +361,11 @@ class OrderController extends Controller
      */
     public function destroy(Order $order)
     {
-        //
+        $transaction = Transaction::where('order_id', $order->id)->first()->id;
+        Transaction::destroy($transaction);
+
+        $order->destroy($order->id);
+        return redirect('/orders')->with('hapus', 'Data berhasil dihapus!');
     }
 
     public function checkprice(Request $request)
@@ -209,32 +376,32 @@ class OrderController extends Controller
 
         // Validasi ketersediaan value
         if (!$request['from_route']) {
-            return response()->json(['price' => 'You must to select your pickup location!']);
+            return response()->json(['price' => 'Pilih lokasi berangkat terlebih dahulu!']);
         } else {
             $from_route = $request['from_route'];
         }
 
         if (!$request['to_route']) {
-            return response()->json(['price' => 'You must to select your destination location!']);
+            return response()->json(['price' => 'Pilih lokasi tujuan terlebih dahulu!']);
         } else {
             $to_route = $request['to_route'];
         }
 
         if (!$request['airline_id']) {
-            return response()->json(['price' => 'You must to select airline!']);
+            return response()->json(['price' => 'Pilih maskapai terlebih dahulu!']);
         } else {
             $airline_id = $request['airline_id'];
         }
 
         if (!$request['type_id']) {
-            return response()->json(['price' => 'You must to select type of airline!']);
+            return response()->json(['price' => 'Pilih jenis maskapai terlebih dahulu!']);
         } else {
             $type_id = $request['type_id'];
         }
 
         // Validasi rute sama
         if ($from_route == $to_route) {
-            return response()->json(['price' => 'You cannot choose same location for pickup and destination']);
+            return response()->json(['price' => 'Anda tidak dapat memilih lokasi berangkat dan tujuan yang sama!']);
         }
 
         $track_id = Track::where('from_route', $from_route)->where('to_route', $to_route)->first()->id;
@@ -243,55 +410,17 @@ class OrderController extends Controller
 
         // Validasi belum jadi
         if ($track_id == null) {
-            return response()->json(['price' => 'Ticket Not Found!']);
+            return response()->json(['price' => 'Harga tiket tidak dapat ditampilkan']);
         }
 
         $price = Ticket::all()->where('airline_id', $airline_id)->where('type_id', $type_id)->where('track_id', $track_id)->first()->price->price;
+
         // Validasi belum jadi
         if ($price == null) {
-            return response()->json(['price' => 'Ticket Not Found!']);
+            return response()->json(['price' => 'Harga tiket tidak dapat ditampilkan']);
         }
 
         // Return JSON
         return response()->json(['price' => $price]);
-    }
-
-    public function checktickets(Request $request)
-    {
-        if (!$request['from_route']) {
-            return response()->json(['price' => 'You must to select your pickup location!']);
-        } else {
-            $from_route = $request['from_route'];
-        }
-
-        if (!$request['to_route']) {
-            return response()->json(['price' => 'You must to select your destination location!']);
-        } else {
-            $to_route = $request['to_route'];
-        }
-
-        if (!$request['airline_id']) {
-            return response()->json(['price' => 'You must to select airline!']);
-        } else {
-            $airline_id = $request['airline_id'];
-        }
-
-        if (!$request['type_id']) {
-            return response()->json(['price' => 'You must to select type of airline!']);
-        } else {
-            $type_id = $request['type_id'];
-        }
-
-        // Validasi rute sama
-        if ($from_route == $to_route) {
-            return response()->json(['price' => 'You cannot choose same location for pickup and destination']);
-        }
-
-        $track_id = Track::where('from_route', $from_route)->where('to_route', $to_route)->first()->id;
-
-        $tickets = Ticket::all()->where('airline_id', $airline_id)->where('type_id', $type_id)->where('track_id', $track_id);
-
-        // Return JSON
-        return response()->json(['tickets' => $tickets]);
     }
 }

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Track;
+use App\Models\Type;
 use Illuminate\Http\Request;
 
-class AdminTrackController extends Controller
+class TypeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,7 +24,7 @@ class AdminTrackController extends Controller
      */
     public function create()
     {
-        return view('admin.track.create');
+        return view('admin.type.create');
     }
 
     /**
@@ -36,22 +36,22 @@ class AdminTrackController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'from_route' => ['required'],
-            'to_route' => ['required']
+            'name' => ['required', 'min:3', 'max:50'],
+            'seat' => ['required', 'min:3', 'max:50'],
         ]);
 
-        Track::create($validatedData);
+        Type::create($validatedData);
 
-        return redirect('/admin/tracks');
+        return redirect('/admin/types');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Track  $track
+     * @param  \App\Models\Type  $type
      * @return \Illuminate\Http\Response
      */
-    public function show(Track $track)
+    public function show(Type $type)
     {
         //
     }
@@ -59,10 +59,10 @@ class AdminTrackController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Track  $track
+     * @param  \App\Models\Type  $type
      * @return \Illuminate\Http\Response
      */
-    public function edit(Track $track)
+    public function edit(Type $type)
     {
         //
     }
@@ -71,10 +71,10 @@ class AdminTrackController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Track  $track
+     * @param  \App\Models\Type  $type
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Track $track)
+    public function update(Request $request, Type $type)
     {
         //
     }
@@ -82,10 +82,10 @@ class AdminTrackController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Track  $track
+     * @param  \App\Models\Type  $type
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Track $track)
+    public function destroy(Type $type)
     {
         //
     }

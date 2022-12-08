@@ -53,8 +53,8 @@
 																								<div class="col-md-3">
 
 																												<!-- Profile Image -->
-																												<div class="card card-danger card-outline">
-																																<div class="card-body box-profile d-flex flex-column align-items-center">
+																												<div class="card card-primary @can('isAdmin') card-danger @endcan card-outline">
+																																<div class="card-header box-profile d-flex flex-column align-items-center">
 																																				<div class="text-center">
 																																								<img class="profile-user-img img-fluid img-circle" src="{{ asset($user->image) }}"
 																																												alt="{{ $user->name }}">
@@ -62,12 +62,14 @@
 
 																																				<h3 class="mt-3 profile-username text-center">{{ $user->name }}</h3>
 
-																																				<h6 class="mt-3 text-center bg-danger rounded w-50 h-100"> {{ $user->role }} </h6>
+																																				<h6
+																																								class="mt-3 text-center bg-primary @can('isAdmin') bg-danger @endcan rounded w-50 h-100">
+																																								{{ $user->role }} </h6>
 
 																																</div>
 																																<!-- /.card-body -->
 
-																																<div class="card-footer">
+																																<div class="card-body">
 																																				<p class="text-muted text-center">{{ $user->email }} &#65312;</p>
 
 																																				<p class="text-muted text-center">
@@ -97,6 +99,17 @@
 																																												belum di set
 																																								@endif
 																																				</p>
+
+																																				<div class="card-footer">
+																																								<div class="row">
+																																												<div class="col-sm-12 d-flex justify-content-center">
+																																																<form action="{{ route('logout') }}" method="POST">
+																																																				@csrf
+																																																				<button class="btn btn-danger w-100">Logout</button>
+																																																</form>
+																																												</div>
+																																								</div>
+																																				</div>
 																																</div>
 																												</div>
 																												<!-- /.card -->
@@ -110,7 +123,7 @@
 																																<div class="card-body">
 																																				<div class="tab-content">
 																																								<div class="active tab-pane" id="settings">
-																																												<form action="/user/{{ $user->id }}" method="POST"
+																																												<form action="/users/{{ $user->id }}" method="POST"
 																																																enctype="multipart/form-data">
 																																																@csrf
 																																																@method('PUT')

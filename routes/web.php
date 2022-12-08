@@ -3,24 +3,19 @@
 use App\Models\Tag;
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TypeController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrderController;
-use App\Http\Controllers\OtherController;
 use App\Http\Controllers\PriceController;
 use App\Http\Controllers\PrintController;
+use App\Http\Controllers\TrackController;
+use App\Http\Controllers\MethodController;
 use App\Http\Controllers\TicketController;
-use App\Http\Controllers\AdminTypeController;
-use App\Http\Controllers\AdminUserController;
-use App\Http\Controllers\AdminOrderController;
-use App\Http\Controllers\AdminPriceController;
-use App\Http\Controllers\AdminTrackController;
-use App\Http\Controllers\AdminMethodController;
-use App\Http\Controllers\AdminTicketController;
+use App\Http\Controllers\AirlineController;
+use App\Http\Controllers\ComplaintController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TransactionController;
-use App\Http\Controllers\AdminAirlineController;
-use App\Http\Controllers\AdminCategoryController;
-use App\Http\Controllers\AdminDashboardController;
-use App\Http\Controllers\AdminTransactionController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,67 +44,46 @@ Route::get('/contact', function () {
     return view('contact');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware('auth')->name('dashboard');
-
-Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->middleware(['auth', 'can:isAdmin']);
-
-// Route::get('/authentication', function () {
-//     return view('auth.authentication');
-// });
-
-// Order Route
-Route::resource('/orders', OrderController::class)->middleware(['auth']);
-
-// User Route
-Route::resource('/user', UserController::class)->middleware(['auth']);
-
 // Print Testing Route
 Route::get('/print', [PrintController::class, 'index'])->middleware(['auth']);
 
 Route::get('/printpdf', [PrintController::class, 'print'])->middleware(['auth']);
 
-// Order Route
+// Complaint Route
+Route::resource('/complaints', ComplaintController::class)->middleware(['auth']);
+
+//  Dashboard Route
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth']);
+
+//  Order Route
+Route::resource('/orders', OrderController::class)->middleware(['auth']);
+
+//  Transaction Route
 Route::resource('/transactions', TransactionController::class)->middleware(['auth']);
 
-// Ticket Route
-Route::resource('/tickets', TicketController::class);
+//  Airline Route
+Route::resource('/airlines', AirlineController::class)->middleware(['auth']);
 
-// Admin Order Route
-Route::resource('/admin/orders', AdminOrderController::class)->middleware(['auth', 'can:isAdmin']);
+//  Type Route
+Route::resource('/types', TypeController::class)->middleware(['auth']);
 
-// Admin Transaction Route
-Route::resource('/admin/transactions', AdminTransactionController::class)->middleware(['auth', 'can:isAdmin']);
+//  Track Route
+Route::resource('/tracks', TrackController::class)->middleware(['auth']);
 
-// Admin Airline Route
-Route::resource('/admin/airlines', AdminAirlineController::class)->middleware(['auth', 'can:isAdmin']);
+//  Ticket Route
+Route::resource('/tickets', TicketController::class)->middleware(['auth']);
 
-// Admin Type Route
-Route::resource('/admin/types', AdminTypeController::class)->middleware(['auth', 'can:isAdmin']);
+//  Price Route
+Route::resource('/prices', PriceController::class)->middleware(['auth']);
 
-// Admin Track Route
-Route::resource('/admin/tracks', AdminTrackController::class)->middleware(['auth', 'can:isAdmin']);
+//  Method Route
+Route::resource('/methods', MethodController::class)->middleware(['auth']);
 
-// Admin Ticket Route
-Route::resource('/admin/tickets', AdminTicketController::class)->middleware(['auth', 'can:isAdmin']);
+//  User Route
+Route::resource('/users', UserController::class)->middleware(['auth']);
 
-// Admin Price Route
-Route::resource('/admin/prices', AdminPriceController::class)->middleware(['auth', 'can:isAdmin']);
-
-// Admin Method Route
-Route::resource('/admin/methods', AdminMethodController::class)->middleware(['auth', 'can:isAdmin']);
-
-// Admin User Route
-Route::resource('/admin/users', AdminUserController::class)->middleware(['auth', 'can:isAdmin']);
-
-// Route::resource('/testings', TestingController::class)->middleware('auth');
-
-// Route::resource('/prices', PriceController::class);
-
-// Route::get('/checkprice', [OrderController::class, 'checkprice']);
-
-Route::get('/admin/checkprice', [AdminOrderController::class, 'checkprice']);
+// Check Price Route
+Route::get('/checkprice', [OrderController::class, 'checkprice']);
 
 // Route::get('/posts', function () {
 //     // Tag::create([

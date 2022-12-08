@@ -33,7 +33,7 @@
 												</li>
 												<li class="nav-header">MENUS</li>
 												<li class="nav-item menu-open">
-																<a href="/admin/dashboard" class="nav-link {{ Request::is('admin/dashboard') ? 'active' : '' }}">
+																<a href="/dashboard" class="nav-link {{ Request::is('dashboard') ? 'active' : '' }}">
 																				<i class="nav-icon fas fa-tachometer-alt"></i>
 																				<p>
 																								Dashboard
@@ -41,7 +41,7 @@
 																</a>
 												</li>
 												<li class="nav-item">
-																<a href="/admin/tickets" class="nav-link {{ Request::is('admin/tickets') ? 'active' : '' }}">
+																<a href="/tickets" class="nav-link {{ Request::is('tickets') ? 'active' : '' }}">
 																				<i class="nav-icon fas fa-money-bill-wave"></i>
 																				<p>
 																								Daftar Tiket
@@ -50,8 +50,7 @@
 																</a>
 												</li>
 												<li class="nav-item">
-																<a href="/admin/orders/create"
-																				class="nav-link {{ Request::is('admin/orders/create') ? 'active' : '' }}">
+																<a href="/orders/create" class="nav-link {{ Request::is('orders/create') ? 'active' : '' }}">
 																				<i class="nav-icon fas fa-edit"></i>
 																				<p>
 																								Buat Pesanan
@@ -61,7 +60,7 @@
 												</li>
 												<li class="nav-item">
 																<a href="#"
-																				class="nav-link {{ Request::is('admin/transactions') || Request::is('admin/orders') ? 'active' : '' }}">
+																				class="nav-link {{ Request::is('transactions') || Request::is('orders') ? 'active' : '' }}">
 																				<i class="nav-icon fas fa-list-ul"></i>
 																				<p>
 																								Riwayat
@@ -70,41 +69,34 @@
 																</a>
 																<ul class="nav nav-treeview">
 																				<li class="nav-item">
-																								<a href="/admin/transactions" class="nav-link">
+																								<a href="/orders" class="nav-link">
 																												<i class="far fa-circle nav-icon"
-																																style="color	: {{ Request::is('admin/transactions') ? 'rgb(0, 141, 193)' : '' }}"></i>
-																												<p>Transaksi</p>
+																																style="color	: {{ Request::is('orders') ? 'rgb(0, 141, 193)' : '' }}"></i>
+																												<p>Pesanan</p>
 																								</a>
 																				</li>
 																				<li class="nav-item">
-																								<a href="/admin/orders" class="nav-link">
+																								<a href="/transactions" class="nav-link">
 																												<i class="far fa-circle nav-icon"
-																																style="color	: {{ Request::is('admin/orders') ? 'rgb(0, 141, 193)' : '' }}"></i>
-																												<p>Pesanan</p>
+																																style="color	: {{ Request::is('transactions') ? 'rgb(0, 141, 193)' : '' }}"></i>
+																												<p>Transaksi</p>
 																								</a>
 																				</li>
 																</ul>
 												</li>
+												@can('isAdmin')
+																<li class="nav-item">
+																				<a href="/users" class="nav-link {{ Request::is('users') ? 'active' : '' }}">
+																								<i class="nav-icon fas fa-users"></i>
+																								<p>
+																												Users
+																												<i class="fas fa-angle-left right"></i>
+																								</p>
+																				</a>
+																</li>
+												@endcan
 												<li class="nav-item">
-																<a href="/print" class="nav-link">
-																				<i class="nav-icon fas fa-comments"></i>
-																				<p>
-																								Keluhan
-																								<i class="fas fa-angle-left right"></i>
-																				</p>
-																</a>
-												</li>
-												<li class="nav-item">
-																<a href="/admin/users" class="nav-link {{ Request::is('admin/users') ? 'active' : '' }}">
-																				<i class="nav-icon fas fa-users"></i>
-																				<p>
-																								Users
-																								<i class="fas fa-angle-left right"></i>
-																				</p>
-																</a>
-												</li>
-												<li class="nav-item">
-																<a href="/user" class="nav-link {{ Request::is('user') ? 'active' : '' }}">
+																<a href="/users/{{ Auth::id() }}" class="nav-link {{ Request::is('user') ? 'active' : '' }}">
 																				<i class="nav-icon fas fa-id-badge"></i>
 																				<p>
 																								Profile
@@ -112,7 +104,6 @@
 																				</p>
 																</a>
 												</li>
-
 								</ul>
 				</nav>
 				<!-- /.sidebar-menu -->

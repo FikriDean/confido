@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Method;
 use Illuminate\Http\Request;
 
-class AdminMethodController extends Controller
+class MethodController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,7 +24,7 @@ class AdminMethodController extends Controller
      */
     public function create()
     {
-        return view('admin.method.create');
+        return view('method.create');
     }
 
     /**
@@ -42,7 +42,7 @@ class AdminMethodController extends Controller
 
         Method::create($validatedData);
 
-        return redirect('/admin/methods');
+        return redirect('/methods');
     }
 
     /**

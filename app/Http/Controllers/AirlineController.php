@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Transaction;
+use App\Models\Airline;
 use Illuminate\Http\Request;
 
-class AdminTransactionController extends Controller
+class AirlineController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class AdminTransactionController extends Controller
      */
     public function index()
     {
-        return view('admin.dashboard.transaction.index', [
-            'transactions' => Transaction::all()
+        return view('airline.index', [
+            'airlines' => Airline::all()
         ]);
     }
 
@@ -26,7 +26,7 @@ class AdminTransactionController extends Controller
      */
     public function create()
     {
-        //
+        return view('airline.create');
     }
 
     /**
@@ -37,16 +37,24 @@ class AdminTransactionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => ['required', 'min:3', 'max:50'],
+            'slug' => ['required', 'min:3', 'max:255'],
+            'gate' => ['required', 'min:3', 'max:10'],
+        ]);
+
+        Airline::create($validatedData);
+
+        return redirect('/airlines');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Transaction  $transaction
+     * @param  \App\Models\Airline  $airline
      * @return \Illuminate\Http\Response
      */
-    public function show(Transaction $transaction)
+    public function show(Airline $airline)
     {
         //
     }
@@ -54,47 +62,33 @@ class AdminTransactionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Transaction  $transaction
+     * @param  \App\Models\Airline  $airline
      * @return \Illuminate\Http\Response
      */
-    public function edit(Transaction $transaction)
+    public function edit(Airline $airline)
     {
-        return view('admin.transaction.edit', [
-            'transaction' => $transaction
-        ]);
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Transaction  $transaction
+     * @param  \App\Models\Airline  $airline
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Transaction $transaction)
+    public function update(Request $request, Airline $airline)
     {
-        $validatedData = $request->validate([
-            'status' => []
-        ]);
-
-        if ($request['status']) {
-            $validatedData['status'] = true;
-        } else {
-            $validatedData['status'] = false;
-        }
-
-        $transaction->update($validatedData);
-
-        return redirect('/admin/transactions');
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Transaction  $transaction
+     * @param  \App\Models\Airline  $airline
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Transaction $transaction)
+    public function destroy(Airline $airline)
     {
         //
     }

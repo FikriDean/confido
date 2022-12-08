@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Payment;
-use App\Models\Totals;
+use App\Models\Track;
 use Illuminate\Http\Request;
 
-class AdminPaymentController extends Controller
+class TrackController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +14,7 @@ class AdminPaymentController extends Controller
      */
     public function index()
     {
-        return view('admin.payment.index', [
-            'payments' => Payment::all()
-        ]);
+        //
     }
 
     /**
@@ -27,7 +24,7 @@ class AdminPaymentController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.track.create');
     }
 
     /**
@@ -38,16 +35,23 @@ class AdminPaymentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'from_route' => ['required'],
+            'to_route' => ['required']
+        ]);
+
+        Track::create($validatedData);
+
+        return redirect('/admin/tracks');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Payment  $payment
+     * @param  \App\Models\Track  $track
      * @return \Illuminate\Http\Response
      */
-    public function show(Payment $payment)
+    public function show(Track $track)
     {
         //
     }
@@ -55,47 +59,33 @@ class AdminPaymentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Payment  $payment
+     * @param  \App\Models\Track  $track
      * @return \Illuminate\Http\Response
      */
-    public function edit(Payment $payment)
+    public function edit(Track $track)
     {
-        return view('admin.payment.edit', [
-            'payment' => $payment
-        ]);
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Payment  $payment
+     * @param  \App\Models\Track  $track
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Payment $payment)
+    public function update(Request $request, Track $track)
     {
-        $validatedData = $request->validate([
-            'status' => []
-        ]);
-
-        if ($request['status']) {
-            $validatedData['status'] = true;
-        } else {
-            $validatedData['status'] = false;
-        }
-
-        $payment->update($validatedData);
-
-        return redirect('/admin/payments');
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Payment  $payment
+     * @param  \App\Models\Track  $track
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Payment $payment)
+    public function destroy(Track $track)
     {
         //
     }

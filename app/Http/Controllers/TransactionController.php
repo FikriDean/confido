@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Transaction;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class TransactionController extends Controller
 {
@@ -15,7 +15,7 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        return view('customer.transaction.index', [
+        return view('dashboard.transaction.index', [
             'transactions' => Transaction::all()
         ]);
     }
@@ -60,7 +60,7 @@ class TransactionController extends Controller
      */
     public function edit(Transaction $transaction)
     {
-        return view('customer.transaction.edit', [
+        return view('transaction.edit', [
             'transaction' => $transaction
         ]);
     }
@@ -74,21 +74,37 @@ class TransactionController extends Controller
      */
     public function update(Request $request, Transaction $transaction)
     {
-        $validatedData = $request->validate([
-            'image' => ['image', 'file', 'max:4096'],
-        ]);
+        if (Gate::allows('isAdmin')) {
+            $validatedData = $request->validate([
+                'status' => []
+            ]);
 
-        if ($request->file('image')) {
-            $validatedData['image'] = $request->file('image')->store('public_payment');
-            $image = $request->file('image');
-            $input['imageName'] = $validatedData['image'];
-            $destinationPath = public_path('/public_payment');
-            $image->move($destinationPath, $input['imageName']);
+            if ($request['status']) {
+                $validatedData['status'] = true;
+            } else {
+                $validatedData['status'] = false;
+            }
+
+            $transaction->update($validatedData);
+
+            return redirect('/admin/transactions');
+        } else {
+            $validatedData = $request->validate([
+                'image' => ['image', 'file', 'max:4096'],
+            ]);
+
+            if ($request->file('image')) {
+                $validatedData['image'] = $request->file('image')->store('public_payment');
+                $image = $request->file('image');
+                $input['imageName'] = $validatedData['image'];
+                $destinationPath = public_path('/public_payment');
+                $image->move($destinationPath, $input['imageName']);
+            }
+
+            $transaction->update($validatedData);
+
+            return redirect('/admin/transactions');
         }
-
-        $transaction->update($validatedData);
-
-        return redirect('/transactions');
     }
 
     /**

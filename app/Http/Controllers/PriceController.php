@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Price;
+use App\Models\Ticket;
 use Illuminate\Http\Request;
 
 class PriceController extends Controller
@@ -14,9 +15,7 @@ class PriceController extends Controller
      */
     public function index()
     {
-        return view('prices.index', [
-            'prices' => Price::all()
-        ]);
+        //
     }
 
     /**
@@ -26,7 +25,9 @@ class PriceController extends Controller
      */
     public function create()
     {
-        return view('prices.create', []);
+        return view('admin.price.create', [
+            'tickets' => Ticket::all()
+        ]);
     }
 
     /**
@@ -37,16 +38,29 @@ class PriceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'ticket_id' => ['required'],
+            'price' => ['required']
+        ]);
+
+        $validateSamePrice = Price::where('ticket_id', $validatedData['ticket_id'])->first();
+
+        if ($validateSamePrice) {
+            return redirect('/admin/prices/create')->with('samePrice', 'Prices dengan data tersebut sudah ada di database!')->withInput();
+        }
+
+        Price::create($validatedData);
+
+        return redirect('/admin/prices');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Price  $price
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Price $price)
     {
         //
     }
@@ -54,39 +68,42 @@ class PriceController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Price  $price
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Price $price)
     {
-        //
+        return view('admin.price.edit', [
+            'price' => $price
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Price  $price
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Price $price)
     {
-        //
+        $validatedData = $request->validate([
+            'price' => ['required']
+        ]);
+
+        $price->update($validatedData);
+
+        return redirect('/admin/tickets');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Price  $price
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Price $price)
     {
         //
-    }
-
-    public function checkprice()
-    {
-        return response()->json(['name' => 'test']);
     }
 }

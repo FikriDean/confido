@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Airline;
+use App\Models\Complaint;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
-class AdminAirlineController extends Controller
+class ComplaintController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +16,7 @@ class AdminAirlineController extends Controller
      */
     public function index()
     {
-        return view('admin.airline.index', [
-            'airlines' => Airline::all()
-        ]);
+        //
     }
 
     /**
@@ -26,7 +26,7 @@ class AdminAirlineController extends Controller
      */
     public function create()
     {
-        return view('admin.airline.create');
+        //
     }
 
     /**
@@ -38,23 +38,28 @@ class AdminAirlineController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'name' => ['required', 'min:3', 'max:50'],
-            'slug' => ['required', 'min:3', 'max:255'],
-            'gate' => ['required', 'min:3', 'max:10'],
+            'body' => ['required', 'min:3', 'max:50'],
         ]);
 
-        Airline::create($validatedData);
+        $validatedData['user_id'] = Auth::id();
+        $validatedData['order_id'] = $request['order_id'];
 
-        return redirect('/admin/airlines');
+        Complaint::create($validatedData);
+
+        if (Gate::allows('isAdmin')) {
+            Complaint::where('order_id', $request['order_id'])->update(['seen' => 1]);
+        }
+
+        return redirect('/orders')->with('lapor', 'Keluhan anda berhasil dikirim!');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Airline  $airline
+     * @param  \App\Models\Complaint  $complaint
      * @return \Illuminate\Http\Response
      */
-    public function show(Airline $airline)
+    public function show(Complaint $complaint)
     {
         //
     }
@@ -62,10 +67,10 @@ class AdminAirlineController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Airline  $airline
+     * @param  \App\Models\Complaint  $complaint
      * @return \Illuminate\Http\Response
      */
-    public function edit(Airline $airline)
+    public function edit(Complaint $complaint)
     {
         //
     }
@@ -74,10 +79,10 @@ class AdminAirlineController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Airline  $airline
+     * @param  \App\Models\Complaint  $complaint
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Airline $airline)
+    public function update(Request $request, Complaint $complaint)
     {
         //
     }
@@ -85,10 +90,10 @@ class AdminAirlineController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Airline  $airline
+     * @param  \App\Models\Complaint  $complaint
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Airline $airline)
+    public function destroy(Complaint $complaint)
     {
         //
     }
