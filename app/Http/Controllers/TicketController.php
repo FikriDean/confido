@@ -67,7 +67,7 @@ class TicketController extends Controller
         $validateSameTicket = Ticket::where('airline_id', $validatedData['airline_id'])->where('type_id', $validatedData['type_id'])->where('track_id',  $validatedData['track_id'])->first();
 
         if ($validateSameTicket) {
-            return redirect('/admin/tickets')->with('sameTicket', 'Ticket dengan data tersebut sudah ada di database! jika ingin mengubah harga, masuk ke bagian harga!')->withInput();
+            return redirect('/tickets')->with('sameTicket', 'Ticket dengan data tersebut sudah ada di database! jika ingin mengubah harga, masuk ke bagian harga!')->withInput();
         }
 
         Ticket::create($validatedData);
@@ -82,7 +82,7 @@ class TicketController extends Controller
             Price::create($validatedPrice);
         }
 
-        return redirect('/admin/tickets');
+        return redirect('/tickets')->with('success', 'Tiket berhasil ditambahkan');
     }
 
     /**
@@ -126,6 +126,7 @@ class TicketController extends Controller
      */
     public function destroy(Ticket $ticket)
     {
-        //
+        $ticket->destroy($ticket->id);
+        return redirect('/tickets')->with('delete', "Tiket berhasil dihapus!");
     }
 }

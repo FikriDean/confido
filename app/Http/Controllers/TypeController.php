@@ -14,7 +14,9 @@ class TypeController extends Controller
      */
     public function index()
     {
-        //
+        return view('dashboard.type.index', [
+            'types' => Type::all()
+        ]);
     }
 
     /**
@@ -24,7 +26,7 @@ class TypeController extends Controller
      */
     public function create()
     {
-        return view('admin.type.create');
+        //
     }
 
     /**
@@ -38,11 +40,12 @@ class TypeController extends Controller
         $validatedData = $request->validate([
             'name' => ['required', 'min:3', 'max:50'],
             'seat' => ['required', 'min:3', 'max:50'],
+            'flight_at' => ['required']
         ]);
 
         Type::create($validatedData);
 
-        return redirect('/admin/types');
+        return redirect('/types')->with('store', "Kelas Maskapai berhasil ditambahkan");
     }
 
     /**
@@ -76,7 +79,15 @@ class TypeController extends Controller
      */
     public function update(Request $request, Type $type)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => ['required', 'min:3', 'max:50'],
+            'seat' => ['required', 'min:3', 'max:50'],
+            'flight_at' => ['required']
+        ]);
+
+        $type->update($validatedData);
+
+        return redirect('/types')->with('update', "Kelas Maskapai berhasil diubah");
     }
 
     /**
@@ -87,6 +98,8 @@ class TypeController extends Controller
      */
     public function destroy(Type $type)
     {
-        //
+        $type->delete();
+
+        return redirect('/types')->with('delete', 'Kelas Maskapai berhasil dihapus');
     }
 }

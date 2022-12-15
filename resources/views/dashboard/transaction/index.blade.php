@@ -9,7 +9,7 @@
 								<!-- Main Sidebar Container -->
 								<aside class="main-sidebar sidebar-dark-primary elevation-4">
 												<!-- Brand Logo -->
-												<a href="{admin/dashboard}" class="brand-link">
+												<a href="/dashboard" class="brand-link">
 																<img src="{{ asset('dist/img/ConfidoLogo.png') }}" alt="Confido Logo"
 																				class="brand-image img-circle elevation-3" style="opacity: .8">
 																<span class="brand-text font-weight-light">Confido</span>
@@ -31,7 +31,7 @@
 																								</div>
 																								<div class="col-sm-6">
 																												<ol class="breadcrumb float-sm-right">
-																																<li class="breadcrumb-item"><a href="/admin/dashboard">Home</a></li>
+																																<li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
 																																<li class="breadcrumb-item active">Riwayat Transaksi</li>
 																												</ol>
 																								</div>
@@ -74,25 +74,45 @@
 																																												@foreach ($transactions as $transaction)
 																																																<tr>
 																																																				<td>
-																																																								@if ($transaction->order->order_code)
+																																																								@isset($transaction->order->order_code)
 																																																												{{ $transaction->order->order_code }}
 																																																								@else
 																																																												ID Booking tidak dapat ditemukan (kemungkinan dikarenakan
 																																																												dihapusnya order)
-																																																								@endif
+																																																								@endisset
 																																																				</td>
-																																																				<td>{{ $transaction->order->user->name }}</td>
-																																																				<td>{{ $transaction->method->method }}</td>
-																																																				<td>{{ $transaction->name_account }}</td>
-																																																				<td>{{ $transaction->from_account }}</td>
-																																																				<td>{{ $transaction->total }}</td>
 																																																				<td>
-																																																								@if ($transaction->image)
+																																																								@isset($transaction->order->user->name)
+																																																												{{ $transaction->order->user->name }}
+																																																								@endisset
+																																																				</td>
+																																																				<td>
+																																																								@isset($transaction->method->method)
+																																																												{{ $transaction->method->method }}
+																																																								@endisset
+																																																				</td>
+																																																				<td>
+																																																								@isset($transaction->name_account)
+																																																												{{ $transaction->name_account }}
+																																																								@endisset
+																																																				</td>
+																																																				<td>
+																																																								@isset($transaction->from_account)
+																																																												{{ $transaction->from_account }}
+																																																								@endisset
+																																																				</td>
+																																																				<td>
+																																																								@isset($transaction->total)
+																																																												{{ $transaction->total }}
+																																																								@endisset
+																																																				</td>
+																																																				<td>
+																																																								@isset($transaction->image)
 																																																												<img width="100px" src="{{ asset($transaction->image) }}"
 																																																																alt="">
 																																																								@else
-																																																												Belum diupload
-																																																								@endif
+																																																												Belum diunggah
+																																																								@endisset
 																																																				</td>
 																																																				<td>
 																																																								@if ($transaction->status == true)
@@ -110,18 +130,18 @@
 																																																												</button>
 																																																												<div class="modal fade"
 																																																																id="modal-transaction-{{ $transaction->id }}">
-																																																																<div class="modal-dialog modal-lg">
+																																																																<div class="modal-dialog modal-xl">
 																																																																				<div class="modal-content">
-																																																																								<form
-																																																																												action="/admin/transactions/{{ $transaction->id }}"
+																																																																								<form action="/transactions/{{ $transaction->id }}"
 																																																																												method="POST">
 
 																																																																												@csrf
 																																																																												@method('PUT')
 																																																																												<div class="modal-header">
 																																																																																<h4 class="modal-title">Update Status Transaksi
-																																																																																				(id:
-																																																																																				{{ $transaction->id }})
+																																																																																				dengan
+																																																																																				<strong>Booking ID
+																																																																																								{{ $transaction->order->order_code }}</strong>
 																																																																																</h4>
 																																																																																<button type="button" class="close"
 																																																																																				data-dismiss="modal" aria-label="Close">
@@ -130,6 +150,184 @@
 																																																																												</div>
 
 																																																																												<div class="modal-body">
+																																																																																<h6>Pesanan</h6>
+																																																																																<table
+																																																																																				class="table table-bordered table-striped">
+																																																																																				<thead>
+																																																																																								<tr>
+																																																																																												<th>Nama</th>
+																																																																																												<th>Metode Pembayaran</th>
+																																																																																												<th>Nama Akun Rekening</th>
+																																																																																												<th>Nomor Rekening</th>
+																																																																																												<th>Total Pembayaran</th>
+																																																																																												<th>Bukti Pembayaran</th>
+																																																																																												<th>Status</th>
+																																																																																								</tr>
+																																																																																				</thead>
+																																																																																				<tbody>
+																																																																																								<td>
+																																																																																												@isset($transaction->order->user->name)
+																																																																																																{{ $transaction->order->user->name }}
+																																																																																												@endisset
+																																																																																								</td>
+																																																																																								<td>
+																																																																																												@isset($transaction->method->method)
+																																																																																																{{ $transaction->method->method }}
+																																																																																												@endisset
+																																																																																								</td>
+																																																																																								<td>
+																																																																																												@isset($transaction->name_account)
+																																																																																																{{ $transaction->name_account }}
+																																																																																												@endisset
+																																																																																								</td>
+																																																																																								<td>
+																																																																																												@isset($transaction->from_account)
+																																																																																																{{ $transaction->from_account }}
+																																																																																												@endisset
+																																																																																								</td>
+																																																																																								<td>
+																																																																																												@isset($transaction->total)
+																																																																																																{{ $transaction->total }}
+																																																																																												@endisset
+																																																																																								</td>
+																																																																																								<td>
+																																																																																												@isset($transaction->image)
+																																																																																																<img width="100px"
+																																																																																																				src="{{ asset($transaction->image) }}"
+																																																																																																				alt="">
+																																																																																												@else
+																																																																																																Belum diunggah
+																																																																																												@endisset
+																																																																																								</td>
+																																																																																								<td>
+																																																																																												@if ($transaction->status == true)
+																																																																																																Telah disetujui
+																																																																																												@else
+																																																																																																Belum/tidak disetujui
+																																																																																												@endif
+																																																																																								</td>
+																																																																																				</tbody>
+																																																																																</table>
+																																																																																<h6>Transaksi</h6>
+																																																																																<table id="example1"
+																																																																																				class="table table-bordered table-striped">
+																																																																																				<thead>
+
+																																																																																								<tr>
+																																																																																												<th>Maskapai</th>
+																																																																																												<th>Jenis</th>
+																																																																																												<th>Rute</th>
+																																																																																												<th>Jumlah</th>
+																																																																																												<th>Pulang-Pergi</th>
+																																																																																												<th>Tanggal</th>
+																																																																																								</tr>
+
+																																																																																				</thead>
+																																																																																				<tbody>
+																																																																																								<tr>
+																																																																																												<td>
+																																																																																																@isset($transaction->order->ticket->airline->name)
+																																																																																																				{{ $transaction->order->ticket->airline->name }}
+																																																																																																@else
+																																																																																																				Tidak dapat ditampilkan
+																																																																																																@endisset
+
+																																																																																												</td>
+																																																																																												<td>
+																																																																																																@isset($transaction->order->ticket->type->name)
+																																																																																																				{{ $transaction->order->ticket->type->name }}
+																																																																																																@else
+																																																																																																				Tidak dapat ditampilkan
+																																																																																																@endisset
+
+																																																																																												</td>
+																																																																																												<td>
+																																																																																																@isset($transaction->order->ticket->track->from_route)
+																																																																																																				@isset($transaction->order->ticket->track->to_route)
+																																																																																																								{{ $transaction->order->ticket->track->from_route }}
+																																																																																																								-
+																																																																																																								{{ $transaction->order->ticket->track->to_route }}
+																																																																																																				@endisset
+																																																																																																@else
+																																																																																																				Tidak dapat ditampilkan
+																																																																																																@endisset
+
+																																																																																												</td>
+																																																																																												<td>
+																																																																																																@isset($transaction->order->amount)
+																																																																																																				{{ $transaction->order->amount }}
+																																																																																																@else
+																																																																																																				Tidak dapat ditampilkan
+																																																																																																@endisset
+
+																																																																																												</td>
+																																																																																												<td>
+																																																																																																@isset($transaction->order->round_trip)
+																																																																																																				@if ($transaction->order->round_trip == true)
+																																																																																																								Ya
+																																																																																																				@else
+																																																																																																								Tidak
+																																																																																																				@endif
+																																																																																																@else
+																																																																																																				Tidak
+																																																																																																@endisset
+
+																																																																																												</td>
+																																																																																												<td>
+																																																																																																@isset($transaction->order->updated_at)
+																																																																																																				{{ $transaction->order->updated_at }}
+																																																																																																@else
+																																																																																																				Tidak dapat ditampilkan
+																																																																																																@endisset
+																																																																																												</td>
+
+
+																																																																																</table>
+																																																																																<h6>Penumpang</h6>
+																																																																																<table id="example1"
+																																																																																				class="table table-bordered table-striped">
+																																																																																				<thead>
+
+																																																																																								<tr>
+																																																																																												<th>No</th>
+																																																																																												<th>Nama</th>
+																																																																																												<th>KTP</th>
+																																																																																												<th>Jenis Kelamin</th>
+																																																																																								</tr>
+
+																																																																																				</thead>
+																																																																																				<tbody>
+																																																																																								<tr>
+																																																																																												@foreach ($transaction->order->passengers as $passenger)
+																																																																																																<td>{{ $loop->iteration }}</td>
+																																																																																																<td>
+																																																																																																				@isset($passenger->name)
+																																																																																																								{{ $passenger->name }}
+																																																																																																				@else
+																																																																																																								Tidak dapat ditampilkan
+																																																																																																				@endisset
+																																																																																																</td>
+																																																																																																<td>
+																																																																																																				@isset($passenger->id_number)
+																																																																																																								{{ $passenger->id_number }}
+																																																																																																				@else
+																																																																																																								Tidak dapat ditampilkan
+																																																																																																				@endisset
+																																																																																																</td>
+																																																																																																<td>
+																																																																																																				@isset($passenger->gender)
+																																																																																																								@if ($passenger->gender == true)
+																																																																																																												Laki-laki
+																																																																																																								@else
+																																																																																																												Perempuan
+																																																																																																								@endif
+																																																																																																				@else
+																																																																																																								Tidak dapat ditampilkan
+																																																																																																				@endisset
+																																																																																																</td>
+																																																																																												@endforeach
+																																																																																</table>
+
 																																																																																<div class="input-group w-50">
 
 																																																																																				<div class="input-group-text">
@@ -146,8 +344,8 @@
 																																																																																				</div>
 																																																																																				<label type="text"
 																																																																																								class="form-control">Konfirmasi/setujui
-																																																																																								transaksi dengan id
-																																																																																								{{ $transaction->id }}
+																																																																																								transaksi dengan Booking ID
+																																																																																								{{ $transaction->order->order_code }}
 																																																																																								?</label>
 																																																																																</div>
 																																																																												</div>
@@ -173,14 +371,14 @@
 																																																																<div class="modal-dialog modal-lg">
 																																																																				<div class="modal-content">
 																																																																								<div class="modal-header">
-																																																																												<h4 class="modal-title">Unggah Bukti Pembayaran</h4>
+																																																																												<h4 class="modal-title">Unggah Bukti Pembayaran
+																																																																												</h4>
 																																																																												<button type="button" class="close"
 																																																																																data-dismiss="modal" aria-label="Close">
 																																																																																<span aria-hidden="true">&times;</span>
 																																																																												</button>
 																																																																								</div>
-																																																																								<form
-																																																																												action="/admin/transactions/{{ $transaction->id }}"
+																																																																								<form action="/transactions/{{ $transaction->id }}"
 																																																																												method="POST" enctype="multipart/form-data">
 																																																																												@csrf
 																																																																												@method('PUT')

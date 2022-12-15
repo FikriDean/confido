@@ -45,25 +45,21 @@ class DatabaseSeeder extends Seeder
         // Airline::factory(1)->create();
         Airline::factory()->create([
             'name' => 'Lion Air',
-            'slug' => 'lion_air',
             'gate' => '11A'
         ]);
 
         Airline::factory()->create([
-            'name' => 'Garuda_indonesia',
-            'slug' => 'garuda_indonesia',
+            'name' => 'Garuda Indonesia',
             'gate' => '11B'
         ]);
 
         Airline::factory()->create([
             'name' => 'Sriwijaya Air',
-            'slug' => 'sriwijaya_air',
             'gate' => '11C'
         ]);
 
         Airline::factory()->create([
             'name' => 'Batik Air',
-            'slug' => 'batik_air',
             'gate' => '11D'
         ]);
 
@@ -143,23 +139,23 @@ class DatabaseSeeder extends Seeder
             'target_account' => '081387000325'
         ]);
 
-        Complaint::factory()->create([
-            'order_id' => 1,
-            'user_id' => 1,
-            'body' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. A earum, ex possimus consequatur quaerat consequuntur impedit, tenetur officiis repellendus sequi maxime ullam fuga perferendis eligendi doloremque cupiditate, minus expedita aspernatur.'
-        ]);
+        // Complaint::factory()->create([
+        //     'order_id' => 1,
+        //     'user_id' => 1,
+        //     'body' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. A earum, ex possimus consequatur quaerat consequuntur impedit, tenetur officiis repellendus sequi maxime ullam fuga perferendis eligendi doloremque cupiditate, minus expedita aspernatur.'
+        // ]);
 
-        Complaint::factory()->create([
-            'order_id' => 1,
-            'user_id' => 2,
-            'body' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. A earum, ex possimus consequatur quaerat consequuntur impedit, tenetur officiis repellendus sequi maxime ullam fuga perferendis eligendi doloremque cupiditate, minus expedita aspernatur.'
-        ]);
+        // Complaint::factory()->create([
+        //     'order_id' => 1,
+        //     'user_id' => 2,
+        //     'body' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. A earum, ex possimus consequatur quaerat consequuntur impedit, tenetur officiis repellendus sequi maxime ullam fuga perferendis eligendi doloremque cupiditate, minus expedita aspernatur.'
+        // ]);
 
-        Complaint::factory()->create([
-            'order_id' => 1,
-            'user_id' => 2,
-            'body' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. A earum, ex possimus consequatur quaerat consequuntur impedit, tenetur officiis repellendus sequi maxime ullam fuga perferendis eligendi doloremque cupiditate, minus expedita aspernatur.'
-        ]);
+        // Complaint::factory()->create([
+        //     'order_id' => 1,
+        //     'user_id' => 2,
+        //     'body' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. A earum, ex possimus consequatur quaerat consequuntur impedit, tenetur officiis repellendus sequi maxime ullam fuga perferendis eligendi doloremque cupiditate, minus expedita aspernatur.'
+        // ]);
 
 
         // \App\Models\User::factory()->create([

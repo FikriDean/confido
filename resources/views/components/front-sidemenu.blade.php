@@ -5,7 +5,8 @@
 												<img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
 								</div>
 								<div class="info">
-												<a href="#" class="d-block">{{ Auth::user()->name }}</a>
+												<a href="/users/{{ Auth::id() }}" class="d-block"
+																style="{{ Request::is('users*') ? 'color: white' : '' }}">{{ Auth::user()->name }}</a>
 								</div>
 				</div>
 
@@ -33,7 +34,7 @@
 												</li>
 												<li class="nav-header">MENUS</li>
 												<li class="nav-item menu-open">
-																<a href="/dashboard" class="nav-link {{ Request::is('dashboard') ? 'active' : '' }}">
+																<a href="/dashboard" class="nav-link {{ Request::is('dashboard*') ? 'active' : '' }}">
 																				<i class="nav-icon fas fa-tachometer-alt"></i>
 																				<p>
 																								Dashboard
@@ -41,7 +42,7 @@
 																</a>
 												</li>
 												<li class="nav-item">
-																<a href="/tickets" class="nav-link {{ Request::is('tickets') ? 'active' : '' }}">
+																<a href="/tickets" class="nav-link {{ Request::is('tickets*') ? 'active' : '' }}">
 																				<i class="nav-icon fas fa-money-bill-wave"></i>
 																				<p>
 																								Daftar Tiket
@@ -86,7 +87,7 @@
 												</li>
 												@can('isAdmin')
 																<li class="nav-item">
-																				<a href="/users" class="nav-link {{ Request::is('users') ? 'active' : '' }}">
+																				<a href="/users" class="nav-link {{ Request::is('users*') ? 'active' : '' }}">
 																								<i class="nav-icon fas fa-users"></i>
 																								<p>
 																												Users
@@ -94,16 +95,34 @@
 																								</p>
 																				</a>
 																</li>
+																<li class="nav-item">
+																				<a href="/airlines" class="nav-link {{ Request::is('airlines') ? 'active' : '' }}">
+																								📜
+																								<p>
+																												Maskapai
+																												<i class="fas fa-angle-left right"></i>
+																								</p>
+																				</a>
+																</li>
+																<li class="nav-item">
+																				<a href="/types" class="nav-link {{ Request::is('types') ? 'active' : '' }}">
+																								📝
+																								<p>
+																												Kelas Maskapai
+																												<i class="fas fa-angle-left right"></i>
+																								</p>
+																				</a>
+																</li>
+																<li class="nav-item">
+																				<a href="/tracks" class="nav-link {{ Request::is('tracks') ? 'active' : '' }}">
+																								📚
+																								<p>
+																												Rute Penerbangan
+																												<i class="fas fa-angle-left right"></i>
+																								</p>
+																				</a>
+																</li>
 												@endcan
-												<li class="nav-item">
-																<a href="/users/{{ Auth::id() }}" class="nav-link {{ Request::is('user') ? 'active' : '' }}">
-																				<i class="nav-icon fas fa-id-badge"></i>
-																				<p>
-																								Profile
-																								<i class="fas fa-angle-left right"></i>
-																				</p>
-																</a>
-												</li>
 								</ul>
 				</nav>
 				<!-- /.sidebar-menu -->

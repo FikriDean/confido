@@ -10,7 +10,7 @@
 																<div class="col-md-7 ftco-animate">
 																				<h1 class="mb-4">Selamat Datang di Confido Tour And Travel</h1>
 																				<p class="caps">Aplikasi berbasis website untuk jasa pemesanan tiket pesawat</p>
-																				<a href="sign/index.html" class="btn btn-primary">Pesan Sekarang!</a>
+																				<a href="/orders/create" class="btn btn-primary">Pesan Sekarang!</a>
 																</div>
 												</div>
 								</div>

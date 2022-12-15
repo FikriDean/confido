@@ -14,7 +14,7 @@ class AirlineController extends Controller
      */
     public function index()
     {
-        return view('airline.index', [
+        return view('dashboard.airline.index', [
             'airlines' => Airline::all()
         ]);
     }
@@ -26,7 +26,7 @@ class AirlineController extends Controller
      */
     public function create()
     {
-        return view('airline.create');
+        //
     }
 
     /**
@@ -39,13 +39,12 @@ class AirlineController extends Controller
     {
         $validatedData = $request->validate([
             'name' => ['required', 'min:3', 'max:50'],
-            'slug' => ['required', 'min:3', 'max:255'],
             'gate' => ['required', 'min:3', 'max:10'],
         ]);
 
         Airline::create($validatedData);
 
-        return redirect('/airlines');
+        return redirect('/airlines')->with('store', 'Data Maskapai Berhasil Ditambahkan!');
     }
 
     /**
@@ -79,7 +78,14 @@ class AirlineController extends Controller
      */
     public function update(Request $request, Airline $airline)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => ['required', 'min:3', 'max:50'],
+            'gate' => ['required', 'min:3', 'max:10'],
+        ]);
+
+        $airline->update($validatedData);
+
+        return redirect('/airlines')->with('update', 'Data Maskapai Berhasil Diubah!');
     }
 
     /**
@@ -90,6 +96,7 @@ class AirlineController extends Controller
      */
     public function destroy(Airline $airline)
     {
-        //
+        $airline->delete();
+        return redirect('/airlines')->with('delete', 'Data Maskapai Berhasil Dihapus');
     }
 }

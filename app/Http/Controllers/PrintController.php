@@ -6,16 +6,31 @@ use App\Models\Order;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Auth;
+
 use Barryvdh\DomPDF\Facade\Pdf;
 
 class PrintController extends Controller
 {
     public function index(Request $request)
     {
+
         $order = Order::where('order_code', $request['order'])->first();
-        return view('admin.dashboard.order.print', [
-            'order' => $order
-        ]);
+
+        if (Gate::allows('isAdmin')) {
+            return view('dashboard.order.print', [
+                'order' => $order
+            ]);
+        } else {
+            if (Auth::id() != $order->user->id) {
+                return redirect('/orders');
+            }
+
+            return view('dashboard.order.print', [
+                'order' => $order
+            ]);
+        }
     }
 
     // public function print()

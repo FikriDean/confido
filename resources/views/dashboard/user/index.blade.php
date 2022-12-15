@@ -9,7 +9,7 @@
 								<!-- Main Sidebar Container -->
 								<aside class="main-sidebar sidebar-dark-primary elevation-4">
 												<!-- Brand Logo -->
-												<a href="{admin/dashboard}" class="brand-link">
+												<a href="/dashboard" class="brand-link">
 																<img src="{{ asset('dist/img/ConfidoLogo.png') }}" alt="Confido Logo"
 																				class="brand-image img-circle elevation-3" style="opacity: .8">
 																<span class="brand-text font-weight-light">Confido</span>
@@ -31,7 +31,7 @@
 																								</div>
 																								<div class="col-sm-6">
 																												<ol class="breadcrumb float-sm-right">
-																																<li class="breadcrumb-item"><a href="/admin/dashboard">Home</a></li>
+																																<li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
 																																<li class="breadcrumb-item active">Users</li>
 																												</ol>
 																								</div>
@@ -74,21 +74,29 @@
 																																								<tbody>
 																																												@foreach ($users as $user)
 																																																<tr>
-																																																				<td>{{ $user->name }}</td>
-																																																				<td>{{ $user->email }}</td>
 																																																				<td>
-																																																								@if ($user->email_verified_at)
+																																																								@isset($user->name)
+																																																												{{ $user->name }}
+																																																								@endisset
+																																																				</td>
+																																																				<td>
+																																																								@isset($user->email)
+																																																												{{ $user->email }}
+																																																								@endisset
+																																																				</td>
+																																																				<td>
+																																																								@isset($user->email_verified_at)
 																																																												{{ $user->email_verified_at }}
 																																																								@else
 																																																												Belum terverifikasi
-																																																								@endif
+																																																								@endisset
 																																																				</td>
 																																																				<td>
-																																																								@if ($user->phone_number)
+																																																								@isset($user->phone_number)
 																																																												{{ $user->phone_number }}
 																																																								@else
 																																																												Belum di set
-																																																								@endif
+																																																								@endisset
 
 																																																				</td>
 																																																				<td>
@@ -101,16 +109,18 @@
 																																																								@endif
 																																																				</td>
 																																																				<td>
-																																																								@if ($user->image)
+																																																								@isset($user->image)
 																																																												<img style="max-width: 100px" src="{{ asset($user->image) }}"
 																																																																alt="{{ $user->name }}">
 																																																								@else
 																																																												Belum di set
-																																																								@endif
+																																																								@endisset
 
 																																																				</td>
 																																																				<td>
-																																																								{{ $user->role }}
+																																																								@isset($user->role)
+																																																												{{ $user->role }}
+																																																								@endisset
 																																																				</td>
 																																																				<td>
 
@@ -119,7 +129,7 @@
 																																																												data-target="#modal-user-{{ $user->id }}">Ubah
 																																																								</button>
 
-																																																								<form action="/admin/transactions/" method="POST">
+																																																								<form action="/transactions/" method="POST">
 																																																												@csrf
 																																																												@method('DELETE')
 																																																												<button class="btn btn-danger btn-xs"
@@ -139,8 +149,8 @@
 																																																																				</button>
 																																																																</div>
 
-																																																																<form action="/admin/users/{{ $user->id }}"
-																																																																				method="POST" enctype="multipart/form-data">
+																																																																<form action="/users/{{ $user->id }}" method="POST"
+																																																																				enctype="multipart/form-data">
 																																																																				@csrf
 																																																																				@method('PUT')
 

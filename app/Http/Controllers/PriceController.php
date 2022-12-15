@@ -25,7 +25,7 @@ class PriceController extends Controller
      */
     public function create()
     {
-        return view('admin.price.create', [
+        return view('price.create', [
             'tickets' => Ticket::all()
         ]);
     }
@@ -46,12 +46,12 @@ class PriceController extends Controller
         $validateSamePrice = Price::where('ticket_id', $validatedData['ticket_id'])->first();
 
         if ($validateSamePrice) {
-            return redirect('/admin/prices/create')->with('samePrice', 'Prices dengan data tersebut sudah ada di database!')->withInput();
+            return redirect('/prices/create')->with('samePrice', 'Prices dengan data tersebut sudah ada di database!')->withInput();
         }
 
         Price::create($validatedData);
 
-        return redirect('/admin/prices');
+        return redirect('/prices');
     }
 
     /**
@@ -73,7 +73,7 @@ class PriceController extends Controller
      */
     public function edit(Price $price)
     {
-        return view('admin.price.edit', [
+        return view('price.edit', [
             'price' => $price
         ]);
     }
@@ -93,7 +93,7 @@ class PriceController extends Controller
 
         $price->update($validatedData);
 
-        return redirect('/admin/tickets');
+        return redirect('/tickets')->with('update', 'Harga tiket berhasil diubah');
     }
 
     /**

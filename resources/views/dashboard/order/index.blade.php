@@ -9,7 +9,7 @@
 								<!-- Main Sidebar Container -->
 								<aside class="main-sidebar sidebar-dark-primary elevation-4">
 												<!-- Brand Logo -->
-												<a href="{admin/dashboard}" class="brand-link">
+												<a href="/dashboard" class="brand-link">
 																<img src="{{ asset('dist/img/ConfidoLogo.png') }}" alt="Confido Logo"
 																				class="brand-image img-circle elevation-3" style="opacity: .8">
 																<span class="brand-text font-weight-light">Confido</span>
@@ -31,7 +31,7 @@
 																								</div>
 																								<div class="col-sm-6">
 																												<ol class="breadcrumb float-sm-right">
-																																<li class="breadcrumb-item"><a href="/admin/dashboard">Home</a></li>
+																																<li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
 																																<li class="breadcrumb-item active">Riwayat Pesanan</li>
 																												</ol>
 																								</div>
@@ -65,8 +65,9 @@
 																																<div class="card-body">
 																																				<table id="example1" class="table table-bordered table-striped">
 																																								<thead>
+
 																																												<tr>
-																																												<tr>
+																																																<th>No</th>
 																																																<th>ID Booking</th>
 																																																<th>Nama</th>
 																																																<th>Maskapai</th>
@@ -77,35 +78,96 @@
 																																																<th>Tanggal</th>
 																																																<th>Action</th>
 																																												</tr>
-																																												</tr>
+
 																																								</thead>
 																																								<tbody>
 																																												@foreach ($orders as $order)
 																																																<tr>
-																																																				<td>{{ $order->order_code }}</td>
-																																																				<td>{{ $order->user->name }}</td>
-																																																				<td>{{ $order->ticket->airline->name }}</td>
-																																																				<td>{{ $order->ticket->type->name }}</td>
-																																																				<td>{{ $order->ticket->track->from_route }} -
-																																																								{{ $order->ticket->track->to_route }}</td>
-																																																				<td>{{ $order->amount }}</td>
 																																																				<td>
-																																																								@if ($order->round_trip)
+																																																								{{ $loop->iteration }}
+																																																				</td>
+																																																				<td>
+																																																								@isset($order->order_code)
+																																																												{{ $order->order_code }}
+																																																								@else
+																																																												Tidak dapat ditampilkan
+																																																								@endisset
+																																																				</td>
+																																																				<td>
+																																																								@isset($order->user->name)
+																																																												{{ $order->user->name }}
+																																																								@else
+																																																												Tidak dapat ditampilkan
+																																																								@endisset
+
+																																																				</td>
+																																																				<td>
+																																																								@isset($order->ticket->airline->name)
+																																																												{{ $order->ticket->airline->name }}
+																																																								@else
+																																																												Tidak dapat ditampilkan
+																																																								@endisset
+
+																																																				</td>
+																																																				<td>
+																																																								@isset($order->ticket->type->name)
+																																																												{{ $order->ticket->type->name }}
+																																																								@else
+																																																												Tidak dapat ditampilkan
+																																																								@endisset
+
+																																																				</td>
+																																																				<td>
+																																																								@isset($order->ticket->track->from_route)
+																																																												@isset($order->ticket->track->to_route)
+																																																																{{ $order->ticket->track->from_route }} -
+																																																																{{ $order->ticket->track->to_route }}
+																																																												@endisset
+																																																								@else
+																																																												Tidak dapat ditampilkan
+																																																								@endisset
+
+																																																				</td>
+																																																				<td>
+																																																								@isset($order->amount)
+																																																												{{ $order->amount }}
+																																																								@else
+																																																												Tidak dapat ditampilkan
+																																																								@endisset
+
+																																																				</td>
+																																																				<td>
+																																																								@isset($order->round_trip)
 																																																												Ya
 																																																								@else
 																																																												Tidak
-																																																								@endif
+																																																								@endisset
 
 																																																				</td>
-																																																				<td>{{ $order->updated_at }}</td>
-																																																				<td class="d-flex justify-content-end">
-																																																								@if ($order->transaction->status == true)
-																																																												<a href="/print?order={{ $order->order_code }}"
-																																																																target="_blank">
+																																																				<td>
+																																																								@isset($order->updated_at)
+																																																												{{ $order->updated_at }}
+																																																								@else
+																																																												Tidak dapat ditampilkan
+																																																								@endisset
+
+																																																				</td>
+																																																				<td class="d-flex flex-column justify-content-end">
+																																																								@can('isAdmin')
+																																																												<a href="/print?order={{ $order->order_code }}" target="_blank">
 																																																																<button class="btn btn-success btn-xs"
 																																																																				type="button">Cetak</button>
 																																																												</a>
-																																																								@endif
+																																																								@else
+																																																												@if ($order->transaction->status == true)
+																																																																<a href="/print?order={{ $order->order_code }}"
+																																																																				target="_blank">
+																																																																				<button class="btn btn-success btn-xs"
+																																																																								type="button">Cetak</button>
+																																																																</a>
+																																																												@endif
+																																																								@endcan
+
 
 																																																								<form action="orders/{{ $order->id }}" method="POST"
 																																																												onsubmit="return confirm('Yakin ingin menghapus?');">
@@ -120,12 +182,31 @@
 																																																												</button>
 																																																								</form>
 
-
-																																																								<button class="btn btn-warning btn-xs" type="button"
-																																																												data-toggle="modal"
+																																																								<button class="btn btn-warning btn-xs position-relative"
+																																																												type="button" data-toggle="modal"
 																																																												data-target="#modal-lapor-{{ $order->id }}"
 																																																												id="button-{{ $order->id }}">Lapor
+
+
+																																																												@can('isCustomer')
+																																																																@if ($order->complaints->where('seenForAdmin', 0)->count() != 0)
+																																																																				<span
+																																																																								class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+																																																																								{{ $order->complaints->where('seenForAdmin', 0)->count() }}
+																																																																				</span>
+																																																																@endif
+																																																												@else
+																																																																@if ($order->complaints->where('seen', 0)->count() != 0)
+																																																																				<span
+																																																																								class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+																																																																								{{ $order->complaints->where('seen', 0)->count() }}
+																																																																				</span>
+																																																																@endif
+																																																												@endcan
+
+
 																																																								</button>
+
 
 																																																								<div class="modal fade" id="modal-lapor-{{ $order->id }}">
 																																																												<div class="modal-dialog modal-lg">

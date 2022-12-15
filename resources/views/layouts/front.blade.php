@@ -126,10 +126,62 @@
 																}
 												});
 
-												$('#penumpang-2, #penumpang-3, #penumpang-4, #penumpang-5').hide();
+												switch ($('#jumlah-penumpang').val()) {
+																case '5':
+																				for (let i = 1; i <= 5; i++) {
+																								if (i <= $('#jumlah-penumpang').val()) {
+																												$(`#penumpang-${i}`).show();
+																								} else {
+																												$(`#penumpang-${i}`).hide();
+																								}
+																				}
+
+																				break;
+																case '4':
+																				for (let i = 1; i <= 5; i++) {
+																								if (i <= $('#jumlah-penumpang').val()) {
+																												$(`#penumpang-${i}`).show();
+																								} else {
+																												$(`#penumpang-${i}`).hide();
+																								}
+																				}
+
+																				break;
+																case '3':
+																				for (let i = 1; i <= 5; i++) {
+																								if (i <= $('#jumlah-penumpang').val()) {
+																												$(`#penumpang-${i}`).show();
+																								} else {
+																												$(`#penumpang-${i}`).hide();
+																								}
+																				}
+
+																				break;
+																case '2':
+																				for (let i = 1; i <= 5; i++) {
+																								if (i <= $('#jumlah-penumpang').val()) {
+																												$(`#penumpang-${i}`).show();
+																								} else {
+																												$(`#penumpang-${i}`).hide();
+																								}
+																				}
+
+																				break;
+																case '1':
+																				for (let i = 1; i <= 5; i++) {
+																								if (i <= $('#jumlah-penumpang').val()) {
+																												$(`#penumpang-${i}`).show();
+																								} else {
+																												$(`#penumpang-${i}`).hide();
+																								}
+																				}
+
+																				break;
+												}
 
 												$('#jumlah-penumpang').click(function() {
 																$('#penumpang-2, #penumpang-3, #penumpang-4, #penumpang-5').hide();
+
 																switch ($('#jumlah-penumpang').val()) {
 																				case '5':
 																								$('#penumpang-5').show();

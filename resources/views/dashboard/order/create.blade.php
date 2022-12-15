@@ -23,7 +23,7 @@
 								<!-- Main Sidebar Container -->
 								<aside class="main-sidebar sidebar-dark-primary elevation-4">
 												<!-- Brand Logo -->
-												<a href="{admin/dashboard}" class="brand-link">
+												<a href="/dashboard" class="brand-link">
 																<img src="{{ asset('dist/img/ConfidoLogo.png') }}" alt="Confido Logo"
 																				class="brand-image img-circle elevation-3" style="opacity: .8">
 																<span class="brand-text font-weight-light">Confido</span>
@@ -81,25 +81,55 @@
 																																												<div class="col-sm-5">
 																																																<select class="form-control" id="keberangkatan"
 																																																				onchange="getSelectValue(this.value);" name="from_route" required>
-																																																				<option value="" disabled selected>-- Pilih Keberangkatan --
-																																																				</option>
-																																																				@foreach ($routeFrom as $rf)
-																																																								<option value="{{ $rf }}">
-																																																												{{ ucfirst($rf) }}
+																																																				@if (old('from_route'))
+																																																								<option value="{{ old('from_route') }}">
+																																																												{{ old('from_route') }}
 																																																								</option>
+																																																				@else
+																																																								<option disabled selected>-- Pilih
+																																																												Keberangkatan --
+																																																								</option>
+																																																				@endif
+
+																																																				@foreach ($routeFrom as $rf)
+																																																								@if ($rf != old('from_route'))
+																																																												<option value="{{ $rf }}">
+																																																																{{ ucfirst($rf) }}
+																																																												</option>
+																																																								@endif
 																																																				@endforeach
 																																																</select>
+																																																@if ($errors->has('from_route'))
+																																																				<div class="invalid-feedback">
+																																																								Pilih lokasi berangkat dengan benar!
+																																																				</div>
+																																																@endif
+
 																																												</div>
 																																												<div class="col-sm-5">
 																																																<select class="form-control" id="tujuan"
 																																																				onchange="getSecondValue(this.value);" name="to_route" required>
-																																																				<option value="" disabled selected>-- Pilih Tujuan --</option>
-																																																				@foreach ($routeTo as $rt)
-																																																								<option value="{{ $rt }}">
-																																																												{{ ucfirst($rt) }}
+																																																				@if (old('to_route'))
+																																																								<option value="{{ old('to_route') }}">
+																																																												{{ old('to_route') }}
 																																																								</option>
+																																																				@else
+																																																								<option disabled selected>-- Pilih Tujuan --</option>
+																																																				@endif
+
+																																																				@foreach ($routeTo as $rt)
+																																																								@if ($rf != old('to_route'))
+																																																												<option value="{{ $rt }}">
+																																																																{{ ucfirst($rt) }}
+																																																												</option>
+																																																								@endif
 																																																				@endforeach
 																																																</select>
+																																																@if ($errors->has('to_route'))
+																																																				<div class="invalid-feedback">
+																																																								Pilih lokasi tujuan dengan benar!
+																																																				</div>
+																																																@endif
 																																												</div>
 																																								</div>
 																																								<script type="text/javascript">
@@ -121,24 +151,52 @@
 																																												<label for="airline_id" class="col-sm-2 col-form-label">Maskapai :</label>
 																																												<div class="col-sm-5">
 																																																<select class="form-control" id="airline" name="airline_id" required>
-																																																				<option disabled selected>-- Pilih Maskapai --</option>
-																																																				@foreach ($airlines as $airline)
-																																																								<option value="{{ $airline->id }}">
-																																																												{{ $airline->name }}
+																																																				@if (old('airline_id'))
+																																																								<option value={{ old('airline_id') }}>
+																																																												{{ $airlines->where('id', old('airline_id'))->first()->name }}
 																																																								</option>
+																																																				@else
+																																																								<option disabled selected>-- Pilih Maskapai --</option>
+																																																				@endif
+																																																				@foreach ($airlines as $airline)
+																																																								@if ($airline->id != old('airline_id'))
+																																																												<option value={{ $airline->id }}>
+																																																																{{ ucfirst($airline->name) }}
+																																																												</option>
+																																																								@endif
 																																																				@endforeach
 																																																</select>
+																																																@if ($errors->has('airline_id'))
+																																																				<div class="invalid-feedback">
+																																																								Pilih maskapai dengan benar!
+																																																				</div>
+																																																@endif
 																																												</div>
 																																												<div class="col-sm-5">
 																																																<div class="form-group">
 																																																				<select name="type_id" class="form-control" id="airline_class" required>
-																																																								<option selected value="">-- Pilih Jenis Maskapai --</option>
-																																																								@foreach ($types as $type)
-																																																												<option value="{{ $type->id }}">
-																																																																{{ ucfirst($type->name) }}
+																																																								@if (old('type_id'))
+																																																												<option value={{ old('type_id') }}>
+																																																																{{ $types->where('id', old('type_id'))->first()->name }}
 																																																												</option>
+																																																								@else
+																																																												<option selected value="">-- Pilih Jenis Maskapai --
+																																																												</option>
+																																																								@endif
+
+																																																								@foreach ($types as $type)
+																																																												@if ($type->id != old('type_id'))
+																																																																<option value={{ $type->id }}>
+																																																																				{{ ucfirst($type->name) }}
+																																																																</option>
+																																																												@endif
 																																																								@endforeach
 																																																				</select>
+																																																				@if ($errors->has('airline_id'))
+																																																								<div class="invalid-feedback">
+																																																												Pilih jenis maskapai dengan benar!
+																																																								</div>
+																																																				@endif
 																																																</div>
 																																												</div>
 																																								</div>
@@ -151,7 +209,7 @@
 																																												<div class="col-lg-4 col-sm-12">
 																																																<div class="form-group">
 																																																				<div class="form-control">
-																																																								<p id="tickets_shelf"></p>
+																																																								<p id="tickets_shelf">Klik tombol untuk mengecek harga tiket</p>
 																																																				</div>
 																																																</div>
 																																												</div>
@@ -168,7 +226,10 @@
 																																																<div class="form-group">
 																																																				<div class="form-check">
 																																																								<input class="form-check-input" id="pergi-check" type="radio"
-																																																												name="round_trip" checked value="false">
+																																																												name="round_trip"
+																																																												@if (old('round_trip') == true) @else 
+																																																												checked @endif
+																																																												value="false">
 																																																								<label class="form-check-label">Sekali Jalan</label>
 																																																				</div>
 																																																</div>
@@ -178,7 +239,8 @@
 																																																<div class="form-group">
 																																																				<div class="form-check">
 																																																								<input class="form-check-input" id="pergi-pulang-check"
-																																																												type="radio" name="round_trip" value="true">
+																																																												type="radio" name="round_trip" value="true"
+																																																												@if (old('round_trip') == true) checked @else @endif>
 																																																								<label class=" form-check-label">Pulang-Pergi</label>
 																																																				</div>
 																																																</div>
@@ -187,11 +249,14 @@
 																																												<label for="inputEmail3" class="col-sm-1 col-form-label">Jumlah :</label>
 																																												<div class="col-sm-2">
 																																																<select class="form-control" id="jumlah-penumpang" name="amount">
-																																																				<option value=1 id="option-penumpang-1">1</option>
-																																																				<option value=2 id="option-penumpang-2">2</option>
-																																																				<option value=3 id="option-penumpang-3">3</option>
-																																																				<option value=4 id="option-penumpang-4">4</option>
-																																																				<option value=5 id="option-penumpang-5">5</option>
+																																																				@for ($i = 1; $i <= 5; $i++)
+																																																								@if ($i == old('amount'))
+																																																												<option value={{ $i }} selected>{{ $i }}
+																																																												</option>
+																																																								@else
+																																																												<option value={{ $i }}>{{ $i }}</option>
+																																																								@endif
+																																																				@endfor
 																																																</select>
 																																												</div>
 																																								</div>
@@ -203,9 +268,15 @@
 																																																<div class="form-group">
 																																																				<input type="date" class="form-control" id="tanggalpergi"
 																																																								min="<?php echo date('Y-m-d'); ?>" placeholder="hh/bb/tttt" name="go_date"
-																																																								required>
+																																																								required value="{{ old('go_date') }}">
 																																																</div>
 																																												</div>
+
+																																												@if ($errors->has('go_date'))
+																																																<div class="invalid-feedback">
+																																																				Pilih tanggal pergi dengan benar!
+																																																</div>
+																																												@endif
 
 																																												<label for="inputEmail3" class="col-sm-1 col-form-label pulang-toogle">Pulang
 																																																:</label>
@@ -217,6 +288,12 @@
 																																																</div>
 																																												</div>
 
+																																												@if ($errors->has('return_date'))
+																																																<div class="invalid-feedback">
+																																																				Pilih tanggal pulang dengan benar!
+																																																</div>
+																																												@endif
+
 																																								</div>
 
 																																								<h4>Data Penumpang :</h4>
@@ -225,15 +302,23 @@
 																																												<label for="inputEmail3" class="col-sm-2 col-form-label">Penumpang 1:</label>
 																																												<div class="col-sm-2">
 																																																<div class="form-group">
-																																																				<input type="text" class="form-control" id="inputEmail3"
-																																																								placeholder="Nama" name="nama_penumpang_1" required>
+																																																				<input type="text"
+																																																								class="form-control @error('nama_penumpang_1') is-invalid @enderror"
+																																																								id="inputEmail3" placeholder="Nama" name="nama_penumpang_1"
+																																																								required value="{{ old('nama_penumpang_1') }}">
+																																																				@error('nama_penumpang_1')
+																																																								<div class="invalid-feedback">
+																																																												{{ $message }}
+																																																								</div>
+																																																				@enderror
 																																																</div>
 																																												</div>
 																																												<label for="inputEmail3" class="col-sm-1 col-form-label">KTP :</label>
 																																												<div class="col-sm-2">
 																																																<div class="form-group">
 																																																				<input type="text" class="form-control" id="inputEmail3"
-																																																								placeholder="KTP" name="nik_penumpang_1" required>
+																																																								placeholder="KTP" name="nik_penumpang_1" required
+																																																								value="{{ old('nik_penumpang_1') }}">
 																																																</div>
 																																												</div>
 																																												<label for="inputEmail3" class="col-sm-2 col-form-label">Jenis
@@ -242,8 +327,13 @@
 																																																<div class="form-group">
 																																																				<select class="form-control" name="jenis_penumpang_1" required>
 																																																								<option disabled selected>-- Kelamin --</option>
-																																																								<option value="true">Laki-Laki</option>
-																																																								<option value="false">Perempuan</option>
+
+																																																								<option value="true"
+																																																												@if (old('jenis_penumpang_1') == 'true') selected @else @endif>
+																																																												Laki-Laki</option>
+																																																								<option value="false"
+																																																												@if (old('jenis_penumpang_1') == 'false') selected @else @endif>
+																																																												Perempuan</option>
 																																																				</select>
 																																																</div>
 																																												</div>
@@ -253,15 +343,17 @@
 																																												<label for="inputEmail3" class="col-sm-2 col-form-label">Penumpang 2:</label>
 																																												<div class="col-sm-2">
 																																																<div class="form-group">
-																																																				<input type="tet" class="form-control" id="inputEmail3"
-																																																								placeholder="Nama" name="nama_penumpang_2">
+																																																				<input type="text" class="form-control" id="inputEmail3"
+																																																								placeholder="Nama" name="nama_penumpang_2"
+																																																								value="{{ old('nama_penumpang_2') }}">
 																																																</div>
 																																												</div>
 																																												<label for="inputEmail3" class="col-sm-1 col-form-label">KTP :</label>
 																																												<div class="col-sm-2">
 																																																<div class="form-group">
 																																																				<input type="text" class="form-control" id="inputEmail3"
-																																																								placeholder="KTP" name="nik_penumpang_2">
+																																																								placeholder="KTP" name="nik_penumpang_2"
+																																																								value="{{ old('nik_penumpang_2') }}">
 																																																</div>
 																																												</div>
 																																												<label for="inputEmail3" class="col-sm-2 col-form-label">Jenis
@@ -270,8 +362,13 @@
 																																																<div class="form-group">
 																																																				<select class="form-control" name="jenis_penumpang_2">
 																																																								<option disabled selected>-- Kelamin --</option>
-																																																								<option value="true">Laki-Laki</option>
-																																																								<option value="false">Perempuan</option>
+
+																																																								<option value="true"
+																																																												@if (old('jenis_penumpang_2') == 'true') selected @else @endif>
+																																																												Laki-Laki</option>
+																																																								<option value="false"
+																																																												@if (old('jenis_penumpang_2') == 'false') selected @else @endif>
+																																																												Perempuan</option>
 																																																				</select>
 																																																</div>
 																																												</div>
@@ -281,15 +378,17 @@
 																																												<label for="inputEmail3" class="col-sm-2 col-form-label">Penumpang 3:</label>
 																																												<div class="col-sm-2">
 																																																<div class="form-group">
-																																																				<input type="tet" class="form-control" id="inputEmail3"
-																																																								placeholder="Nama" name="nama_penumpang_3">
+																																																				<input type="text" class="form-control" id="inputEmail3"
+																																																								placeholder="Nama" name="nama_penumpang_3"
+																																																								value="{{ old('nama_penumpang_3') }}">
 																																																</div>
 																																												</div>
 																																												<label for="inputEmail3" class="col-sm-1 col-form-label">KTP :</label>
 																																												<div class="col-sm-2">
 																																																<div class="form-group">
 																																																				<input type="text" class="form-control" id="inputEmail3"
-																																																								placeholder="KTP" name="nik_penumpang_3">
+																																																								placeholder="KTP" name="nik_penumpang_3"
+																																																								value="{{ old('nik_penumpang_3') }}">
 																																																</div>
 																																												</div>
 																																												<label for="inputEmail3" class="col-sm-2 col-form-label">Jenis
@@ -298,8 +397,13 @@
 																																																<div class="form-group">
 																																																				<select class="form-control" name="jenis_penumpang_3">
 																																																								<option disabled selected>-- Kelamin --</option>
-																																																								<option value="true">Laki-Laki</option>
-																																																								<option value="false">Perempuan</option>
+
+																																																								<option value="true"
+																																																												@if (old('jenis_penumpang_3') == 'true') selected @else @endif>
+																																																												Laki-Laki</option>
+																																																								<option value="false"
+																																																												@if (old('jenis_penumpang_3') == 'false') selected @else @endif>
+																																																												Perempuan</option>
 																																																				</select>
 																																																</div>
 																																												</div>
@@ -309,15 +413,17 @@
 																																												<label for="inputEmail3" class="col-sm-2 col-form-label">Penumpang 4:</label>
 																																												<div class="col-sm-2">
 																																																<div class="form-group">
-																																																				<input type="tet" class="form-control" id="inputEmail3"
-																																																								placeholder="Nama" name="nama_penumpang_4">
+																																																				<input type="text" class="form-control" id="inputEmail3"
+																																																								placeholder="Nama" name="nama_penumpang_4"
+																																																								value="{{ old('nama_penumpang_4') }}">
 																																																</div>
 																																												</div>
 																																												<label for="inputEmail3" class="col-sm-1 col-form-label">KTP :</label>
 																																												<div class="col-sm-2">
 																																																<div class="form-group">
 																																																				<input type="text" class="form-control" id="inputEmail3"
-																																																								placeholder="KTP" name="nik_penumpang_4">
+																																																								placeholder="KTP" name="nik_penumpang_4"
+																																																								value="{{ old('nik_penumpang_4') }}">
 																																																</div>
 																																												</div>
 																																												<label for="inputEmail3" class="col-sm-2 col-form-label">Jenis
@@ -326,8 +432,13 @@
 																																																<div class="form-group">
 																																																				<select class="form-control" name="jenis_penumpang_4">
 																																																								<option disabled selected>-- Kelamin --</option>
-																																																								<option value="true">Laki-Laki</option>
-																																																								<option value="false">Perempuan</option>
+
+																																																								<option value="true"
+																																																												@if (old('jenis_penumpang_4') == 'true') selected @else @endif>
+																																																												Laki-Laki</option>
+																																																								<option value="false"
+																																																												@if (old('jenis_penumpang_4') == 'false') selected @else @endif>
+																																																												Perempuan</option>
 																																																				</select>
 																																																</div>
 																																												</div>
@@ -337,15 +448,17 @@
 																																												<label for="inputEmail3" class="col-sm-2 col-form-label">Penumpang 5:</label>
 																																												<div class="col-sm-2">
 																																																<div class="form-group">
-																																																				<input type="tet" class="form-control" id="inputEmail3"
-																																																								placeholder="Nama" name="nama_penumpang_5">
+																																																				<input type="text" class="form-control" id="inputEmail3"
+																																																								placeholder="Nama" name="nama_penumpang_5"
+																																																								value="{{ old('nama_penumpang_5') }}">
 																																																</div>
 																																												</div>
 																																												<label for="inputEmail3" class="col-sm-1 col-form-label">KTP :</label>
 																																												<div class="col-sm-2">
 																																																<div class="form-group">
 																																																				<input type="text" class="form-control" id="inputEmail3"
-																																																								placeholder="KTP" name="nik_penumpang_5">
+																																																								placeholder="KTP" name="nik_penumpang_5"
+																																																								value="{{ old('nik_penumpang_5') }}">
 																																																</div>
 																																												</div>
 																																												<label for="inputEmail3" class="col-sm-2 col-form-label">Jenis
@@ -354,8 +467,13 @@
 																																																<div class="form-group">
 																																																				<select class="form-control" name="jenis_penumpang_5">
 																																																								<option disabled selected>-- Kelamin --</option>
-																																																								<option value="true">Laki-Laki</option>
-																																																								<option value="false">Perempuan</option>
+
+																																																								<option value="true"
+																																																												@if (old('jenis_penumpang_5') == 'true') selected @else @endif>
+																																																												Laki-Laki</option>
+																																																								<option value="false"
+																																																												@if (old('jenis_penumpang_5') == 'false') selected @else @endif>
+																																																												Perempuan</option>
 																																																				</select>
 																																																</div>
 																																												</div>
@@ -369,10 +487,18 @@
 																																												<div class="col-lg-3 col-sm-12">
 																																																<div class="form-group">
 																																																				<select class="form-control" id="method_id" name="method_id">
-																																																								<option disabled selected>-- Pilih Metode Pembayaran --</option>
-																																																								@foreach ($methods as $method)
-																																																												<option value="{{ $method->id }}">{{ $method->method }}
+																																																								@if (old('method_id'))
+																																																												<option value={{ old('method_id') }}>
+																																																																{{ $methods->where('id', old('method_id'))->first()->method }}
 																																																												</option>
+																																																								@else
+																																																												<option disabled selected>-- Pilih Metode Pembayaran --</option>
+																																																								@endif
+																																																								@foreach ($methods as $method)
+																																																												@if ($method->id != old('method_id'))
+																																																																<option value="{{ $method->id }}">{{ $method->method }}
+																																																																</option>
+																																																												@endif
 																																																								@endforeach
 																																																				</select>
 																																																</div>
@@ -382,7 +508,8 @@
 																																												<div class="col-lg-2 col-sm-12">
 																																																<div class="form-group">
 																																																				<input type="text" class="form-control" name="name_account"
-																																																								id="name_account" placeholder="" required>
+																																																								id="name_account" placeholder="Nama Lengkap" required
+																																																								value="{{ old('name_account') }}">
 																																																				<small class="text-muted">Nama lengkap pada rekening</small>
 																																																</div>
 																																												</div>
@@ -391,7 +518,8 @@
 																																												<div class="col-lg-2 col-sm-12">
 																																																<div class="form-group">
 																																																				<input type="text" class="form-control" name="from_account"
-																																																								id="name_account" placeholder="" required>
+																																																								id="name_account" placeholder="Nomor Lengkap" required
+																																																								value="{{ old('from_account') }}">
 																																																				<small class="text-muted">Nomor lengkap pada rekening</small>
 																																																</div>
 																																												</div>

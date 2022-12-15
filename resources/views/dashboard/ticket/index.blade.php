@@ -9,7 +9,7 @@
 								<!-- Main Sidebar Container -->
 								<aside class="main-sidebar sidebar-dark-primary elevation-4">
 												<!-- Brand Logo -->
-												<a href="{admin/dashboard}" class="brand-link">
+												<a href="/dashboard" class="brand-link">
 																<img src="{{ asset('dist/img/ConfidoLogo.png') }}" alt="Confido Logo"
 																				class="brand-image img-circle elevation-3" style="opacity: .8">
 																<span class="brand-text font-weight-light">Confido</span>
@@ -31,7 +31,7 @@
 																								</div>
 																								<div class="col-sm-6">
 																												<ol class="breadcrumb float-sm-right">
-																																<li class="breadcrumb-item"><a href="/admin/dashboard">Home</a></li>
+																																<li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
 																																<li class="breadcrumb-item active">Harga</li>
 																												</ol>
 																								</div>
@@ -44,18 +44,32 @@
 																<div class="container-fluid">
 																				<div class="row">
 																								<div class="col-12">
-
-
 																												<div class="card">
 																																<div class="card-header">
+																																				@if (session('success'))
+																																								<div class="alert alert-success">
+																																												{{ session('success') }}
+																																								</div>
+																																				@endif
 																																				@if (session('sameTicket'))
 																																								<div class="alert alert-danger">
 																																												{{ session('sameTicket') }}
 																																								</div>
 																																				@endif
+																																				@if (session('delete'))
+																																								<div class="alert alert-success">
+																																												{{ session('delete') }}
+																																								</div>
+																																				@endif
+																																				@if (session('update'))
+																																								<div class="alert alert-success">
+																																												{{ session('update') }}
+																																								</div>
+																																				@endif
+
 																																				<div class="row mb-2">
 																																								<div class="col-sm-6">
-																																												<h3 class="card-title">Data harga</h3>
+																																												<h3 class="card-title">Data Harga Tiket</h3>
 																																								</div>
 																																								@can('isAdmin')
 																																												<div class="col-sm-6">
@@ -75,7 +89,7 @@
 																																																																</button>
 																																																												</div>
 
-																																																												<form action="/admin/tickets" method="POST">
+																																																												<form action="/tickets" method="POST">
 																																																																@csrf
 																																																																@method('POST')
 
@@ -104,13 +118,13 @@
 
 																																																																				<div class="form-group row">
 																																																																								<label for="type_id"
-																																																																												class="col-sm-2 col-form-label">Jenis:</label>
+																																																																												class="col-sm-2 col-form-label">Jenis</label>
 																																																																								<select name="type_id" id="type_id"
 																																																																												class="form-control col-sm-10" required>
 																																																																												<option selected value="" disabled>Pilih Jenis
 																																																																												</option>
 																																																																												@foreach ($types as $type)
-																																																																																<option value="{{ $type->id }}">
+																																																																																<option value="{{ old('type_id', $type->id) }}">
 																																																																																				{{ $type->name }}
 																																																																																</option>
 																																																																												@endforeach
@@ -126,7 +140,8 @@
 																																																																												<option selected value="" disabled>Pilih Rute
 																																																																												</option>
 																																																																												@foreach ($tracks as $track)
-																																																																																<option value="{{ $track->id }}">
+																																																																																<option
+																																																																																				value="{{ old('track_id', $track->id) }}">
 																																																																																				{{ $track->from_route }} -
 																																																																																				{{ $track->to_route }}
 																																																																																</option>
@@ -152,7 +167,7 @@
 
 																																																																				<div class="form-group row">
 																																																																								<label for="inputName2"
-																																																																												class="col-sm-2 col-form-label">Harga:</label>
+																																																																												class="col-sm-2 col-form-label">Harga</label>
 																																																																								<input type="number" class="form-control col-sm-10"
 																																																																												placeholder="Harga Baru" name='price'
 																																																																												id='hargaadd' min="0">
@@ -188,36 +203,69 @@
 																																				<table id="example1" class="table table-bordered table-striped">
 																																								<thead>
 																																												<tr>
+																																																<th>No</th>
 																																																<th>Maskapai</th>
 																																																<th>Pergi dari</th>
 																																																<th>Tujuan ke</th>
 																																																<th>Jenis</th>
 																																																<th>Jumlah Harga</th>
 																																																@can('isAdmin')
-																																																				<th>Ubah Harga</th>
+																																																				<th>Action</th>
 																																																@endcan
 																																												</tr>
 																																								</thead>
 																																								<tbody>
 																																												@foreach ($tickets as $ticket)
 																																																<tr>
-																																																				<td>{{ $ticket->airline->name }}</td>
-																																																				<td>{{ $ticket->track->from_route }}</td>
-																																																				<td>{{ $ticket->track->to_route }}</td>
-																																																				<td>{{ $ticket->type->name }}</td>
 																																																				<td>
-
+																																																								{{ $loop->iteration }}
+																																																				</td>
+																																																				<td>
+																																																								@isset($ticket->airline->name)
+																																																												{{ $ticket->airline->name }}
+																																																								@else
+																																																												Tidak dapat ditampilkan
+																																																								@endisset
+																																																				</td>
+																																																				<td>
+																																																								@isset($ticket->track->from_route)
+																																																												{{ $ticket->track->from_route }}
+																																																								@else
+																																																												Tidak dapat ditampilkan
+																																																								@endisset
+																																																				</td>
+																																																				<td>
+																																																								@isset($ticket->track->to_route)
+																																																												{{ $ticket->track->to_route }}
+																																																								@else
+																																																												Tidak dapat ditampilkan
+																																																								@endisset
+																																																				</td>
+																																																				<td>
+																																																								@isset($ticket->type->name)
+																																																												{{ $ticket->type->name }}
+																																																								@else
+																																																												Tidak dapat ditampilkan
+																																																								@endisset
+																																																				</td>
+																																																				<td>
 																																																								@isset($ticket->price->price)
 																																																												Rp {{ $ticket->price->price }}
 																																																								@else
-																																																												Not set yet
+																																																												Belum di set
 																																																								@endisset
 																																																				</td>
 																																																				@can('isAdmin')
-																																																								<td>
-																																																												<a button class='btn btn-success btn-xs' title='Ubah Harga'
-																																																																data-toggle="modal" data-target="#modal-{{ $ticket->id }}"><i
-																																																																				class='fa fa-reply'></i></button></a>
+																																																								<td class="d-flex justify-content-start align-items-center">
+																																																												<a class='btn btn-primary btn-xs mx-1' data-toggle="modal"
+																																																																data-target="#modal-{{ $ticket->id }}">Ubah Harga</a>
+																																																												<form action="/tickets/{{ $ticket->id }}" method="POST"
+																																																																onsubmit="return confirm('Yakin ingin menghapus?');">
+																																																																@csrf
+																																																																@method('DELETE')
+
+																																																																<button class='btn btn-danger btn-xs mx-1'>Delete</button>
+																																																												</form>
 																																																								</td>
 																																																				@endcan
 																																																				<div class="modal fade" id="modal-{{ $ticket->id }}">
@@ -232,14 +280,14 @@
 																																																																</div>
 
 																																																																<div class="modal-body">
-																																																																				<form action="/admin/prices/{{ $ticket->price->id }}"
+																																																																				<form action="/prices/{{ $ticket->price->id }}"
 																																																																								method="POST">
 																																																																								@method('PUT')
 																																																																								@csrf
 																																																																								<div class="form-group row">
 																																																																												<label for="inputName2"
 																																																																																class="col-sm-2 col-form-label">Harga
-																																																																																Lama:</label>
+																																																																																Lama</label>
 
 																																																																												<label for="inputName2"
 																																																																																class="col-sm-2 col-form-label">
@@ -255,7 +303,7 @@
 																																																																								<div class="form-group row">
 																																																																												<label for="inputName2"
 																																																																																class="col-sm-2 col-form-label">Harga
-																																																																																Baru:</label>
+																																																																																Baru</label>
 																																																																												<input type="number"
 																																																																																class="col-sm-3 form-control col-sm-10"
 																																																																																placeholder="Harga Baru" name='price'

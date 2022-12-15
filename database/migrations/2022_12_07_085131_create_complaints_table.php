@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignId('user_id');
             $table->string('body');
             $table->boolean('seen')->default(false);
+            $table->boolean('seenForAdmin')->default(false);
             $table->timestamps();
         });
     }

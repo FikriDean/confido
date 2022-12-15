@@ -87,7 +87,7 @@ class TransactionController extends Controller
 
             $transaction->update($validatedData);
 
-            return redirect('/admin/transactions');
+            return redirect('/transactions');
         } else {
             $validatedData = $request->validate([
                 'image' => ['image', 'file', 'max:4096'],
@@ -103,7 +103,7 @@ class TransactionController extends Controller
 
             $transaction->update($validatedData);
 
-            return redirect('/admin/transactions');
+            return redirect('/transactions');
         }
     }
 

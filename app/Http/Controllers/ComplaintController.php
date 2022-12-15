@@ -48,6 +48,8 @@ class ComplaintController extends Controller
 
         if (Gate::allows('isAdmin')) {
             Complaint::where('order_id', $request['order_id'])->update(['seen' => 1]);
+        } else {
+            Complaint::where('order_id', $request['order_id'])->update(['seenForAdmin' => 1]);
         }
 
         return redirect('/orders')->with('lapor', 'Keluhan anda berhasil dikirim!');

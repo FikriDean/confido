@@ -10,7 +10,7 @@
 								<!-- Main Sidebar Container -->
 								<aside class="main-sidebar sidebar-dark-primary elevation-4">
 												<!-- Brand Logo -->
-												<a href="./" class="brand-link">
+												<a href="/dashboard" class="brand-link">
 																<img src="{{ asset('dist/img/ConfidoLogo.png') }}" alt="Confido Logo"
 																				class="brand-image img-circle elevation-3" style="opacity: .8">
 																<span class="brand-text font-weight-light">Confido</span>
@@ -53,8 +53,8 @@
 																																<div class="small-box bg-info">
 																																				<div class="inner">
 																																								<h3>Tiket</h3>
-
 																																								<p>{{ $tickets->count() }} tiket telah terdaftar!</p>
+																																								<br>
 																																				</div>
 																																				<div class="icon">
 																																								<i class="ion ion-bag"></i>
@@ -69,8 +69,8 @@
 																																<div class="small-box bg-success">
 																																				<div class="inner">
 																																								<h3>Pesanan</h3>
-
 																																								<p>Terdapat pesanan lebih dari {{ $orders->count() - 1 }}</p>
+																																								<br>
 																																				</div>
 																																				<div class="icon">
 																																								<i class="ion ion-stats-bars"></i>
@@ -87,11 +87,12 @@
 																																								<h3>Transaksi</h3>
 
 																																								<p>Terdapat {{ $transactions->count() }} yang belum di konfirmasi/setujui</p>
+																																								<br>
 																																				</div>
 																																				<div class="icon">
 																																								<i class="ion ion-person-add"></i>
 																																				</div>
-																																				<a href="#" class="small-box-footer">More info <i
+																																				<a href="/transactions" class="small-box-footer">Klik untuk melihat daftar transaksi <i
 																																												class="fas fa-arrow-circle-right"></i></a>
 																																</div>
 																												</div>

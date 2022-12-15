@@ -15,7 +15,7 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        return view('admin.payment.index', [
+        return view('payment.index', [
             'payments' => Payment::all()
         ]);
     }
@@ -60,7 +60,7 @@ class PaymentController extends Controller
      */
     public function edit(Payment $payment)
     {
-        return view('admin.payment.edit', [
+        return view('payment.edit', [
             'payment' => $payment
         ]);
     }
@@ -86,7 +86,7 @@ class PaymentController extends Controller
 
         $payment->update($validatedData);
 
-        return redirect('/admin/payments');
+        return redirect('/payments');
     }
 
     /**

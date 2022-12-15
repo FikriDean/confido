@@ -14,7 +14,9 @@ class TrackController extends Controller
      */
     public function index()
     {
-        //
+        return view('dashboard.track.index', [
+            'tracks' => Track::all()
+        ]);
     }
 
     /**
@@ -24,7 +26,7 @@ class TrackController extends Controller
      */
     public function create()
     {
-        return view('admin.track.create');
+        //
     }
 
     /**
@@ -42,7 +44,7 @@ class TrackController extends Controller
 
         Track::create($validatedData);
 
-        return redirect('/admin/tracks');
+        return redirect('/tracks')->with('store', 'Rute tersebut berhasil ditambahkan!');
     }
 
     /**
@@ -76,7 +78,20 @@ class TrackController extends Controller
      */
     public function update(Request $request, Track $track)
     {
-        //
+        $validatedData = $request->validate([
+            'from_route' => ['required'],
+            'to_route' => ['required']
+        ]);
+
+        $check = Track::where('from_route', $validatedData['from_route'])->where('to_route', $validatedData['to_route']);
+
+        if ($check) {
+            return redirect('/tracks')->with('sameRoute', 'Rute tersebut sudah ada di database!');
+        }
+
+        Track::create($validatedData);
+
+        return redirect('/tracks')->with('update', 'Rute tersebut berhasil diubah!');;
     }
 
     /**
@@ -87,6 +102,7 @@ class TrackController extends Controller
      */
     public function destroy(Track $track)
     {
-        //
+        $track->delete();
+        return redirect('/tracks')->with('delete', 'Rute tersebut berhasil dihapus');
     }
 }

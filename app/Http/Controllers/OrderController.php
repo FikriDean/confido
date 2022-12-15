@@ -33,7 +33,7 @@ class OrderController extends Controller
         } else {
             return view('dashboard.order.index', [
                 'orders' => Order::where('user_id', Auth::id())->get(),
-                'complaints' => Complaint::all()
+                'complaints' => Complaint::all(),
             ]);
         }
     }
@@ -75,7 +75,7 @@ class OrderController extends Controller
             'airline_id' => ['required'],
             'type_id' => ['required'],
             'round_trip' => ['required'],
-            'amount' => ['required', 'max:5'],
+            'amount' => ['required'],
             'go_date' => ['required'],
         ]);
 
@@ -127,7 +127,7 @@ class OrderController extends Controller
                 'airline_id' => ['required'],
                 'type_id' => ['required'],
                 'round_trip' => ['required'],
-                'amount' => ['required', 'max:5'],
+                'amount' => ['required'],
             ]);
 
             if ($validatedDataOrder2['round_trip'] == "true") {
@@ -170,9 +170,9 @@ class OrderController extends Controller
         }
 
         $validatedDataPassengers1 = $request->validate([
-            'nama_penumpang_1' => ['required', 'min:3', 'max:100'],
-            'nik_penumpang_1' => ['required', 'min:3', 'max:100'],
-            'jenis_penumpang_1' => ['required', 'min:3', 'max:100']
+            'nama_penumpang_1' => ['required',],
+            'nik_penumpang_1' => ['required',],
+            'jenis_penumpang_1' => ['required',]
         ]);
 
         if ($validatedDataPassengers1['jenis_penumpang_1'] == "true") {
@@ -183,9 +183,9 @@ class OrderController extends Controller
 
         if ($request['nama_penumpang_2'] && $request['nik_penumpang_2'] && $request['jenis_penumpang_2']) {
             $validatedDataPassengers2 = $request->validate([
-                'nama_penumpang_2' => ['min:3', 'max:100'],
-                'nik_penumpang_2' => ['min:3', 'max:100'],
-                'jenis_penumpang_2' => ['min:3', 'max:100'],
+                'nama_penumpang_2' => [],
+                'nik_penumpang_2' => [],
+                'jenis_penumpang_2' => [],
             ]);
 
             if ($validatedDataPassengers2['jenis_penumpang_2'] == "true") {
@@ -197,9 +197,9 @@ class OrderController extends Controller
 
         if ($request['nama_penumpang_3'] && $request['nik_penumpang_3'] && $request['jenis_penumpang_3']) {
             $validatedDataPassengers3 = $request->validate([
-                'nama_penumpang_3' => ['min:3', 'max:100'],
-                'nik_penumpang_3' => ['min:3', 'max:100'],
-                'jenis_penumpang_3' => ['min:3', 'max:100'],
+                'nama_penumpang_3' => [],
+                'nik_penumpang_3' => [],
+                'jenis_penumpang_3' => [],
             ]);
 
             if ($validatedDataPassengers3['jenis_penumpang_3'] == "true") {
@@ -212,9 +212,9 @@ class OrderController extends Controller
 
         if ($request['nama_penumpang_4'] && $request['nik_penumpang_4'] && $request['jenis_penumpang_4']) {
             $validatedDataPassengers4 = $request->validate([
-                'nama_penumpang_4' => ['min:3', 'max:100'],
-                'nik_penumpang_4' => ['min:3', 'max:100'],
-                'jenis_penumpang_4' => ['min:3', 'max:100'],
+                'nama_penumpang_4' => [],
+                'nik_penumpang_4' => [],
+                'jenis_penumpang_4' => [],
             ]);
 
             if ($validatedDataPassengers4['jenis_penumpang_4'] == "true") {
@@ -226,9 +226,9 @@ class OrderController extends Controller
 
         if ($request['nama_penumpang_5'] && $request['nik_penumpang_5'] && $request['jenis_penumpang_5']) {
             $validatedDataPassengers5 = $request->validate([
-                'nama_penumpang_5' => ['min:3', 'max:100'],
-                'nik_penumpang_5' => ['min:3', 'max:100'],
-                'jenis_penumpang_5' => ['min:3', 'max:100'],
+                'nama_penumpang_5' => [],
+                'nik_penumpang_5' => [],
+                'jenis_penumpang_5' => [],
             ]);
 
             if ($validatedDataPassengers5['jenis_penumpang_5'] == "true") {

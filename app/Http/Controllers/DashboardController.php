@@ -29,7 +29,7 @@ class DashboardController extends Controller
                 'transactions' => Transaction::where('status', false)->whereHas('order', function ($query) {
                     $query->where('user_id', Auth::id());
                 })->get(),
-                'complaints' => Complaint::where('seen', false)->where(['user_id'], Auth::id())
+                'complaints' => Complaint::where('seenForAdmin', false)->where('user_id', Auth::id())
             ]);
         }
     }
