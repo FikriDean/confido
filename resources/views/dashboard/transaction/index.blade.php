@@ -56,7 +56,7 @@
 																																</div>
 																																<!-- /.card-header -->
 																																<div class="card-body">
-																																				<table id="example1" class="table table-bordered table-striped">
+																																				<table id="example1" class="table table-bordered">
 																																								<thead>
 																																												<tr>
 																																																<th>ID Booking</th>
@@ -108,8 +108,9 @@
 																																																				</td>
 																																																				<td>
 																																																								@isset($transaction->image)
-																																																												<img width="100px" src="{{ asset($transaction->image) }}"
-																																																																alt="">
+																																																												<img style="width: 100px; height: 50px"
+																																																																src="{{ asset($transaction->image) }}"
+																																																																alt="{{ $transaction->order->user->name }}">
 																																																								@else
 																																																												Belum diunggah
 																																																								@endisset
@@ -128,310 +129,222 @@
 																																																																data-target="#modal-transaction-{{ $transaction->id }}">Perbaharui
 																																																																Status
 																																																												</button>
-																																																												<div class="modal fade"
-																																																																id="modal-transaction-{{ $transaction->id }}">
-																																																																<div class="modal-dialog modal-xl">
-																																																																				<div class="modal-content">
-																																																																								<form action="/transactions/{{ $transaction->id }}"
-																																																																												method="POST">
-
-																																																																												@csrf
-																																																																												@method('PUT')
-																																																																												<div class="modal-header">
-																																																																																<h4 class="modal-title">Update Status Transaksi
-																																																																																				dengan
-																																																																																				<strong>Booking ID
-																																																																																								{{ $transaction->order->order_code }}</strong>
-																																																																																</h4>
-																																																																																<button type="button" class="close"
-																																																																																				data-dismiss="modal" aria-label="Close">
-																																																																																				<span aria-hidden="true">&times;</span>
-																																																																																</button>
-																																																																												</div>
-
-																																																																												<div class="modal-body">
-																																																																																<h6>Pesanan</h6>
-																																																																																<table
-																																																																																				class="table table-bordered table-striped">
-																																																																																				<thead>
-																																																																																								<tr>
-																																																																																												<th>Nama</th>
-																																																																																												<th>Metode Pembayaran</th>
-																																																																																												<th>Nama Akun Rekening</th>
-																																																																																												<th>Nomor Rekening</th>
-																																																																																												<th>Total Pembayaran</th>
-																																																																																												<th>Bukti Pembayaran</th>
-																																																																																												<th>Status</th>
-																																																																																								</tr>
-																																																																																				</thead>
-																																																																																				<tbody>
-																																																																																								<td>
-																																																																																												@isset($transaction->order->user->name)
-																																																																																																{{ $transaction->order->user->name }}
-																																																																																												@endisset
-																																																																																								</td>
-																																																																																								<td>
-																																																																																												@isset($transaction->method->method)
-																																																																																																{{ $transaction->method->method }}
-																																																																																												@endisset
-																																																																																								</td>
-																																																																																								<td>
-																																																																																												@isset($transaction->name_account)
-																																																																																																{{ $transaction->name_account }}
-																																																																																												@endisset
-																																																																																								</td>
-																																																																																								<td>
-																																																																																												@isset($transaction->from_account)
-																																																																																																{{ $transaction->from_account }}
-																																																																																												@endisset
-																																																																																								</td>
-																																																																																								<td>
-																																																																																												@isset($transaction->total)
-																																																																																																{{ $transaction->total }}
-																																																																																												@endisset
-																																																																																								</td>
-																																																																																								<td>
-																																																																																												@isset($transaction->image)
-																																																																																																<img width="100px"
-																																																																																																				src="{{ asset($transaction->image) }}"
-																																																																																																				alt="">
-																																																																																												@else
-																																																																																																Belum diunggah
-																																																																																												@endisset
-																																																																																								</td>
-																																																																																								<td>
-																																																																																												@if ($transaction->status == true)
-																																																																																																Telah disetujui
-																																																																																												@else
-																																																																																																Belum/tidak disetujui
-																																																																																												@endif
-																																																																																								</td>
-																																																																																				</tbody>
-																																																																																</table>
-																																																																																<h6>Transaksi</h6>
-																																																																																<table id="example1"
-																																																																																				class="table table-bordered table-striped">
-																																																																																				<thead>
-
-																																																																																								<tr>
-																																																																																												<th>Maskapai</th>
-																																																																																												<th>Jenis</th>
-																																																																																												<th>Rute</th>
-																																																																																												<th>Jumlah</th>
-																																																																																												<th>Pulang-Pergi</th>
-																																																																																												<th>Tanggal</th>
-																																																																																								</tr>
-
-																																																																																				</thead>
-																																																																																				<tbody>
-																																																																																								<tr>
-																																																																																												<td>
-																																																																																																@isset($transaction->order->ticket->airline->name)
-																																																																																																				{{ $transaction->order->ticket->airline->name }}
-																																																																																																@else
-																																																																																																				Tidak dapat ditampilkan
-																																																																																																@endisset
-
-																																																																																												</td>
-																																																																																												<td>
-																																																																																																@isset($transaction->order->ticket->type->name)
-																																																																																																				{{ $transaction->order->ticket->type->name }}
-																																																																																																@else
-																																																																																																				Tidak dapat ditampilkan
-																																																																																																@endisset
-
-																																																																																												</td>
-																																																																																												<td>
-																																																																																																@isset($transaction->order->ticket->track->from_route)
-																																																																																																				@isset($transaction->order->ticket->track->to_route)
-																																																																																																								{{ $transaction->order->ticket->track->from_route }}
-																																																																																																								-
-																																																																																																								{{ $transaction->order->ticket->track->to_route }}
-																																																																																																				@endisset
-																																																																																																@else
-																																																																																																				Tidak dapat ditampilkan
-																																																																																																@endisset
-
-																																																																																												</td>
-																																																																																												<td>
-																																																																																																@isset($transaction->order->amount)
-																																																																																																				{{ $transaction->order->amount }}
-																																																																																																@else
-																																																																																																				Tidak dapat ditampilkan
-																																																																																																@endisset
-
-																																																																																												</td>
-																																																																																												<td>
-																																																																																																@isset($transaction->order->round_trip)
-																																																																																																				@if ($transaction->order->round_trip == true)
-																																																																																																								Ya
-																																																																																																				@else
-																																																																																																								Tidak
-																																																																																																				@endif
-																																																																																																@else
-																																																																																																				Tidak
-																																																																																																@endisset
-
-																																																																																												</td>
-																																																																																												<td>
-																																																																																																@isset($transaction->order->updated_at)
-																																																																																																				{{ $transaction->order->updated_at }}
-																																																																																																@else
-																																																																																																				Tidak dapat ditampilkan
-																																																																																																@endisset
-																																																																																												</td>
-
-
-																																																																																</table>
-																																																																																<h6>Penumpang</h6>
-																																																																																<table id="example1"
-																																																																																				class="table table-bordered table-striped">
-																																																																																				<thead>
-
-																																																																																								<tr>
-																																																																																												<th>No</th>
-																																																																																												<th>Nama</th>
-																																																																																												<th>KTP</th>
-																																																																																												<th>Jenis Kelamin</th>
-																																																																																								</tr>
-
-																																																																																				</thead>
-																																																																																				<tbody>
-																																																																																								<tr>
-																																																																																												@foreach ($transaction->order->passengers as $passenger)
-																																																																																																<td>{{ $loop->iteration }}</td>
-																																																																																																<td>
-																																																																																																				@isset($passenger->name)
-																																																																																																								{{ $passenger->name }}
-																																																																																																				@else
-																																																																																																								Tidak dapat ditampilkan
-																																																																																																				@endisset
-																																																																																																</td>
-																																																																																																<td>
-																																																																																																				@isset($passenger->id_number)
-																																																																																																								{{ $passenger->id_number }}
-																																																																																																				@else
-																																																																																																								Tidak dapat ditampilkan
-																																																																																																				@endisset
-																																																																																																</td>
-																																																																																																<td>
-																																																																																																				@isset($passenger->gender)
-																																																																																																								@if ($passenger->gender == true)
-																																																																																																												Laki-laki
-																																																																																																								@else
-																																																																																																												Perempuan
-																																																																																																								@endif
-																																																																																																				@else
-																																																																																																								Tidak dapat ditampilkan
-																																																																																																				@endisset
-																																																																																																</td>
-																																																																																												@endforeach
-																																																																																</table>
-
-																																																																																<div class="input-group w-50">
-
-																																																																																				<div class="input-group-text">
-
-																																																																																								@if ($transaction->status == true)
-																																																																																												<input type="checkbox"
-																																																																																																id="status" name="status"
-																																																																																																checked>
-																																																																																								@else
-																																																																																												<input type="checkbox"
-																																																																																																id="status" name="status">
-																																																																																								@endif
-
-																																																																																				</div>
-																																																																																				<label type="text"
-																																																																																								class="form-control">Konfirmasi/setujui
-																																																																																								transaksi dengan Booking ID
-																																																																																								{{ $transaction->order->order_code }}
-																																																																																								?</label>
-																																																																																</div>
-																																																																												</div>
-
-																																																																												<div class="modal-footer justify-content-between">
-																																																																																<button type="submit" class="btn btn-primary"
-																																																																																				value="submit">Submit</button>
-																																																																												</div>
-																																																																								</form>
-																																																																				</div>
-																																																																				<!-- /.modal-content -->
-																																																																</div>
-																																																																<!-- /.modal-dialog -->
-																																																												</div>
 																																																								@else
 																																																												<button class="btn btn-primary btn-xs" type="button"
 																																																																data-toggle="modal"
 																																																																data-target="#modal-upload-{{ $transaction->id }}">Unggah
 																																																																Bukti Pembayaran
 																																																												</button>
+																																																								@endcan
+																																																				</td>
 
-																																																												<div class="modal fade" id="modal-upload-{{ $transaction->id }}">
-																																																																<div class="modal-dialog modal-lg">
-																																																																				<div class="modal-content">
-																																																																								<div class="modal-header">
-																																																																												<h4 class="modal-title">Unggah Bukti Pembayaran
-																																																																												</h4>
-																																																																												<button type="button" class="close"
-																																																																																data-dismiss="modal" aria-label="Close">
-																																																																																<span aria-hidden="true">&times;</span>
-																																																																												</button>
+																																																				<div class="modal fade" tabindex="-1" role="dialog"
+																																																								aria-labelledby="exampleModalLongTitle" aria-hidden="true"
+																																																								id="modal-transaction-{{ $transaction->id }}">
+																																																								<div class="modal-dialog modal-xl">
+																																																												<div class="modal-content">
+																																																																<div class="modal-header">
+																																																																				<h4 class="modal-title">Update Status Transaksi
+																																																																								dengan
+																																																																								<strong>Booking ID
+																																																																												{{ $transaction->order->order_code }}</strong>
+																																																																				</h4>
+																																																																				<button type="button" class="close"
+																																																																								data-dismiss="modal" aria-label="Close">
+																																																																								<span aria-hidden="true">&times;</span>
+																																																																				</button>
+																																																																</div>
+																																																																<form action="/transactions/{{ $transaction->id }}"
+																																																																				method="POST">
+																																																																				@csrf
+																																																																				@method('PUT')
+
+																																																																				<div class="modal-body">
+																																																																								<div class="card card-body">
+																																																																												<h5 style="font-weight: 700">Data Penumpang</h5>
+																																																																												<ol>
+																																																																																@foreach ($transaction->order->passengers as $passenger)
+																																																																																				<li class="mb-4">
+																																																																																								<ul>
+																																																																																												<li>
+																																																																																																<div class="d-flex">
+																																																																																																				<div
+																																																																																																								style="width: 130px; font-weight: 700">
+																																																																																																								Nama
+																																																																																																				</div>
+																																																																																																				<div
+																																																																																																								style="width: 20px">
+																																																																																																								:</div>
+																																																																																																				<div>
+																																																																																																								@isset($passenger->name)
+																																																																																																												{{ $passenger->name }}
+																																																																																																								@else
+																																																																																																												Tidak dapat
+																																																																																																												ditampilkan
+																																																																																																								@endisset
+																																																																																																				</div>
+																																																																																																</div>
+
+																																																																																												</li>
+																																																																																												<li>
+																																																																																																<div class="d-flex">
+																																																																																																				<div
+																																																																																																								style="width: 130px; font-weight: 700">
+																																																																																																								NIK
+																																																																																																				</div>
+																																																																																																				<div
+																																																																																																								style="width: 20px">
+																																																																																																								:</div>
+																																																																																																				<div>
+																																																																																																								@isset($passenger->id_number)
+																																																																																																												{{ $passenger->id_number }}
+																																																																																																								@else
+																																																																																																												Tidak dapat
+																																																																																																												ditampilkan
+																																																																																																								@endisset
+																																																																																																				</div>
+																																																																																																</div>
+
+																																																																																												</li>
+																																																																																												<li>
+																																																																																																<div class="d-flex">
+																																																																																																				<div
+																																																																																																								style="width: 130px; font-weight: 700">
+																																																																																																								Jenis Kelamin
+																																																																																																				</div>
+																																																																																																				<div
+																																																																																																								style="width: 20px">
+																																																																																																								:</div>
+																																																																																																				<div>
+																																																																																																								@isset($passenger->gender)
+																																																																																																												@if ($passenger->gender == true)
+																																																																																																																Laki-laki
+																																																																																																												@else
+																																																																																																																Perempuan
+																																																																																																												@endif
+																																																																																																								@else
+																																																																																																												Tidak dapat
+																																																																																																												ditampilkan
+																																																																																																								@endisset
+																																																																																																				</div>
+																																																																																																</div>
+
+																																																																																												</li>
+																																																																																								</ul>
+																																																																																				</li>
+																																																																																@endforeach
+																																																																												</ol>
 																																																																								</div>
-																																																																								<form action="/transactions/{{ $transaction->id }}"
-																																																																												method="POST" enctype="multipart/form-data">
-																																																																												@csrf
-																																																																												@method('PUT')
-																																																																												<div class="modal-body">
-																																																																																@isset($transaction->image)
-																																																																																				<div class="form-group row">
-																																																																																								<img src="{{ asset($transaction->image) }}"
-																																																																																												alt="{{ $transaction->image }}"
-																																																																																												style="width: 100px; height: 100px"
-																																																																																												class="rounded border">
-																																																																																				</div>
-																																																																																@endisset
 
+																																																																								<div class="card card-body">
+																																																																												<h5 style="font-weight: 700">Bukti Pembayaran
+																																																																												</h5>
+																																																																												@isset($transaction->image)
+																																																																																<img style="width: 200px; height: 100px"
+																																																																																				src="{{ asset($transaction->image) }}"
+																																																																																				alt="{{ $transaction->order->order_code }}">
+																																																																												@else
+																																																																																<span class="alert alert-danger">Bukti
+																																																																																				Pembayaran belum diunggah</span>
+																																																																												@endisset
+																																																																								</div>
+
+																																																																								<div class="input-group w-100">
+
+																																																																												<div class="input-group-text">
+
+																																																																																@if ($transaction->status == true)
+																																																																																				<input type="checkbox" id="status"
+																																																																																								name="status" checked>
+																																																																																@else
+																																																																																				<input type="checkbox" id="status"
+																																																																																								name="status">
+																																																																																@endif
+
+																																																																												</div>
+																																																																												<label type="text"
+																																																																																class="form-control">Konfirmasi/setujui
+																																																																																transaksi dengan Booking ID
+																																																																																{{ $transaction->order->order_code }}
+																																																																																?</label>
+																																																																								</div>
+
+																																																																				</div>
+																																																																				<div class="modal-footer justify-content-between">
+																																																																								<button type="submit"
+																																																																												class="btn btn-primary">Save</button>
+																																																																				</div>
+																																																																</form>
+																																																												</div>
+																																																												<!-- /.modal-content -->
+																																																								</div>
+																																																								<!-- /.modal-dialog -->
+																																																				</div>
+
+																																																				<div class="modal fade" tabindex="-1" role="dialog"
+																																																								aria-labelledby="exampleModalLongTitle" aria-hidden="true"
+																																																								id="modal-upload-{{ $transaction->id }}">
+																																																								<div class="modal-dialog">
+																																																												<div class="modal-content">
+																																																																<div class="modal-header">
+																																																																				<h4 class="modal-title">Unggah Bukti Pembayaran
+																																																																				</h4>
+																																																																				<button type="button" class="close"
+																																																																								data-dismiss="modal" aria-label="Close">
+																																																																								<span aria-hidden="true">&times;</span>
+																																																																				</button>
+																																																																</div>
+																																																																<form action="/transactions/{{ $transaction->id }}"
+																																																																				method="POST" enctype="multipart/form-data">
+																																																																				@csrf
+																																																																				@method('PUT')
+																																																																				<div class="modal-body">
+																																																																								@isset($transaction->image)
+																																																																												<div class="form-group row">
+																																																																																<img src="{{ asset($transaction->image) }}"
+																																																																																				alt="{{ $transaction->image }}"
+																																																																																				style="width: 100px; height: 100px"
+																																																																																				class="rounded border">
+																																																																												</div>
+																																																																								@endisset
+
+																																																																								<div class="form-group row">
+																																																																												<div class="col-sm-12">
 																																																																																<div class="form-group row">
 																																																																																				<div class="col-sm-12">
-																																																																																								<div class="form-group row">
-																																																																																												<div class="col-sm-12">
-																																																																																																<div class="form-group">
-																																																																																																				<label for="formFile"
-																																																																																																								class="form-label">Unggah
-																																																																																																								foto bukti
-																																																																																																								pembayaran</label>
-																																																																																																				<div class="input-group">
-																																																																																																								<div
-																																																																																																												class="custom-file">
-																																																																																																												<input
-																																																																																																																type="file"
-																																																																																																																class="custom-file-input"
-																																																																																																																id="exampleInputFile">
-																																																																																																												<label
-																																																																																																																class="custom-file-label"
-																																																																																																																for="exampleInputFile">Choose
-																																																																																																																file</label>
-																																																																																																								</div>
-																																																																																																				</div>
+																																																																																								<div class="form-group">
+																																																																																												<label for="formFile"
+																																																																																																class="form-label">Unggah
+																																																																																																foto bukti
+																																																																																																pembayaran</label>
+																																																																																												<div class="input-group">
+																																																																																																<div class="custom-file">
+																																																																																																				<input type="file"
+																																																																																																								class="custom-file-input"
+																																																																																																								id="exampleInputFile"
+																																																																																																								name="image">
+																																																																																																				<label
+																																																																																																								class="custom-file-label"
+																																																																																																								for="exampleInputFile">Choose
+																																																																																																								file</label>
 																																																																																																</div>
 																																																																																												</div>
 																																																																																								</div>
 																																																																																				</div>
 																																																																																</div>
 																																																																												</div>
-																																																																												<div class="modal-footer justify-content-between">
-																																																																																<button type="submit"
-																																																																																				class="btn btn-primary">Save</button>
-																																																																												</div>
-																																																																								</form>
+																																																																								</div>
 																																																																				</div>
-																																																																				<!-- /.modal-content -->
-																																																																</div>
-																																																																<!-- /.modal-dialog -->
+																																																																				<div class="modal-footer justify-content-between">
+																																																																								<button type="submit"
+																																																																												class="btn btn-primary">Save</button>
+																																																																				</div>
+																																																																</form>
 																																																												</div>
-																																																								@endcan
-																																																				</td>
+																																																												<!-- /.modal-content -->
+																																																								</div>
+																																																								<!-- /.modal-dialog -->
+																																																				</div>
 																																																</tr>
 																																												@endforeach
 																																								</tbody>

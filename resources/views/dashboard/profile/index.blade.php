@@ -57,7 +57,7 @@
 																																<div class="card-header box-profile d-flex flex-column align-items-center">
 																																				<div class="text-center">
 																																								<img class="profile-user-img img-fluid img-circle" src="{{ asset($user->image) }}"
-																																												alt="{{ $user->name }}">
+																																												alt="{{ $user->name }}" style="width: 100px; height: 100px">
 																																				</div>
 
 																																				<h3 class="mt-3 profile-username text-center">{{ $user->name }}</h3>

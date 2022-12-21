@@ -201,25 +201,6 @@
 																																												</div>
 																																								</div>
 																																								<div class="form-group row">
-																																												<div class="col-lg-2 col-sm-12 align-items-start mb-2">
-																																																<button type="button" class="btn btn-primary" id="checkTicketButton">Cek
-																																																				Harga
-																																																				Tiket</button>
-																																												</div>
-																																												<div class="col-lg-4 col-sm-12">
-																																																<div class="form-group">
-																																																				<div class="form-control">
-																																																								<p id="tickets_shelf">Klik tombol untuk mengecek harga tiket</p>
-																																																				</div>
-																																																</div>
-																																												</div>
-																																												<div class="col-lg-4 col-sm-12">
-																																																<div class="badge bg-success">
-																																																				Dalam Bentuk Rupiah
-																																																</div>
-																																												</div>
-																																								</div>
-																																								<div class="form-group row">
 																																												<label for="inputEmail3" class="col-sm-2 col-form-label">Jenis :</label>
 
 																																												<div class="col-sm-2">
@@ -296,6 +277,48 @@
 
 																																								</div>
 
+
+																																								<div class="form-group row">
+																																												<div class="col-lg-2 col-sm-12 align-items-start mb-2">
+																																																<button type="button" class="btn btn-primary" id="checkTicketButton">Cek
+																																																				Harga
+																																																				Tiket Berangkat</button>
+																																												</div>
+																																												<div class="col-lg-4 col-sm-12">
+																																																<div class="form-group">
+																																																				<div class="form-control">
+																																																								<p id="tickets_shelf">Klik tombol untuk cek harga tiket</p>
+																																																				</div>
+																																																</div>
+																																												</div>
+																																												<div class="col-lg-4 col-sm-12">
+																																																<div class="badge bg-success">
+																																																				Dalam Bentuk Rupiah
+																																																</div>
+																																												</div>
+																																								</div>
+																																								<div class="form-group row pulang-toogle">
+																																												<div class="col-lg-2 col-sm-12 align-items-start mb-2">
+																																																<button type="button" class="btn btn-primary"
+																																																				id="checkTicketButton2">Cek
+																																																				Harga
+																																																				Tiket Pulang</button>
+																																												</div>
+																																												<div class="col-lg-4 col-sm-12">
+																																																<div class="form-group">
+																																																				<div class="form-control">
+																																																								<p id="tickets_shelf2">Klik tombol untuk mengecek harga tiket
+																																																												Pulang</p>
+																																																				</div>
+																																																</div>
+																																												</div>
+																																												<div class="col-lg-4 col-sm-12">
+																																																<div class="badge bg-success">
+																																																				Dalam Bentuk Rupiah
+																																																</div>
+																																												</div>
+																																								</div>
+
 																																								<h4>Data Penumpang :</h4>
 
 																																								<div class="form-group row" id="penumpang-1">
@@ -314,7 +337,7 @@
 																																																</div>
 																																												</div>
 																																												<label for="inputEmail3" class="col-sm-1 col-form-label">KTP :</label>
-																																												<div class="col-sm-2">
+																																												<div class="col-sm-3">
 																																																<div class="form-group">
 																																																				<input type="text" class="form-control" id="inputEmail3"
 																																																								placeholder="KTP" name="nik_penumpang_1" required
@@ -349,7 +372,7 @@
 																																																</div>
 																																												</div>
 																																												<label for="inputEmail3" class="col-sm-1 col-form-label">KTP :</label>
-																																												<div class="col-sm-2">
+																																												<div class="col-sm-3">
 																																																<div class="form-group">
 																																																				<input type="text" class="form-control" id="inputEmail3"
 																																																								placeholder="KTP" name="nik_penumpang_2"
@@ -384,7 +407,7 @@
 																																																</div>
 																																												</div>
 																																												<label for="inputEmail3" class="col-sm-1 col-form-label">KTP :</label>
-																																												<div class="col-sm-2">
+																																												<div class="col-sm-3">
 																																																<div class="form-group">
 																																																				<input type="text" class="form-control" id="inputEmail3"
 																																																								placeholder="KTP" name="nik_penumpang_3"
@@ -419,7 +442,7 @@
 																																																</div>
 																																												</div>
 																																												<label for="inputEmail3" class="col-sm-1 col-form-label">KTP :</label>
-																																												<div class="col-sm-2">
+																																												<div class="col-sm-3">
 																																																<div class="form-group">
 																																																				<input type="text" class="form-control" id="inputEmail3"
 																																																								placeholder="KTP" name="nik_penumpang_4"
@@ -454,7 +477,7 @@
 																																																</div>
 																																												</div>
 																																												<label for="inputEmail3" class="col-sm-1 col-form-label">KTP :</label>
-																																												<div class="col-sm-2">
+																																												<div class="col-sm-3">
 																																																<div class="form-group">
 																																																				<input type="text" class="form-control" id="inputEmail3"
 																																																								placeholder="KTP" name="nik_penumpang_5"
@@ -484,7 +507,7 @@
 																																								<div class="form-group row">
 																																												<label for="inputEmail3" class="col-sm-2 col-form-label">Metode
 																																																Pembayaran:</label>
-																																												<div class="col-lg-3 col-sm-12">
+																																												<div class="col-lg-2 col-sm-12">
 																																																<div class="form-group">
 																																																				<select class="form-control" id="method_id" name="method_id">
 																																																								@if (old('method_id'))
@@ -492,7 +515,7 @@
 																																																																{{ $methods->where('id', old('method_id'))->first()->method }}
 																																																												</option>
 																																																								@else
-																																																												<option disabled selected>-- Pilih Metode Pembayaran --</option>
+																																																												<option disabled selected>-- Metode Pembayaran --</option>
 																																																								@endif
 																																																								@foreach ($methods as $method)
 																																																												@if ($method->id != old('method_id'))
@@ -505,7 +528,7 @@
 																																												</div>
 
 																																												<label for="inputEmail3" class="col-sm-1 col-form-label">Atas Nama:</label>
-																																												<div class="col-lg-2 col-sm-12">
+																																												<div class="col-lg-3 col-sm-12">
 																																																<div class="form-group">
 																																																				<input type="text" class="form-control" name="name_account"
 																																																								id="name_account" placeholder="Nama Lengkap" required
@@ -515,7 +538,7 @@
 																																												</div>
 
 																																												<label for="inputEmail3" class="col-sm-1 col-form-label">Nomor:</label>
-																																												<div class="col-lg-2 col-sm-12">
+																																												<div class="col-lg-3 col-sm-12">
 																																																<div class="form-group">
 																																																				<input type="text" class="form-control" name="from_account"
 																																																								id="name_account" placeholder="Nomor Lengkap" required
@@ -568,6 +591,8 @@
 								const airline_class = document.getElementById("airline_class");
 								const checkTicketButton = document.getElementById('checkTicketButton');
 								const ticketsShelf = document.getElementById('tickets_shelf');
+								const checkTicketButton2 = document.getElementById('checkTicketButton2');
+								const ticketsShelf2 = document.getElementById('tickets_shelf2');
 
 								checkTicketButton.addEventListener('click', function() {
 												fetch(
@@ -581,6 +606,21 @@
 																})
 																.catch(res => {
 																				ticketsShelf.innerHTML = "Harga tiket tidak dapat ditampilkan";
+																})
+								});
+
+								checkTicketButton2.addEventListener('click', function() {
+												fetch(
+																				`/checkprice?airline_id=${airline.value}&type_id=${airline_class.value}&from_route=${destination.value}&to_route=${pickup.value}`
+																)
+																.then(response => {
+																				return response.json();
+																})
+																.then(res => {
+																				ticketsShelf2.innerHTML = res.price;
+																})
+																.catch(res => {
+																				ticketsShelf2.innerHTML = "Harga tiket tidak dapat ditampilkan";
 																})
 								});
 				}

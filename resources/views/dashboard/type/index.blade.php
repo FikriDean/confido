@@ -66,6 +66,12 @@
 																																								</div>
 																																				@endif
 
+																																				@if (session('sameType'))
+																																								<div class="alert alert-danger">
+																																												{{ session('sameType') }}
+																																								</div>
+																																				@endif
+
 																																				<div class="row mb-2">
 																																								<div class="col-sm-6">
 																																												<h3 class="card-title">Data Kelas Maskapai</h3>
@@ -102,12 +108,6 @@
 																																																																				</div>
 
 																																																																				<div class="form-group row">
-																																																																								<label class="col-sm-2 col-form-label">Seat</label>
-																																																																								<input type="text" class="col-sm-10 form-control"
-																																																																												name="seat" placeholder="Masukkan Seat">
-																																																																				</div>
-
-																																																																				<div class="form-group row">
 																																																																								<label class="col-sm-2 col-form-label">Jam
 																																																																												Terbang</label>
 																																																																								<input type="text" class="col-sm-10 form-control"
@@ -137,7 +137,6 @@
 																																																<th>No</th>
 																																																<th>ID</th>
 																																																<th>Kelas Maskapai</th>
-																																																<th>Seat</th>
 																																																<th>Flight At</th>
 																																																<th>Action</th>
 																																												</tr>
@@ -159,16 +158,11 @@
 																																																								@endisset
 																																																				</td>
 																																																				<td>
-																																																								@isset($type->seat)
-																																																												{{ $type->seat }}
-																																																								@endisset
-																																																				</td>
-																																																				<td>
 																																																								@isset($type->flight_at)
 																																																												{{ $type->flight_at }}
 																																																								@endisset
 																																																				</td>
-																																																				<td class="d-flex justify-content-start align-items-center">
+																																																				<td>
 																																																								<a class='btn btn-primary btn-xs mx-1' data-toggle="modal"
 																																																												data-target="#modal-ubah-{{ $type->id }}">Ubah</a>
 																																																								<form action="/types/{{ $type->id }}" method="POST"
@@ -202,15 +196,6 @@
 																																																																																name="name"
 																																																																																placeholder="Masukkan Kelas Maskapai"
 																																																																																value="{{ old('name', $type->name) }}">
-																																																																								</div>
-
-																																																																								<div class="form-group row">
-																																																																												<label
-																																																																																class="col-sm-2 col-form-label">Seat</label>
-																																																																												<input type="text"
-																																																																																class="col-sm-10 form-control"
-																																																																																name="seat" placeholder="Masukkan Seat"
-																																																																																value="{{ old('seat', $type->seat) }}">
 																																																																								</div>
 
 																																																																								<div class="form-group row">

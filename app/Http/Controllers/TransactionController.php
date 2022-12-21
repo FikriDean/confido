@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Auth;
 
 class TransactionController extends Controller
 {
@@ -15,9 +16,19 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        return view('dashboard.transaction.index', [
-            'transactions' => Transaction::all()
-        ]);
+
+
+        if (Gate::allows('isAdmin')) {
+            return view('dashboard.transaction.index', [
+                'transactions' => Transaction::all()
+            ]);
+        } else {
+            return view('dashboard.transaction.index', [
+                'transactions' => Transaction::whereHas('order', function ($query) {
+                    $query->where('user_id', Auth::id());
+                })->get(),
+            ]);
+        }
     }
 
     /**
@@ -103,7 +114,7 @@ class TransactionController extends Controller
 
             $transaction->update($validatedData);
 
-            return redirect('/transactions');
+            return redirect('/transactions')->with('update', 'Bukti pembayaran berhasil diunggah');
         }
     }
 

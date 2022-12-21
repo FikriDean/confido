@@ -42,6 +42,12 @@ class AirlineController extends Controller
             'gate' => ['required', 'min:3', 'max:10'],
         ]);
 
+        $check = Airline::where('name', $validatedData['name'])->where('gate', $validatedData['gate'])->first();
+
+        if ($check) {
+            return redirect('/airlines')->with('sameAirline', 'Maskapai tersebut sudah ada di database!');
+        }
+
         Airline::create($validatedData);
 
         return redirect('/airlines')->with('store', 'Data Maskapai Berhasil Ditambahkan!');
@@ -82,6 +88,12 @@ class AirlineController extends Controller
             'name' => ['required', 'min:3', 'max:50'],
             'gate' => ['required', 'min:3', 'max:10'],
         ]);
+
+        $check = Airline::where('name', $validatedData['name'])->where('gate', $validatedData['gate'])->first();
+
+        if ($check) {
+            return redirect('/airlines')->with('sameAirline', 'Maskapai tersebut sudah ada di database!');
+        }
 
         $airline->update($validatedData);
 

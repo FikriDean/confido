@@ -66,7 +66,6 @@
 																																<th>Maskapai</th>
 																																<th>Kelas</th>
 																																<th>Rute</th>
-																																<th>Seat</th>
 																																<th>Gate</th>
 																																<th>Tanggal Pergi</th>
 																																<th>Jam Terbang</th>
@@ -80,7 +79,6 @@
 																																				<td>{{ $order->ticket->type->name }}</td>
 																																				<td>{{ $order->ticket->track->from_route }} - {{ $order->ticket->track->to_route }}
 																																				</td>
-																																				<td>{{ $order->ticket->type->seat }}</td>
 																																				<td>{{ $order->ticket->airline->gate }}</td>
 																																				<td>{{ $order->go_date }}</td>
 																																				<td>{{ $order->ticket->type->flight_at }} WIB</td>

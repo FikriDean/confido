@@ -43,6 +43,12 @@ class TypeController extends Controller
             'flight_at' => ['required']
         ]);
 
+        $check = Type::where('from_route', $validatedData['from_route'])->where('to_route', $validatedData['to_route'])->first();
+
+        if ($check) {
+            return redirect('/types')->with('sameType', 'Kelas maskapai tersebut sudah ada di database!');
+        }
+
         Type::create($validatedData);
 
         return redirect('/types')->with('store', "Kelas Maskapai berhasil ditambahkan");
@@ -84,6 +90,12 @@ class TypeController extends Controller
             'seat' => ['required', 'min:3', 'max:50'],
             'flight_at' => ['required']
         ]);
+
+        $check = Type::where('from_route', $validatedData['from_route'])->where('to_route', $validatedData['to_route'])->first();
+
+        if ($check) {
+            return redirect('/types')->with('sameType', 'Kelas maskapai tersebut sudah ada di database!');
+        }
 
         $type->update($validatedData);
 

@@ -14,7 +14,9 @@ class MethodController extends Controller
      */
     public function index()
     {
-        //
+        return view('dashboard.method.index', [
+            'methods' => Method::all()
+        ]);
     }
 
     /**
@@ -24,7 +26,7 @@ class MethodController extends Controller
      */
     public function create()
     {
-        return view('method.create');
+        //
     }
 
     /**
@@ -40,9 +42,15 @@ class MethodController extends Controller
             'target_account' => ['required', 'min:3', 'max:50']
         ]);
 
+        $check = Method::where('method', $request['method'])->first();
+
+        if ($check) {
+            return redirect('/methods')->with('sameMethod', 'Metode Pembayaran tersebut sudah ada di database!');
+        }
+
         Method::create($validatedData);
 
-        return redirect('/methods');
+        return redirect('/methods')->with('update', 'Metode Pembayaran tersebut berhasil ditambahkan!');
     }
 
     /**
@@ -76,7 +84,13 @@ class MethodController extends Controller
      */
     public function update(Request $request, Method $method)
     {
-        //
+        $validatedData = $request->validate([
+            'target_account' => ['required', 'min:3', 'max:50']
+        ]);
+
+        $method->update($validatedData);
+
+        return redirect('/methods')->with('update', 'Metode Pembayaran tersebut berhasil diubah!');
     }
 
     /**
@@ -87,6 +101,7 @@ class MethodController extends Controller
      */
     public function destroy(Method $method)
     {
-        //
+        $method->delete();
+        return redirect('/methods')->with('delete', 'Metode Pembayaran tersebut berhasil dihapus!');
     }
 }

@@ -11,7 +11,7 @@
 												<!-- Brand Logo -->
 												<a href="/dashboard" class="brand-link">
 																<img src="{{ asset('dist/img/ConfidoLogo.png') }}" alt="Confido Logo"
-																				class="brand-image img-circle elevation-3" style="opacity: .8">
+																				class="brand-image img-circle elevation-3">
 																<span class="brand-text font-weight-light">Confido</span>
 												</a>
 
@@ -110,8 +110,8 @@
 																																																				</td>
 																																																				<td>
 																																																								@isset($user->image)
-																																																												<img style="max-width: 100px" src="{{ asset($user->image) }}"
-																																																																alt="{{ $user->name }}">
+																																																												<img style="width: 100px; height: 100px"
+																																																																src="{{ asset($user->image) }}" alt="{{ $user->name }}">
 																																																								@else
 																																																												Belum di set
 																																																								@endisset
@@ -219,7 +219,7 @@
 																																																																																class="col-sm-2 col-form-label">Poto
 																																																																																Profil:</label>
 
-																																																																												<img style="max-width: 100px"
+																																																																												<img style="max-width: 100px; max-height: 100px"
 																																																																																src="{{ asset($user->image) }}"
 																																																																																alt="User Image">
 

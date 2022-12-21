@@ -256,7 +256,7 @@
 																																																								@endisset
 																																																				</td>
 																																																				@can('isAdmin')
-																																																								<td class="d-flex justify-content-start align-items-center">
+																																																								<td>
 																																																												<a class='btn btn-primary btn-xs mx-1' data-toggle="modal"
 																																																																data-target="#modal-{{ $ticket->id }}">Ubah Harga</a>
 																																																												<form action="/tickets/{{ $ticket->id }}" method="POST"

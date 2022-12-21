@@ -1,12 +1,13 @@
 <div class="sidebar">
 				<!-- Sidebar user panel (optional) -->
-				<div class="user-panel mt-3 pb-3 mb-3 d-flex">
+				<div class="user-panel mt-3 pb-3 mb-3 d-flex align-items-center">
 								<div class="image">
-												<img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
+												<img src="{{ asset(Auth::user()->image) }}" class="img-circle elevation-2" style="width: 50px; height: 50px;"
+																alt="{{ Auth::user()->name }}">
 								</div>
 								<div class="info">
 												<a href="/users/{{ Auth::id() }}" class="d-block"
-																style="{{ Request::is('users*') ? 'color: white' : '' }}">{{ Auth::user()->name }}</a>
+																style="{{ Request::is('users*') ? 'color: white' : '' }}; word-wrap: break-word;">{{ Auth::user()->name }}</a>
 								</div>
 				</div>
 
@@ -118,6 +119,15 @@
 																								📚
 																								<p>
 																												Rute Penerbangan
+																												<i class="fas fa-angle-left right"></i>
+																								</p>
+																				</a>
+																</li>
+																<li class="nav-item">
+																				<a href="/methods" class="nav-link {{ Request::is('methods') ? 'active' : '' }}">
+																								💳
+																								<p>
+																												Metode Pembayaran
 																												<i class="fas fa-angle-left right"></i>
 																								</p>
 																				</a>

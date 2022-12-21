@@ -16,9 +16,13 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('dashboard.user.index', [
-            'users' => User::all()
-        ]);
+        if (Gate::allows('isAdmin')) {
+            return view('dashboard.user.index', [
+                'users' => User::all()
+            ]);
+        } else {
+            return redirect('users/' . Auth::id());
+        }
     }
 
     /**

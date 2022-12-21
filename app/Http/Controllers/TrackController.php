@@ -42,6 +42,10 @@ class TrackController extends Controller
             'to_route' => ['required']
         ]);
 
+        if (Track::where('from_route', $request['from_route'])->where('to_route', $request['to_route'])->first()) {
+            return redirect('/tracks')->with('sameRoute', 'Rute tersebut sudah ada di database!');
+        }
+
         Track::create($validatedData);
 
         return redirect('/tracks')->with('store', 'Rute tersebut berhasil ditambahkan!');
@@ -83,7 +87,7 @@ class TrackController extends Controller
             'to_route' => ['required']
         ]);
 
-        $check = Track::where('from_route', $validatedData['from_route'])->where('to_route', $validatedData['to_route']);
+        $check = Track::where('from_route', $validatedData['from_route'])->where('to_route', $validatedData['to_route'])->first();
 
         if ($check) {
             return redirect('/tracks')->with('sameRoute', 'Rute tersebut sudah ada di database!');

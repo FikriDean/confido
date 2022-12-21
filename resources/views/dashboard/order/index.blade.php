@@ -152,7 +152,7 @@
 																																																								@endisset
 
 																																																				</td>
-																																																				<td class="d-flex flex-column justify-content-end">
+																																																				<td>
 																																																								@can('isAdmin')
 																																																												<a href="/print?order={{ $order->order_code }}" target="_blank">
 																																																																<button class="btn btn-success btn-xs"

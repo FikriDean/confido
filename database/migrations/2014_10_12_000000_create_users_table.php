@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('phone_number')->nullable();
             $table->boolean('gender')->nullable(); // laki-laki => 1
             $table->string('image')->default('public_profiles/default_profile.jpg');
-            $table->string('role')->default('user');
+            $table->string('role')->default('customer');
             $table->timestamps();
         });
     }

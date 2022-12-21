@@ -241,9 +241,12 @@
 																								<p>Confido berasal dari bahasa Latin, Confido yang berarti kepercayaan. Ini menandakan website kami
 																												terpercaya dan bisa diandalkan. Sesuai dengan kebutuhan pengguna kami.</p>
 																								<ul class="ftco-footer-social list-unstyled float-md-left float-lft">
-																												<li class="ftco-animate"><a href="#"><span class="fa fa-twitter"></span></a></li>
-																												<li class="ftco-animate"><a href="#"><span class="fa fa-facebook"></span></a></li>
-																												<li class="ftco-animate"><a href="#"><span class="fa fa-instagram"></span></a></li>
+																												<li class="ftco-animate"><a href="https://twitter.com/ConfidoTM" target="_blank"><span
+																																								class="fa fa-twitter"></span></a></li>
+																												<li class="ftco-animate"><a href="https://www.instagram.com/confidotm/?hl=id"
+																																				target="_blank"><span class="fa fa-facebook"></span></a></li>
+																												<li class="ftco-animate"><a href="#" target="_blank"><span
+																																								class="fa fa-instagram"></span></a></li>
 																								</ul>
 																				</div>
 																</div>
@@ -274,7 +277,7 @@
 																																												class="icon fa fa-whatsapp"></span><span class="text">088219983235 Admin
 																																												2</span></a></li>
 																																<li><a href="#"><span class="icon fa fa-paper-plane"></span><span
-																																												class="text">info@yourdomain.com</span></a></li>
+																																												class="text">confido.fikridean.my.id</span></a></li>
 																												</ul>
 																								</div>
 																				</div>

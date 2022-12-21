@@ -162,7 +162,7 @@
 																																																												{{ $track->to_route }}
 																																																								@endisset
 																																																				</td>
-																																																				<td class="d-flex justify-content-start align-items-center">
+																																																				<td>
 																																																								<a class='btn btn-primary btn-xs mx-1' data-toggle="modal"
 																																																												data-target="#modal-ubah-{{ $track->id }}">Ubah</a>
 																																																								<form action="/tracks/{{ $track->id }}" method="POST"

@@ -27,12 +27,12 @@
 																<div class="container-fluid">
 																				<div class="row mb-2">
 																								<div class="col-sm-6">
-																												<h1>Maskapai</h1>
+																												<h1>Metode Pembayaran</h1>
 																								</div>
 																								<div class="col-sm-6">
 																												<ol class="breadcrumb float-sm-right">
 																																<li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
-																																<li class="breadcrumb-item active">Maskapai</li>
+																																<li class="breadcrumb-item active">Metode Pembayaran</li>
 																												</ol>
 																								</div>
 																				</div>
@@ -66,61 +66,61 @@
 																																								</div>
 																																				@endif
 
-																																				@if (session('sameAirline'))
+																																				@if (session('sameMethod'))
 																																								<div class="alert alert-danger">
-																																												{{ session('sameAirline') }}
+																																												{{ session('sameMethod') }}
 																																								</div>
 																																				@endif
 
 																																				<div class="row mb-2">
 																																								<div class="col-sm-6">
-																																												<h3 class="card-title">Data Maskapai</h3>
+																																												<h3 class="card-title">Data Metode Pembayaran</h3>
 																																								</div>
 																																								@can('isAdmin')
 																																												<div class="col-sm-6">
 																																																<button class="btn btn-warning btn-sm float-sm-right" type="button"
-																																																				data-toggle="modal" data-target="#modal-tambah-airline"
-																																																				id="button-tambah-harga">Tambah Maskapai
+																																																				data-toggle="modal" data-target="#modal-tambah-type"
+																																																				id="button-tambah-harga">Tambah Metode Pembayaran
 																																																</button>
 
-																																																<div class="modal fade" id="modal-tambah-airline">
+																																																<div class="modal fade" id="modal-tambah-type">
 																																																				<div class="modal-dialog modal-lg">
 																																																								<div class="modal-content">
 																																																												<div class="modal-header">
-																																																																<h4 class="modal-title">Form Tambah Maskapai</h4>
+																																																																<h4 class="modal-title">Form Tambah Metode Pembayaran</h4>
 																																																																<button type="button" class="close" data-dismiss="modal"
 																																																																				aria-label="Close">
 																																																																				<span aria-hidden="true">&times;</span>
 																																																																</button>
 																																																												</div>
 
-																																																												<form action="/airlines" method="POST">
+																																																												<form action="/methods" method="POST">
 																																																																@csrf
 																																																																@method('POST')
 
 																																																																<div class="modal-body">
 																																																																				<div class="form-group row">
-																																																																								<label for="airline_id"
-																																																																												class="col-sm-2 col-form-label">Maskapai</label>
-																																																																								<input type="text" class="col-sm-10 form-control"
-																																																																												name="name" placeholder="Masukkan Nama Maskapai">
+																																																																								<label class="col-sm-4 col-form-label">Metode
+																																																																												Pembayaran</label>
+																																																																								<input type="text" class="col-sm-8 form-control"
+																																																																												name="method"
+																																																																												placeholder="Masukkan Metode Pembayaran">
 																																																																				</div>
 
 																																																																				<div class="form-group row">
-																																																																								<label for="airline_id"
-																																																																												class="col-sm-2 col-form-label">Gate</label>
-																																																																								<input type="text" class="col-sm-10 form-control"
-																																																																												name="gate" placeholder="Masukkan Gate">
+																																																																								<label class="col-sm-4 col-form-label">Nomor Rekening
+																																																																												Tujuan</label>
+																																																																								<input type="text" class="col-sm-8 form-control"
+																																																																												name="target_account"
+																																																																												placeholder="Masukkan Nomor Rekening Tujuan">
 																																																																				</div>
 																																																																</div>
 
 																																																																<div class="modal-footer">
-																																																																				<input type="submit" class="btn btn-success" name="submit"
-																																																																								value="Submit" />
+																																																																				<input type="submit" class="btn btn-success" />
 																																																																</div>
 																																																												</form>
 																																																								</div>
-
 																																																				</div>
 																																																</div>
 																																												</div>
@@ -134,36 +134,36 @@
 																																												<tr>
 																																																<th>No</th>
 																																																<th>ID</th>
-																																																<th>Nama Maskapai</th>
-																																																<th>Gate</th>
+																																																<th>Metode Pembayaran</th>
+																																																<th>Rekening Tujuan</th>
 																																																<th>Action</th>
 																																												</tr>
 																																								</thead>
 																																								<tbody>
-																																												@foreach ($airlines as $airline)
+																																												@foreach ($methods as $method)
 																																																<tr>
 																																																				<td>
 																																																								{{ $loop->iteration }}
 																																																				</td>
 																																																				<td>
-																																																								@isset($airline->id)
-																																																												{{ $airline->id }}
+																																																								@isset($method->id)
+																																																												{{ $method->id }}
 																																																								@endisset
 																																																				</td>
 																																																				<td>
-																																																								@isset($airline->name)
-																																																												{{ $airline->name }}
+																																																								@isset($method->method)
+																																																												{{ $method->method }}
 																																																								@endisset
 																																																				</td>
 																																																				<td>
-																																																								@isset($airline->gate)
-																																																												{{ $airline->gate }}
+																																																								@isset($method->target_account)
+																																																												{{ $method->target_account }}
 																																																								@endisset
 																																																				</td>
 																																																				<td>
 																																																								<a class='btn btn-primary btn-xs mx-1' data-toggle="modal"
-																																																												data-target="#modal-ubah-{{ $airline->id }}">Ubah</a>
-																																																								<form action="/airlines/{{ $airline->id }}" method="POST"
+																																																												data-target="#modal-ubah-{{ $method->id }}">Ubah</a>
+																																																								<form action="/methods/{{ $method->id }}" method="POST"
 																																																												onsubmit="return confirm('Yakin ingin menghapus?');">
 																																																												@csrf
 																																																												@method('DELETE')
@@ -171,39 +171,40 @@
 																																																												<button class='btn btn-danger btn-xs mx-1'>Delete</button>
 																																																								</form>
 																																																				</td>
-																																																				<div class="modal fade" id="modal-ubah-{{ $airline->id }}">
+																																																				<div class="modal fade" id="modal-ubah-{{ $method->id }}">
 																																																								<div class="modal-dialog modal-lg">
 																																																												<div class="modal-content">
 																																																																<div class="modal-header">
-																																																																				<h4 class="modal-title">Form Ubah Data Maskapai</h4>
+																																																																				<h4 class="modal-title">Form Ubah Metode Pembayaran</h4>
 																																																																				<button type="button" class="close"
 																																																																								data-dismiss="modal" aria-label="Close">
 																																																																								<span aria-hidden="true">&times;</span>
 																																																																				</button>
 																																																																</div>
-																																																																<form action="/airlines/{{ $airline->id }}"
-																																																																				method="POST">
+																																																																<form action="/methods/{{ $method->id }}" method="POST">
 																																																																				@csrf
 																																																																				@method('PUT')
 
 																																																																				<div class="modal-body">
 																																																																								<div class="form-group row">
-																																																																												<label for="airline_id"
-																																																																																class="col-sm-2 col-form-label">Maskapai</label>
+																																																																												<label class="col-sm-4 col-form-label">Metode
+																																																																																Pembayaran</label>
 																																																																												<input type="text"
-																																																																																class="col-sm-10 form-control"
-																																																																																name="name"
-																																																																																placeholder="Masukkan Nama Maskapai"
-																																																																																value="{{ old('name', $airline->name) }}">
+																																																																																class="col-sm-8 form-control"
+																																																																																placeholder="Masukkan Metode Pembayaran"
+																																																																																value="{{ old('method', $method->method) }}"
+																																																																																disabled>
 																																																																								</div>
 
 																																																																								<div class="form-group row">
-																																																																												<label for="airline_id"
-																																																																																class="col-sm-2 col-form-label">Gate</label>
+																																																																												<label class="col-sm-4 col-form-label">Nomor
+																																																																																Rekening
+																																																																																Tujuan</label>
 																																																																												<input type="text"
-																																																																																class="col-sm-10 form-control"
-																																																																																name="gate" placeholder="Masukkan Gate"
-																																																																																value="{{ old('gate', $airline->gate) }}">
+																																																																																class="col-sm-8 form-control"
+																																																																																name="target_account"
+																																																																																placeholder="Masukkan Nomor Rekening Tujuan"
+																																																																																value="{{ old('target_account', $method->target_account) }}">
 																																																																								</div>
 																																																																				</div>
 																																																																				<div class="modal-footer">
